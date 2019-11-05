@@ -1,0 +1,7 @@
+make -C zarjadnik clean
+make -C zarjadnik
+st-flash erase
+st-util -p 5555 -n&
+gdb-multiarch --init-command="init_gdb" zarjadnik/tl494_replacement.elf
+
+

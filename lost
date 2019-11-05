@@ -1,0 +1,75 @@
+//    TIM3_CCR2  = (uint32_t)32;
+//    TIM3_CCR3  = (uint32_t)32;
+//    TIM3_CCR4  = (uint32_t)32;
+
+    // лапки переключаются путем записи в регистр переключения значений по DMA
+    // так криво потому что так лапки попали, я не специально
+    RCC_AHBENR |= RCC_AHBENR_DMA1EN;
+    DMA1_CPAR4  = (uint32_t) &GPIOA_BSRR;
+    DMA1_CMAR4  = (uint32_t) &clockSeq;
+    DMA1_CNDTR4 = (uint32_t) 4;
+    // конфиг DMA
+    uint32_t ccr = DMA_CCR_MINC | DMA_CCR_MSIZE_32BIT | DMA_CCR_PSIZE_32BIT;
+    ccr |= DMA_CCR_PL_VERY_HIGH | DMA_CCR_DIR | DMA_CCR_CIRC;
+    ccr |= DMA_CCR_HTIE | DMA_CCR_TCIE | DMA_CCR_TEIE;
+    DMA1_CCR4 = ccr;
+    // прерывание по ошибке и по успешному измерению
+    // вкл DMA
+    DMA1_CCR4 |= DMA_CCR_EN;
+    TIM3_CR1 |= TIM_CR1_CEN;
+    TIM3_EGR |= TIM_EGR_UG;
+//    nvic_enable_irq(NVIC_TIM3_IRQ);
+    nvic_enable_irq(NVIC_DMA1_CHANNEL4_7_DMA2_CHANNEL3_5_IRQ);
+
+
+
+
+    // таймер ШИМ
+    RCC_APB1ENR |= RCC_APB1ENR_TIM14EN;
+    TIM14_CR1 = TIM_CR1_CKD_CK_INT;
+    TIM14_DIER = 0;
+    TIM14_PSC = 0;
+    TIM14_ARR = 1024;
+    TIM14_DIER = TIM_DIER_CC1IE | TIM_DIER_UIE;
+    fanUpdate();
+    nvic_enable_irq(NVIC_TIM14_IRQ);
+    // врубаем
+    TIM14_CR1 |= TIM_CR1_CEN;
+
+
+void tim14_isr()
+{
+    if( (TIM14_SR & TIM_SR_UIF) != 0 ) {
+        GPIOA_BSRR = 0x00000002;
+    } else {
+        GPIOA_BSRR = 0x00020000;
+    }
+    TIM14_SR = 0;
+}
+
+uint32_t dutyToPercent()
+{
+    return (PWM_BORDER * 100) / tlPar.divider;
+}
+
+void updateDuty(int duty)
+{
+    // для инициализации
+    if( duty == -1 ) {
+        PWM_BORDER  = (uint32_t)((tlPar.duty * tlPar.divider) / 100);
+        return;
+    }
+    if( (uint32_t)duty == tlPar.duty ) {
+        return;
+    }
+
+    if( duty > (int)tlPar.maxDuty ) {
+        tlPar.duty = tlPar.maxDuty;
+    } else if( duty < (int)tlPar.minDuty ) {
+        tlPar.duty = tlPar.minDuty;
+    } else {
+        tlPar.duty = duty;
+    }
+    PWM_BORDER = (uint32_t)((tlPar.duty * tlPar.divider) / 100);
+    TIM3_EGR |= TIM_EGR_UG;
+}
