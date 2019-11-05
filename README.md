@@ -13,8 +13,3 @@ It is based on libopencm3 libraries
  3. git submodule update --init # (Only needed once)
  4. make -C libopencm3 # (Only needed once)
  5. make -C zarjadnik
-
-# Directories
-* zarjadnik contains your application
-* lib contains something shared.
-
