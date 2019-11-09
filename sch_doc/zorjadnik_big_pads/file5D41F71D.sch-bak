@@ -15,17 +15,6 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L 74xx1:74HC595 U3
-U 1 1 5D42E9F5
-P 2800 2650
-F 0 "U3" H 2500 3200 50  0000 C CNN
-F 1 "74HC595" H 2500 2000 50  0000 C CNN
-F 2 "Package_SO:SOP-16_4.55x10.3mm_P1.27mm" H 2800 2650 50  0001 C CNN
-F 3 "" H 2800 2650 50  0001 C CNN
-	1    2800 2650
-	1    0    0    -1  
-$EndComp
-$Comp
 L zorjadnik-rescue:POT-zorjadnik-rescue RV1
 U 1 1 5D42E9FD
 P 2050 1200
@@ -39,7 +28,7 @@ F 3 "" H 2050 1200 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L power1:+3.3V #PWR021
+L zorjadnik-rescue:+3.3V-power1 #PWR021
 U 1 1 5D42EA04
 P 2050 1050
 F 0 "#PWR021" H 2050 900 50  0001 C CNN
@@ -61,7 +50,7 @@ F 3 "" H 4150 2600 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:+3.3V #PWR023
+L zorjadnik-rescue:+3.3V-power1 #PWR023
 U 1 1 5D42EA17
 P 2800 1500
 F 0 "#PWR023" H 2800 1350 50  0001 C CNN
@@ -72,7 +61,7 @@ F 3 "" H 2800 1500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR027
+L zorjadnik-rescue:GND-power1 #PWR027
 U 1 1 5D42EA59
 P 2800 5600
 F 0 "#PWR027" H 2800 5350 50  0001 C CNN
@@ -83,7 +72,7 @@ F 3 "" H 2800 5600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:+3.3V #PWR030
+L zorjadnik-rescue:+3.3V-power1 #PWR030
 U 1 1 5D42EA87
 P 1450 2050
 F 0 "#PWR030" H 1450 1900 50  0001 C CNN
@@ -94,7 +83,7 @@ F 3 "" H 1450 2050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR031
+L zorjadnik-rescue:GND-power1 #PWR031
 U 1 1 5D42EA8D
 P 1300 3200
 F 0 "#PWR031" H 1300 2950 50  0001 C CNN
@@ -118,7 +107,7 @@ F 3 "" H 2950 1750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR032
+L zorjadnik-rescue:GND-power1 #PWR032
 U 1 1 5D42EA9A
 P 2950 1950
 F 0 "#PWR032" H 2950 1700 50  0001 C CNN
@@ -140,7 +129,7 @@ Wire Wire Line
 	2800 1550 2950 1550
 Connection ~ 2800 1550
 $Comp
-L power1:GND #PWR034
+L zorjadnik-rescue:GND-power1 #PWR034
 U 1 1 5D42EAEA
 P 2050 1350
 F 0 "#PWR034" H 2050 1100 50  0001 C CNN
@@ -151,7 +140,7 @@ F 3 "" H 2050 1350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR035
+L zorjadnik-rescue:GND-power1 #PWR035
 U 1 1 5D42EAF0
 P 2350 2900
 F 0 "#PWR035" H 2350 2650 50  0001 C CNN
@@ -162,29 +151,18 @@ F 3 "" H 2350 2900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device1:CircuitBreaker_1P CB1
-U 1 1 5D430003
+L zorjadnik-rescue:CircuitBreaker_1P-Device1 CB2
+U 1 1 5D430D68
 P 2300 1750
-F 0 "CB1" H 2375 1750 50  0000 L CNN
-F 1 "CircuitBreaker_1P" H 2375 1825 50  0000 L CNN
+F 0 "CB2" V 2250 1750 50  0000 L CNN
+F 1 "CircuitBreaker_1P" V 2350 1750 50  0000 L CNN
 F 2 "Button_Switch_THT:SW_PUSH_6mm" H 2300 1750 50  0001 C CNN
 F 3 "" H 2300 1750 50  0001 C CNN
 	1    2300 1750
 	0    1    1    0   
 $EndComp
 $Comp
-L Device1:CircuitBreaker_1P CB2
-U 1 1 5D430D68
-P 2300 1600
-F 0 "CB2" H 2375 1600 50  0000 L CNN
-F 1 "CircuitBreaker_1P" H 2375 1675 50  0000 L CNN
-F 2 "Button_Switch_THT:SW_PUSH_6mm" H 2300 1600 50  0001 C CNN
-F 3 "" H 2300 1600 50  0001 C CNN
-	1    2300 1600
-	0    1    1    0   
-$EndComp
-$Comp
-L power1:GND #PWR036
+L zorjadnik-rescue:GND-power1 #PWR036
 U 1 1 5D432F85
 P 2650 1800
 F 0 "#PWR036" H 2650 1550 50  0001 C CNN
@@ -294,46 +272,48 @@ Wire Wire Line
 Wire Wire Line
 	2150 2450 2400 2450
 $Comp
-L Device1:R R21
+L zorjadnik-rescue:R-Device1 R21
 U 1 1 5D6E0909
 P 4850 2600
-F 0 "R21" V 4643 2600 50  0000 C CNN
-F 1 "300" V 4734 2600 50  0000 C CNN
+F 0 "R21" V 4850 2450 50  0000 C CNN
+F 1 "200" V 4850 2600 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 4780 2600 50  0001 C CNN
 F 3 "~" H 4850 2600 50  0001 C CNN
 	1    4850 2600
 	0    1    1    0   
 $EndComp
 $Comp
-L Device1:R R22
+L zorjadnik-rescue:R-Device1 R22
 U 1 1 5D6EBD26
 P 4850 2500
-F 0 "R22" V 4643 2500 50  0000 C CNN
-F 1 "300" V 4734 2500 50  0000 C CNN
+F 0 "R22" V 4750 2500 50  0000 C CNN
+F 1 "200" V 4850 2500 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 4780 2500 50  0001 C CNN
 F 3 "~" H 4850 2500 50  0001 C CNN
 	1    4850 2500
 	0    1    1    0   
 $EndComp
 $Comp
-L Device1:R R20
+L zorjadnik-rescue:R-Device1 R20
 U 1 1 5D6F1DFE
 P 4850 2700
-F 0 "R20" V 4643 2700 50  0000 C CNN
-F 1 "300" V 4734 2700 50  0000 C CNN
+F 0 "R20" V 4750 2700 50  0000 C CNN
+F 1 "200" V 4850 2700 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 4780 2700 50  0001 C CNN
 F 3 "~" H 4850 2700 50  0001 C CNN
 	1    4850 2700
-	0    1    1    0   
+	0    -1   -1   0   
 $EndComp
 Wire Wire Line
 	1200 2950 1550 2950
 Wire Wire Line
 	1450 2050 1450 3050
 $Comp
-L 74xx1:74HC595 U4
+L zorjadnik-rescue:74HC595-74xx1 U4
 U 1 1 5D50D654
 P 2800 4900
+AR Path="/5D50D654" Ref="U4"  Part="1" 
+AR Path="/5D41F71E/5D50D654" Ref="U4"  Part="1" 
 F 0 "U4" H 2500 5450 50  0000 C CNN
 F 1 "74HC595" H 2500 4250 50  0000 C CNN
 F 2 "Package_SO:SOP-16_4.55x10.3mm_P1.27mm" H 2800 4900 50  0001 C CNN
@@ -397,7 +377,7 @@ Wire Bus Line
 Wire Wire Line
 	3200 4900 3350 4900
 $Comp
-L power1:+3.3V #PWR0109
+L zorjadnik-rescue:+3.3V-power1 #PWR0109
 U 1 1 5D629A6A
 P 2800 3800
 F 0 "#PWR0109" H 2800 3650 50  0001 C CNN
@@ -421,7 +401,7 @@ F 3 "" H 2950 4050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR0110
+L zorjadnik-rescue:GND-power1 #PWR0110
 U 1 1 5D629A76
 P 2950 4200
 F 0 "#PWR0110" H 2950 3950 50  0001 C CNN
@@ -439,7 +419,7 @@ Wire Wire Line
 	2950 3850 2800 3850
 Connection ~ 2800 3850
 $Comp
-L power1:GND #PWR0111
+L zorjadnik-rescue:GND-power1 #PWR0111
 U 1 1 5D6460F2
 P 2800 3350
 F 0 "#PWR0111" H 2800 3100 50  0001 C CNN
@@ -454,7 +434,7 @@ Wire Wire Line
 Wire Wire Line
 	3250 3150 3250 3550
 $Comp
-L power1:GND #PWR0112
+L zorjadnik-rescue:GND-power1 #PWR0112
 U 1 1 5D657AAB
 P 2350 5200
 F 0 "#PWR0112" H 2350 4950 50  0001 C CNN
@@ -470,22 +450,22 @@ Wire Wire Line
 	2350 5100 2400 5100
 Connection ~ 3450 3250
 $Comp
-L Device1:R R14
+L zorjadnik-rescue:R-Device1 R14
 U 1 1 5D66A22A
 P 1850 1600
-F 0 "R14" V 1643 1600 50  0000 C CNN
-F 1 "R" V 1734 1600 50  0000 C CNN
+F 0 "R14" V 1750 1600 50  0000 C CNN
+F 1 "100" V 1850 1600 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 1780 1600 50  0001 C CNN
 F 3 "~" H 1850 1600 50  0001 C CNN
 	1    1850 1600
 	0    1    1    0   
 $EndComp
 $Comp
-L Device1:R R15
+L zorjadnik-rescue:R-Device1 R15
 U 1 1 5D66FFB1
 P 1850 1750
-F 0 "R15" V 1643 1750 50  0000 C CNN
-F 1 "R" V 1734 1750 50  0000 C CNN
+F 0 "R15" V 1950 1750 50  0000 C CNN
+F 1 "100" V 1850 1750 50  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 1780 1750 50  0001 C CNN
 F 3 "~" H 1850 1750 50  0001 C CNN
 	1    1850 1750
@@ -529,11 +509,11 @@ Wire Wire Line
 Wire Wire Line
 	1300 2650 1300 3200
 $Comp
-L Connector_Generic1:Conn_01x08 J8
+L zorjadnik-rescue:Conn_01x08-Connector_Generic1 J8
 U 1 1 5D546DD5
 P 1000 2650
 F 0 "J8" H 918 3167 50  0000 C CNN
-F 1 "Conn_01x08" H 918 3076 50  0000 C CNN
+F 1 "driver" H 918 3076 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical" H 1000 2650 50  0001 C CNN
 F 3 "~" H 1000 2650 50  0001 C CNN
 	1    1000 2650
@@ -585,6 +565,30 @@ Wire Wire Line
 	1250 2450 1250 2550
 Wire Wire Line
 	1200 2450 1350 2450
+$Comp
+L zorjadnik-rescue:CircuitBreaker_1P-Device1 CB1
+U 1 1 5D430003
+P 2300 1600
+F 0 "CB1" V 2250 1600 50  0000 L CNN
+F 1 "CircuitBreaker_1P" V 2350 1600 50  0000 L CNN
+F 2 "Button_Switch_THT:SW_PUSH_6mm" H 2300 1600 50  0001 C CNN
+F 3 "" H 2300 1600 50  0001 C CNN
+	1    2300 1600
+	0    1    1    0   
+$EndComp
+$Comp
+L zorjadnik-rescue:74HC595-74xx1 U3
+U 1 1 5D42E9F5
+P 2800 2650
+AR Path="/5D42E9F5" Ref="U3"  Part="1" 
+AR Path="/5D41F71E/5D42E9F5" Ref="U3"  Part="1" 
+F 0 "U3" H 2500 3200 50  0000 C CNN
+F 1 "74HC595" H 2500 2000 50  0000 C CNN
+F 2 "Package_SO:SOP-16_4.55x10.3mm_P1.27mm" H 2800 2650 50  0001 C CNN
+F 3 "" H 2800 2650 50  0001 C CNN
+	1    2800 2650
+	1    0    0    -1  
+$EndComp
 Wire Bus Line
 	5200 2400 5200 3250
 Wire Bus Line

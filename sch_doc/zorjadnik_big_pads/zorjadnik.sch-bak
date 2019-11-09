@@ -19,7 +19,7 @@ L zorjadnik-rescue:R-zorjadnik-rescue R4
 U 1 1 5D3D182F
 P 5950 3250
 F 0 "R4" V 6030 3250 50  0000 C CNN
-F 1 "1R" V 5950 3250 50  0000 C CNN
+F 1 "0.1R" V 5950 3250 50  0000 C CNN
 F 2 "Resistor_SMD:R_2010_5025Metric" V 5880 3250 50  0001 C CNN
 F 3 "" H 5950 3250 50  0001 C CNN
 	1    5950 3250
@@ -30,7 +30,7 @@ L zorjadnik-rescue:R-zorjadnik-rescue R5
 U 1 1 5D3D18BE
 P 6100 3250
 F 0 "R5" V 6180 3250 50  0000 C CNN
-F 1 "1R" V 6100 3250 50  0000 C CNN
+F 1 "0.1R" V 6100 3250 50  0000 C CNN
 F 2 "Resistor_SMD:R_2010_5025Metric" V 6030 3250 50  0001 C CNN
 F 3 "" H 6100 3250 50  0001 C CNN
 	1    6100 3250
@@ -41,7 +41,7 @@ L zorjadnik-rescue:R-zorjadnik-rescue R6
 U 1 1 5D3D18F9
 P 6250 3250
 F 0 "R6" V 6330 3250 50  0000 C CNN
-F 1 "1R" V 6250 3250 50  0000 C CNN
+F 1 "0.1R" V 6250 3250 50  0000 C CNN
 F 2 "Resistor_SMD:R_2010_5025Metric" V 6180 3250 50  0001 C CNN
 F 3 "" H 6250 3250 50  0001 C CNN
 	1    6250 3250
@@ -52,7 +52,7 @@ L zorjadnik-rescue:R-zorjadnik-rescue R7
 U 1 1 5D3D1942
 P 6400 3250
 F 0 "R7" V 6480 3250 50  0000 C CNN
-F 1 "1R" V 6400 3250 50  0000 C CNN
+F 1 "0.1R" V 6400 3250 50  0000 C CNN
 F 2 "Resistor_SMD:R_2010_5025Metric" V 6330 3250 50  0001 C CNN
 F 3 "" H 6400 3250 50  0001 C CNN
 	1    6400 3250
@@ -63,7 +63,7 @@ L zorjadnik-rescue:R-zorjadnik-rescue R8
 U 1 1 5D3D197A
 P 6550 3250
 F 0 "R8" V 6630 3250 50  0000 C CNN
-F 1 "1R" V 6550 3250 50  0000 C CNN
+F 1 "0.1R" V 6550 3250 50  0000 C CNN
 F 2 "Resistor_SMD:R_2010_5025Metric" V 6480 3250 50  0001 C CNN
 F 3 "" H 6550 3250 50  0001 C CNN
 	1    6550 3250
@@ -74,7 +74,7 @@ L zorjadnik-rescue:R-zorjadnik-rescue R9
 U 1 1 5D3D19C7
 P 6700 3250
 F 0 "R9" V 6780 3250 50  0000 C CNN
-F 1 "1R" V 6700 3250 50  0000 C CNN
+F 1 "0.1R" V 6700 3250 50  0000 C CNN
 F 2 "Resistor_SMD:R_2010_5025Metric" V 6630 3250 50  0001 C CNN
 F 3 "" H 6700 3250 50  0001 C CNN
 	1    6700 3250
@@ -85,7 +85,7 @@ L zorjadnik-rescue:R-zorjadnik-rescue R10
 U 1 1 5D3D1B31
 P 6850 3250
 F 0 "R10" V 6930 3250 50  0000 C CNN
-F 1 "1R" V 6850 3250 50  0000 C CNN
+F 1 "0.1R" V 6850 3250 50  0000 C CNN
 F 2 "Resistor_SMD:R_2010_5025Metric" V 6780 3250 50  0001 C CNN
 F 3 "" H 6850 3250 50  0001 C CNN
 	1    6850 3250
@@ -96,7 +96,7 @@ L zorjadnik-rescue:R-zorjadnik-rescue R11
 U 1 1 5D3D1BA4
 P 7000 3250
 F 0 "R11" V 7080 3250 50  0000 C CNN
-F 1 "1R" V 7000 3250 50  0000 C CNN
+F 1 "0.1R" V 7000 3250 50  0000 C CNN
 F 2 "Resistor_SMD:R_2010_5025Metric" V 6930 3250 50  0001 C CNN
 F 3 "" H 7000 3250 50  0001 C CNN
 	1    7000 3250
@@ -107,7 +107,7 @@ L zorjadnik-rescue:R-zorjadnik-rescue R12
 U 1 1 5D3D1BE6
 P 7150 3250
 F 0 "R12" V 7230 3250 50  0000 C CNN
-F 1 "1R" V 7150 3250 50  0000 C CNN
+F 1 "0.1R" V 7150 3250 50  0000 C CNN
 F 2 "Resistor_SMD:R_2010_5025Metric" V 7080 3250 50  0001 C CNN
 F 3 "" H 7150 3250 50  0001 C CNN
 	1    7150 3250
@@ -118,14 +118,14 @@ L zorjadnik-rescue:R-zorjadnik-rescue R13
 U 1 1 5D3D1C37
 P 7300 3250
 F 0 "R13" V 7380 3250 50  0000 C CNN
-F 1 "1R" V 7300 3250 50  0000 C CNN
+F 1 "0.1R" V 7300 3250 50  0000 C CNN
 F 2 "Resistor_SMD:R_2010_5025Metric" V 7230 3250 50  0001 C CNN
 F 3 "" H 7300 3250 50  0001 C CNN
 	1    7300 3250
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GNDA #PWR01
+L zorjadnik-rescue:GNDA-power1 #PWR01
 U 1 1 5D3D1FDE
 P 5950 3500
 F 0 "#PWR01" H 5950 3250 50  0001 C CNN
@@ -180,7 +180,7 @@ F 3 "" H 7300 1500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR04
+L zorjadnik-rescue:GND-power1 #PWR04
 U 1 1 5D3DC3B5
 P 8200 1750
 F 0 "#PWR04" H 8200 1500 50  0001 C CNN
@@ -191,7 +191,7 @@ F 3 "" H 8200 1750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:+28V #PWR05
+L zorjadnik-rescue:+28V-power1 #PWR05
 U 1 1 5D3DCF2B
 P 6400 900
 F 0 "#PWR05" H 6400 750 50  0001 C CNN
@@ -202,7 +202,7 @@ F 3 "" H 6650 950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:+3.3V #PWR06
+L zorjadnik-rescue:+3.3V-power1 #PWR06
 U 1 1 5D3DD139
 P 8200 1000
 F 0 "#PWR06" H 8200 850 50  0001 C CNN
@@ -213,7 +213,7 @@ F 3 "" H 8200 1000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR07
+L zorjadnik-rescue:GND-power1 #PWR07
 U 1 1 5D3E60BB
 P 3800 4300
 F 0 "#PWR07" H 3800 4050 50  0001 C CNN
@@ -246,7 +246,7 @@ F 3 "" H 3050 3900 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power1:+3.3V #PWR08
+L zorjadnik-rescue:+3.3V-power1 #PWR08
 U 1 1 5D3E8059
 P 3800 2200
 F 0 "#PWR08" H 3800 2050 50  0001 C CNN
@@ -279,7 +279,7 @@ F 3 "" H 3650 2450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR09
+L zorjadnik-rescue:GND-power1 #PWR09
 U 1 1 5D4122C9
 P 3650 2600
 F 0 "#PWR09" H 3650 2350 50  0001 C CNN
@@ -290,7 +290,7 @@ F 3 "" H 3650 2600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR010
+L zorjadnik-rescue:GND-power1 #PWR010
 U 1 1 5D4125B3
 P 4050 2600
 F 0 "#PWR010" H 4050 2350 50  0001 C CNN
@@ -312,7 +312,7 @@ F 3 "" H 5750 3050 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power1:GNDA #PWR011
+L zorjadnik-rescue:GNDA-power1 #PWR011
 U 1 1 5D416623
 P 6250 4950
 F 0 "#PWR011" H 6250 4700 50  0001 C CNN
@@ -449,7 +449,7 @@ F 3 "" H 3000 3150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR014
+L zorjadnik-rescue:GND-power1 #PWR014
 U 1 1 5D437FC3
 P 3200 3400
 F 0 "#PWR014" H 3200 3150 50  0001 C CNN
@@ -473,66 +473,66 @@ Wire Wire Line
 	3300 3150 3200 3150
 Connection ~ 3200 3350
 $Comp
-L Connector_Generic1:Conn_01x01 J2
+L zorjadnik-rescue:Conn_01x01-Connector_Generic1 J2
 U 1 1 5D439867
 P 1250 3800
 F 0 "J2" H 1250 3900 50  0000 C CNN
-F 1 "Conn_01x01" H 1250 3700 50  0000 C CNN
+F 1 "OUT2" H 1250 3700 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 1250 3800 50  0001 C CNN
 F 3 "" H 1250 3800 50  0001 C CNN
 	1    1250 3800
 	-1   0    0    1   
 $EndComp
 $Comp
-L Connector_Generic1:Conn_01x01 J1
+L zorjadnik-rescue:Conn_01x01-Connector_Generic1 J1
 U 1 1 5D4399DF
 P 1250 3200
 F 0 "J1" H 1250 3300 50  0000 C CNN
-F 1 "Conn_01x01" H 1250 3100 50  0000 C CNN
+F 1 "OUT1" H 1250 3100 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 1250 3200 50  0001 C CNN
 F 3 "" H 1250 3200 50  0001 C CNN
 	1    1250 3200
 	-1   0    0    1   
 $EndComp
 $Comp
-L Connector_Generic1:Conn_01x01 J3
+L zorjadnik-rescue:Conn_01x01-Connector_Generic1 J3
 U 1 1 5D43A392
-P 1250 2550
-F 0 "J3" H 1250 2650 50  0000 C CNN
-F 1 "Conn_01x01" H 1250 2450 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 1250 2550 50  0001 C CNN
-F 3 "" H 1250 2550 50  0001 C CNN
-	1    1250 2550
+P 1250 2450
+F 0 "J3" H 1250 2550 50  0000 C CNN
+F 1 "Vsb" H 1250 2350 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 1250 2450 50  0001 C CNN
+F 3 "" H 1250 2450 50  0001 C CNN
+	1    1250 2450
 	-1   0    0    1   
 $EndComp
 $Comp
-L power1:+28V #PWR015
+L zorjadnik-rescue:+28V-power1 #PWR015
 U 1 1 5D43A67B
-P 1500 2500
-F 0 "#PWR015" H 1500 2350 50  0001 C CNN
-F 1 "+28V" H 1500 2650 50  0000 C CNN
-F 2 "" H 1750 2550 50  0001 C CNN
-F 3 "" H 1750 2550 50  0001 C CNN
-	1    1500 2500
+P 1500 2400
+F 0 "#PWR015" H 1500 2250 50  0001 C CNN
+F 1 "+28V" H 1500 2550 50  0000 C CNN
+F 2 "" H 1750 2450 50  0001 C CNN
+F 3 "" H 1750 2450 50  0001 C CNN
+	1    1500 2400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1450 2550 1500 2550
+	1450 2450 1500 2450
 Wire Wire Line
-	1500 2550 1500 2500
+	1500 2450 1500 2400
 $Comp
-L Connector_Generic1:Conn_01x01 J4
+L zorjadnik-rescue:Conn_01x01-Connector_Generic1 J4
 U 1 1 5D43AA85
 P 1250 2750
 F 0 "J4" H 1250 2850 50  0000 C CNN
-F 1 "Conn_01x01" H 1250 2650 50  0000 C CNN
+F 1 "GND" H 1250 2650 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 1250 2750 50  0001 C CNN
 F 3 "" H 1250 2750 50  0001 C CNN
 	1    1250 2750
 	-1   0    0    1   
 $EndComp
 $Comp
-L power1:GND #PWR016
+L zorjadnik-rescue:GND-power1 #PWR016
 U 1 1 5D43ACC4
 P 1500 2800
 F 0 "#PWR016" H 1500 2550 50  0001 C CNN
@@ -560,33 +560,18 @@ F 3 "" H 6100 5900 50  0001 L CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:+VDC #PWR017
+L zorjadnik-rescue:+VDC-power1 #PWR017
 U 1 1 5D43F586
-P 5900 5450
-F 0 "#PWR017" H 5900 5350 50  0001 C CNN
-F 1 "+VDC" H 5900 5700 50  0000 C CNN
-F 2 "" H 5900 5450 50  0001 C CNN
-F 3 "" H 5900 5450 50  0001 C CNN
-	1    5900 5450
+P 5800 5250
+F 0 "#PWR017" H 5800 5150 50  0001 C CNN
+F 1 "+VDC" H 5800 5500 50  0000 C CNN
+F 2 "" H 5800 5250 50  0001 C CNN
+F 3 "" H 5800 5250 50  0001 C CNN
+	1    5800 5250
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	5650 5900 5850 5900
-$Comp
-L Connector_Generic1:Conn_01x02 J7
-U 1 1 5D4406AD
-P 6500 5550
-F 0 "J7" H 6500 5650 50  0000 C CNN
-F 1 "Conn_01x02" H 6500 5350 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 6500 5550 50  0001 C CNN
-F 3 "" H 6500 5550 50  0001 C CNN
-	1    6500 5550
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6300 5650 6200 5650
-Wire Wire Line
-	6200 5650 6200 5700
 Entry Wire Line
 	4650 3650 4750 3750
 Entry Wire Line
@@ -608,11 +593,11 @@ Wire Wire Line
 Wire Wire Line
 	4650 3650 4300 3650
 Text Label 3050 4050 0    60   ~ 0
-con6
+ST_CP
 Text Label 4400 3450 0    60   ~ 0
-con5
+SCK
 Text Label 4400 2950 0    60   ~ 0
-con3
+pot
 Text Label 4400 3750 0    60   ~ 0
 con2
 Wire Wire Line
@@ -715,11 +700,11 @@ Wire Wire Line
 Wire Wire Line
 	7300 3050 7450 3050
 $Comp
-L Connector_Generic1:Conn_01x01 J9
+L zorjadnik-rescue:Conn_01x01-Connector_Generic1 J9
 U 1 1 5D54F988
 P 6000 3850
 F 0 "J9" H 6000 3950 50  0000 C CNN
-F 1 "Conn_01x01" H 6000 3750 50  0000 C CNN
+F 1 "power supply Vout" H 6000 3750 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 6000 3850 50  0001 C CNN
 F 3 "" H 6000 3850 50  0001 C CNN
 	1    6000 3850
@@ -748,7 +733,7 @@ F 3 "~" H 6250 4700 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power1:+VDC #PWR0101
+L zorjadnik-rescue:+VDC-power1 #PWR0101
 U 1 1 5D58536F
 P 6250 4000
 F 0 "#PWR0101" H 6250 3900 50  0001 C CNN
@@ -768,7 +753,7 @@ Connection ~ 6000 4100
 Wire Wire Line
 	6000 4100 6000 4150
 $Comp
-L power1:GNDA #PWR0102
+L zorjadnik-rescue:GNDA-power1 #PWR0102
 U 1 1 5D598089
 P 6200 6100
 F 0 "#PWR0102" H 6200 5850 50  0001 C CNN
@@ -779,7 +764,7 @@ F 3 "" H 6200 6100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GNDA #PWR0103
+L zorjadnik-rescue:GNDA-power1 #PWR0103
 U 1 1 5D59981C
 P 8750 1750
 F 0 "#PWR0103" H 8750 1500 50  0001 C CNN
@@ -790,7 +775,7 @@ F 3 "" H 8750 1750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR0104
+L zorjadnik-rescue:GND-power1 #PWR0104
 U 1 1 5D59CD09
 P 8950 1750
 F 0 "#PWR0104" H 8950 1500 50  0001 C CNN
@@ -811,13 +796,13 @@ Entry Wire Line
 Wire Wire Line
 	4300 2950 4650 2950
 Text Label 4400 3650 0    60   ~ 0
-con7
+MOSI
 $Comp
-L Connector1:Screw_Terminal_01x02 J10
+L zorjadnik-rescue:Screw_Terminal_01x02-Connector1 J10
 U 1 1 5D42F4A5
 P 7550 2850
 F 0 "J10" V 7514 2662 50  0000 R CNN
-F 1 "Screw_Terminal_01x02" V 7423 2662 50  0000 R CNN
+F 1 "output GND" V 7423 2662 50  0000 R CNN
 F 2 "escor:KF350x2" H 7550 2850 50  0001 C CNN
 F 3 "~" H 7550 2850 50  0001 C CNN
 	1    7550 2850
@@ -833,11 +818,11 @@ Connection ~ 7550 3050
 Wire Wire Line
 	7550 3050 7650 3050
 $Comp
-L Connector1:Screw_Terminal_01x02 J11
+L zorjadnik-rescue:Screw_Terminal_01x02-Connector1 J11
 U 1 1 5D4739B7
 P 7650 3650
 F 0 "J11" V 7522 3730 50  0000 L CNN
-F 1 "Screw_Terminal_01x02" V 7613 3730 50  0000 L CNN
+F 1 "power supply GND" V 7613 3730 50  0000 L CNN
 F 2 "escor:KF350x2" H 7650 3650 50  0001 C CNN
 F 3 "~" H 7650 3650 50  0001 C CNN
 	1    7650 3650
@@ -847,7 +832,7 @@ Wire Wire Line
 	7650 3450 7550 3450
 Connection ~ 7550 3450
 $Comp
-L Device1:C C7
+L zorjadnik-rescue:C-Device1 C7
 U 1 1 5D4BA048
 P 5550 3200
 F 0 "C7" H 5665 3246 50  0000 L CNN
@@ -859,7 +844,7 @@ F 3 "~" H 5550 3200 50  0001 C CNN
 $EndComp
 Connection ~ 5550 3050
 $Comp
-L power1:GND #PWR0107
+L zorjadnik-rescue:GND-power1 #PWR0107
 U 1 1 5D4BC336
 P 5550 3350
 F 0 "#PWR0107" H 5550 3100 50  0001 C CNN
@@ -870,7 +855,7 @@ F 3 "" H 5550 3350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device1:C C8
+L zorjadnik-rescue:C-Device1 C8
 U 1 1 5D4CA840
 P 5600 4700
 F 0 "C8" H 5715 4746 50  0000 L CNN
@@ -881,7 +866,7 @@ F 3 "~" H 5600 4700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR0108
+L zorjadnik-rescue:GND-power1 #PWR0108
 U 1 1 5D4D1725
 P 5600 4850
 F 0 "#PWR0108" H 5600 4600 50  0001 C CNN
@@ -892,11 +877,11 @@ F 3 "" H 5600 4850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic1:Conn_01x08 J5
+L zorjadnik-rescue:Conn_01x08-Connector_Generic1 J5
 U 1 1 5D5D862D
 P 5350 1450
 F 0 "J5" H 5430 1442 50  0000 L CNN
-F 1 "Conn_01x08" H 5430 1351 50  0000 L CNN
+F 1 "display module" H 5430 1351 50  0000 L CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical" H 5350 1450 50  0001 C CNN
 F 3 "~" H 5350 1450 50  0001 C CNN
 	1    5350 1450
@@ -911,15 +896,15 @@ con1
 Text Label 4850 1250 0    60   ~ 0
 con2
 Text Label 4850 1350 0    60   ~ 0
-con3
+pot
 Text Label 4850 1550 0    60   ~ 0
-con5
+SCK
 Text Label 4850 1650 0    60   ~ 0
-con6
+ST_CP
 Text Label 4850 1750 0    60   ~ 0
-con7
+MOSI
 $Comp
-L power1:GND #PWR020
+L zorjadnik-rescue:GND-power1 #PWR020
 U 1 1 5D44C348
 P 5050 1900
 F 0 "#PWR020" H 5050 1650 50  0001 C CNN
@@ -930,7 +915,7 @@ F 3 "" H 5050 1900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:+3.3V #PWR019
+L zorjadnik-rescue:+3.3V-power1 #PWR019
 U 1 1 5D44BC18
 P 5100 1100
 F 0 "#PWR019" H 5100 950 50  0001 C CNN
@@ -969,7 +954,7 @@ Wire Wire Line
 Wire Wire Line
 	5050 1450 5150 1450
 $Comp
-L MCU_ST_STM32F01:STM32F030F4Px U2
+L zorjadnik-rescue:STM32F030F4Px-MCU_ST_STM32F01 U2
 U 1 1 5D2F14CC
 P 3800 3450
 F 0 "U2" H 3400 4100 50  0000 L CNN
@@ -994,7 +979,7 @@ Wire Wire Line
 Text Label 4400 3850 0    60   ~ 0
 con1
 $Comp
-L power1:GND #PWR0105
+L zorjadnik-rescue:GND-power1 #PWR0105
 U 1 1 5D77DB82
 P 5050 2400
 F 0 "#PWR0105" H 5050 2150 50  0001 C CNN
@@ -1007,7 +992,7 @@ $EndComp
 Entry Wire Line
 	4850 2350 4750 2450
 $Comp
-L Device1:C C10
+L zorjadnik-rescue:C-Device1 C10
 U 1 1 5D601FED
 P 5650 6100
 F 0 "C10" H 5765 6146 50  0000 L CNN
@@ -1018,7 +1003,7 @@ F 3 "~" H 5650 6100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GNDA #PWR0106
+L zorjadnik-rescue:GNDA-power1 #PWR0106
 U 1 1 5D602460
 P 5650 6250
 F 0 "#PWR0106" H 5650 6000 50  0001 C CNN
@@ -1051,11 +1036,11 @@ Wire Wire Line
 Wire Wire Line
 	4850 2150 5150 2150
 $Comp
-L Connector_Generic1:Conn_01x03 J6
+L zorjadnik-rescue:Conn_01x03-Connector_Generic1 J6
 U 1 1 5D75E3AE
 P 5350 2250
 F 0 "J6" H 5430 2292 50  0000 L CNN
-F 1 "Conn_01x03" H 5430 2201 50  0000 L CNN
+F 1 "firmware" H 5430 2201 50  0000 L CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 5350 2250 50  0001 C CNN
 F 3 "~" H 5350 2250 50  0001 C CNN
 	1    5350 2250
@@ -1068,22 +1053,22 @@ Wire Wire Line
 Wire Wire Line
 	5600 4500 5600 4550
 $Comp
-L Device1:R R16
+L zorjadnik-rescue:R-Device1 R16
 U 1 1 5D94383F
 P 5600 2600
-F 0 "R16" H 5670 2646 50  0000 L CNN
-F 1 "1.5k" H 5670 2555 50  0000 L CNN
+F 0 "R16" V 5700 2500 50  0000 L CNN
+F 1 "1.5k" V 5600 2500 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 5530 2600 50  0001 C CNN
 F 3 "~" H 5600 2600 50  0001 C CNN
 	1    5600 2600
 	0    1    1    0   
 $EndComp
 $Comp
-L Connector_Generic1:Conn_01x02 J12
+L zorjadnik-rescue:Conn_01x02-Connector_Generic1 J12
 U 1 1 5D94A77F
 P 6000 2600
 F 0 "J12" H 6000 2700 50  0000 C CNN
-F 1 "Conn_01x02" H 6000 2400 50  0000 C CNN
+F 1 "spare port" H 6000 2400 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 6000 2600 50  0001 C CNN
 F 3 "" H 6000 2600 50  0001 C CNN
 	1    6000 2600
@@ -1092,7 +1077,7 @@ $EndComp
 Wire Wire Line
 	5750 2600 5800 2600
 $Comp
-L power1:GNDA #PWR0113
+L zorjadnik-rescue:GNDA-power1 #PWR0113
 U 1 1 5D951CEC
 P 5800 2750
 F 0 "#PWR0113" H 5800 2500 50  0001 C CNN
@@ -1128,42 +1113,34 @@ Wire Wire Line
 Wire Wire Line
 	5650 5900 5650 5700
 $Comp
-L Device1:R R23
+L zorjadnik-rescue:R-Device1 R23
 U 1 1 5D4C7FD8
 P 5650 5550
-F 0 "R23" H 5720 5596 50  0000 L CNN
-F 1 "100" H 5720 5505 50  0000 L CNN
+F 0 "R23" V 5750 5500 50  0000 L CNN
+F 1 "100" V 5650 5500 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 5580 5550 50  0001 C CNN
 F 3 "~" H 5650 5550 50  0001 C CNN
 	1    5650 5550
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2650 3700 2900 3700
 $Comp
-L Device1:R R24
+L zorjadnik-rescue:R-Device1 R24
 U 1 1 5DC2B8F0
-P 6100 5550
-F 0 "R24" H 6170 5596 50  0000 L CNN
-F 1 "63" H 6170 5505 50  0000 L CNN
-F 2 "Resistor_SMD:R_1206_3216Metric" V 6030 5550 50  0001 C CNN
-F 3 "~" H 6100 5550 50  0001 C CNN
-	1    6100 5550
+P 6000 5300
+F 0 "R24" V 6100 5250 50  0000 L CNN
+F 1 "63" V 6000 5250 50  0000 L CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 5930 5300 50  0001 C CNN
+F 3 "~" H 6000 5300 50  0001 C CNN
+	1    6000 5300
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	6300 5550 6250 5550
-Wire Wire Line
-	5950 5550 5900 5550
-Wire Wire Line
-	5900 5550 5900 5450
 Wire Wire Line
 	8200 1100 8200 1300
 Wire Wire Line
 	8200 1100 8200 1000
 Connection ~ 8200 1100
 $Comp
-L Device1:D_Zener D6
+L zorjadnik-rescue:D_Zener-Device1 D6
 U 1 1 5DC8CF03
 P 7050 1500
 F 0 "D6" V 7004 1579 50  0000 L CNN
@@ -1174,12 +1151,12 @@ F 3 "~" H 7050 1500 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device1:L_Small L1
+L zorjadnik-rescue:L_Small-Device1 L1
 U 1 1 5DC9E5F5
 P 6600 1100
 F 0 "L1" V 6785 1100 50  0000 C CNN
-F 1 "L_Small" V 6694 1100 50  0000 C CNN
-F 2 "Inductor_SMD:L_1206_3216Metric" H 6600 1100 50  0001 C CNN
+F 1 "47µH" V 6694 1100 50  0000 C CNN
+F 2 "Inductor_SMD:L_1210_3225Metric" H 6600 1100 50  0001 C CNN
 F 3 "~" H 6600 1100 50  0001 C CNN
 	1    6600 1100
 	0    -1   -1   0   
@@ -1199,11 +1176,11 @@ Wire Wire Line
 	7050 1700 7300 1700
 Connection ~ 7300 1700
 $Comp
-L Device1:CP C11
+L zorjadnik-rescue:CP-Device1 C11
 U 1 1 5DCD7FFC
 P 8450 1500
 F 0 "C11" H 8568 1546 50  0000 L CNN
-F 1 "CP" H 8568 1455 50  0000 L CNN
+F 1 "10µF" H 8568 1455 50  0000 L CNN
 F 2 "Capacitor_SMD:C_1206_3216Metric" H 8488 1350 50  0001 C CNN
 F 3 "~" H 8450 1500 50  0001 C CNN
 	1    8450 1500
@@ -1240,15 +1217,11 @@ F 3 "" H 2400 4050 50  0001 L CNN
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	2650 3700 2650 3550
-Wire Wire Line
 	2900 3900 2750 3900
 Wire Wire Line
 	2750 3900 2750 4050
 Wire Wire Line
 	2750 4050 2650 4050
-Wire Wire Line
-	2500 3550 2650 3550
 Wire Wire Line
 	2300 3850 2300 3800
 Wire Wire Line
@@ -1261,7 +1234,7 @@ Connection ~ 2150 4300
 Wire Wire Line
 	2150 4300 2300 4300
 $Comp
-L power1:GND #PWR02
+L zorjadnik-rescue:GND-power1 #PWR02
 U 1 1 5DDBDAE8
 P 2150 4350
 F 0 "#PWR02" H 2150 4100 50  0001 C CNN
@@ -1280,7 +1253,7 @@ Wire Wire Line
 Wire Wire Line
 	1900 3500 1900 4300
 $Comp
-L Device1:D_x2_ACom_KKA D2
+L zorjadnik-rescue:D_x2_ACom_KKA-Device1 D2
 U 1 1 5DE9FF13
 P 1650 3500
 F 0 "D2" V 1696 3579 50  0000 L CNN
@@ -1301,12 +1274,12 @@ Connection ~ 1650 3200
 Wire Wire Line
 	1650 3200 2150 3200
 $Comp
-L Device1:D_x2_KCom_AAK D?
+L zorjadnik-rescue:D_x2_KCom_AAK-Device1 D3
 U 1 1 5DEBBBCE
 P 7050 1100
-F 0 "D?" H 7050 1316 50  0000 C CNN
+F 0 "D3" H 7050 1316 50  0000 C CNN
 F 1 "D_x2_KCom_AAK" H 7050 1225 50  0000 C CNN
-F 2 "" H 7050 1100 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 7050 1100 50  0001 C CNN
 F 3 "~" H 7050 1100 50  0001 C CNN
 	1    7050 1100
 	1    0    0    -1  
@@ -1315,6 +1288,58 @@ Wire Wire Line
 	7050 1300 7300 1300
 Wire Wire Line
 	7350 1100 8200 1100
+$Comp
+L zorjadnik-rescue:Conn_01x02-Connector_Generic1 J7
+U 1 1 5D4406AD
+P 6700 5450
+F 0 "J7" H 6700 5550 50  0000 C CNN
+F 1 "cooling fan" H 6700 5250 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 6700 5450 50  0001 C CNN
+F 3 "" H 6700 5450 50  0001 C CNN
+	1    6700 5450
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:CP-Device1 C12
+U 1 1 5DF08F00
+P 6200 5500
+F 0 "C12" H 6318 5546 50  0000 L CNN
+F 1 "10µF" H 6318 5455 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric" H 6238 5350 50  0001 C CNN
+F 3 "~" H 6200 5500 50  0001 C CNN
+	1    6200 5500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6200 5700 6200 5650
+Wire Wire Line
+	6500 5550 6450 5550
+Wire Wire Line
+	6450 5550 6450 5650
+Wire Wire Line
+	6450 5650 6200 5650
+Connection ~ 6200 5650
+Wire Wire Line
+	6500 5450 6450 5450
+Wire Wire Line
+	6450 5450 6450 5300
+Wire Wire Line
+	6450 5300 6200 5300
+Wire Wire Line
+	6200 5350 6200 5300
+Connection ~ 6200 5300
+Wire Wire Line
+	6200 5300 6150 5300
+Wire Wire Line
+	5850 5300 5800 5300
+Wire Wire Line
+	5800 5300 5800 5250
+Wire Wire Line
+	2750 3550 2750 3700
+Wire Wire Line
+	2750 3700 2900 3700
+Wire Wire Line
+	2500 3550 2750 3550
 Wire Wire Line
 	4300 3550 4850 3550
 Wire Wire Line
