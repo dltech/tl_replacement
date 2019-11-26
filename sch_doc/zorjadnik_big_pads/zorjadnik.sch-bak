@@ -599,7 +599,7 @@ SCK
 Text Label 4400 2950 0    60   ~ 0
 pot
 Text Label 4400 3750 0    60   ~ 0
-con2
+sel_but
 Wire Wire Line
 	4050 2250 4050 2300
 Wire Wire Line
@@ -892,9 +892,9 @@ Wire Wire Line
 Wire Wire Line
 	5100 1850 5150 1850
 Text Label 4850 1150 0    60   ~ 0
-con1
+mode_but
 Text Label 4850 1250 0    60   ~ 0
-con2
+sel_but
 Text Label 4850 1350 0    60   ~ 0
 pot
 Text Label 4850 1550 0    60   ~ 0
@@ -977,7 +977,7 @@ Wire Wire Line
 Wire Wire Line
 	4300 3950 4650 3950
 Text Label 4400 3850 0    60   ~ 0
-con1
+mode_but
 $Comp
 L zorjadnik-rescue:GND-power1 #PWR0105
 U 1 1 5D77DB82

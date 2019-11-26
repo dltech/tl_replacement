@@ -5,11 +5,10 @@
 #include "display.h"
 
 
-const uint8_t segments[11] = {3, 15, 9, 6, 4, 12, 11, 10, 2, 13, 14};
 volatile uint32_t dispBuffer[DIGITS] = {0, 0, 0};
 
 uint32_t alphabet(char s);
-uint32_t nextSymbol(uint32_t *buffer, uint32_t n);
+void nextSymbol(uint32_t *buffer, uint32_t *n);
 
 // свой спринтф, символы по 32 разряда для совместимости с интерфейсом
 void dsprintf(uint32_t *output, char *format, ... )
@@ -30,35 +29,33 @@ void dsprintf(uint32_t *output, char *format, ... )
     {
         if(   (buffer[i] != '.')   && (buffer[i] != ',') && \
             ( (buffer[i+1] == '.') || (buffer[i+1] == ',') ) ) {
-            output[outCnt++] = MASK & (~(alphabet(buffer[i]) | SEGDP));
-            ++i;
-
+            output[outCnt] = MASK & (~(alphabet(buffer[i++]) | SEGDP));
+            nextSymbol(output, &outCnt);
         } else {
             output[outCnt++] = MASK & (~(alphabet(buffer[i])));
+            nextSymbol(output, &outCnt);
         }
-    }
-
-    for( uint8_t i = 0 ; i < DIGITS ; ++i ) {
-        nextSymbol(output, i);
     }
 }
 
 
-uint32_t nextSymbol(uint32_t *buffer, uint32_t n)
+void nextSymbol(uint32_t *buffer, uint32_t *n)
 {
-    switch (n)
+    switch (*n)
     {
         case 0:
             buffer[0] |= (uint32_t) BYTE0;
+            (*n)++;
             break;
         case 1:
             buffer[1] |= (uint32_t) BYTE1;
+            (*n)++;
             break;
         case 2:
             buffer[2] |= (uint32_t) BYTE2;
+            (*n)++;
             break;
     }
-    return 0;
 }
 
 // латинский алфавит и цифры
@@ -69,6 +66,9 @@ uint32_t alphabet(char s)
         case '.':
         case ',':
             return SEGDP;
+            break;
+        case '-':
+            return SEGG;
             break;
         case '2':
             return SEGA + SEGB + SEGD + SEGE + SEGG;

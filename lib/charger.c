@@ -41,7 +41,6 @@ volatile struct chargeSettings {
     const uint32_t equalizationTime;
 } chSet = {CHECK, 0, 0, 0, 0, 0, 200, 48*60, 8*60, 30};
 
-
 void charge(chargeTable *table);
 
 uint32_t catchTime()

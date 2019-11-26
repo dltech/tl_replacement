@@ -16,12 +16,10 @@
 #include "../libopencm3/include/libopencm3/cm3/nvic.h"
 
 extern volatile tlParams tlPar;
-extern volatile uint32_t dispBuffer[DIGITS];
 volatile uint32_t buttons = 0xffffffff;
 volatile uint8_t checkCnt = 0;
 
 void rtcInit(void);
-void buttonDelay(void);
 
 void clkInit()
 {

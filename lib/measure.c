@@ -10,7 +10,7 @@
 
 /* Измерятор, измерения работают автоматом по DMA, по окончанию врубается
    прерывание. Прочитать результат можно из функций геттеров, все (ток, напряжение)
-   умножены на 1000. Температура строго в градусах, переменник в процентах (0-100)
+   умножены на 100. Температура строго в градусах, переменник в процентах (0-100)
 */
 
 volatile adcDma measures = {0, 0, 0, 0, 0};
@@ -44,6 +44,7 @@ uint32_t measureVref()
     uint32_t vRef = 0;
     uint32_t cnt = 0;
     timeout = INT_MAX;
+    // измеряю пока хотя бы оин вльт не покажет
     while( (vRef < 1000) && (cnt++ < 1e5) ) {
         ADC1_CR |= ADC_CR_ADSTART;
         timeout = INT_MAX;
@@ -66,7 +67,7 @@ void measureInit()
     adcCal();
     measures.vrefMeasured = measureVref();
 
-    // прописать каналы, включть сенсор температуры
+    // прописать каналы, включить сенсор температуры
     ADC1_CR = ADC_CR_ADEN;
     uint32_t timeout = INT_MAX;
     while ( ((ADC1_ISR & ADC_ISR_ADRDY) == 0) && (--timeout > 1) ) ;
@@ -102,6 +103,7 @@ void measureInit()
     DMA1_CCR1 |= DMA_CCR_EN;
     ADC1_CR |= ADC_CR_ADSTART;
     nvic_enable_irq(NVIC_ADC_COMP_IRQ);
+    // приоритет измерений выше всех
     nvic_set_priority(NVIC_ADC_COMP_IRQ, 0xc0);
     nvic_enable_irq(NVIC_DMA1_CHANNEL1_IRQ);
 }

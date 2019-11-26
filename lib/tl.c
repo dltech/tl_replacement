@@ -17,7 +17,7 @@ extern volatile uint32_t dispBuffer[3];
 
 // TODO: сохранение настроек в flash
 // 512 = 100 кГц на выходе
-volatile tlParams tlPar = {1, 768, 1700, 0, 700, 100, (80*768)/100, (1*768)/100, 0, 0, 1, 500, 100, 100, (1*768)/100};
+volatile tlParams tlPar = {768, 1700, 0, 700, 100, (80*768)/100, (1*768)/100, 0, 0, 1, 500, 100, 100, (1*768)/100};
 volatile struct pidrr {
     const int32_t k;
     const int32_t i;
@@ -35,9 +35,7 @@ const uint32_t clockOffSeq[2] = {0xfffe0000, 0xfffd0000};
 
 void clockInit(void);
 void clockDeInit(void);
-void chkAlert(void);
 void feedBack(void);
-uint32_t dutyToPercent(void);
 int32_t regulFormula(int32_t e);
 
 
@@ -131,11 +129,11 @@ void fault()
 void feedBack()
 {
     // лучше пропустить первых несколько измерений, показывает фигню
-    static uint8_t isFirst = 0;
-    if( isFirst < 5 ) {
-        ++isFirst;
-        return;
-    }
+    // static uint8_t isFirst = 0;
+    // if( isFirst < 5 ) {
+    //     ++isFirst;
+    //     return;
+    // }
     tlPar.current = getAmps();
     tlPar.voltage = getVoltage();
     if( ( tlPar.current > CURRENT_LIMIT ) || \
@@ -149,7 +147,6 @@ void feedBack()
 
     int32_t voltErr = tlPar.setVoltage - tlPar.voltage;
     int32_t currErr = tlPar.setCurrent - tlPar.current;
-    int32_t minErr = currErr;
     if( voltErr < currErr ) {
         minErr = voltErr;
     } else {

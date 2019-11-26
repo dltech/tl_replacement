@@ -9,7 +9,6 @@
 #define TL2OUT_PIN    GPIO1
 
 typedef struct {
-    const uint32_t upToDown;
     const uint32_t divider;
     const uint32_t maxVoltage;
     const uint32_t minVoltage;
