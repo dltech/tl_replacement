@@ -17,7 +17,26 @@ extern volatile uint32_t dispBuffer[3];
 
 // TODO: сохранение настроек в flash
 // 512 = 100 кГц на выходе
-volatile tlParams tlPar = {768, 1700, 0, 700, 100, (80*768)/100, (1*768)/100, 0, 0, 1, 500, 100, 100, (1*768)/100};
+volatile tlParams tlPar = {768,     // number of timer counts per one period
+                                    // (fTim = 48mHz)
+                           1700,    // maximum voltage (volts*100)
+                           0,       // minimum voltage
+                           700,     // maximum curent (amperes*100)
+                           100,     // minimum current
+                           (80*tlPar.divider)/100, // max duty cycle (if too big
+                                                   // rail breakdown is possible)
+                           (1*tlPar.divider)/100,  // min dut cycle (if 0 indeterminate
+                                                   // behavior)
+                           0,       // mean voltage (userful for the display)
+                           0,       // mean current
+                           1,       // voltage which the regulator is trying to set
+                           500,     // curent which the regulator is trying to set
+                           100,     // voltage which measured instantly
+                           100,     // current which measured instantly
+                           (1*tlPar.divider)/100 // current duty cycle
+                        };
+
+// userful only for regulFormula function
 volatile struct pidrr {
     const int32_t k;
     const int32_t i;
@@ -27,7 +46,10 @@ volatile struct pidrr {
     int32_t u1;
     int32_t e;
     int32_t e1;
-} pidr = {10, 8, 30, 1, 0, 0, 0, 0};
+} pidr = {10,
+           8,
+          30,
+          1, 0, 0, 0, 0};
 extern volatile adcDma measures;
 
 const uint32_t clockOnSeq     = 0x00000003;
@@ -86,7 +108,6 @@ void clockInit()
     DMA1_CPAR4  = (uint32_t) &GPIOF_BSRR;
     DMA1_CMAR4  = (uint32_t) &clockOnSeq;
     DMA1_CNDTR4 = (uint32_t) 1;
-
     // DMA по compare event
     DMA1_CPAR3  = (uint32_t) &GPIOF_BSRR;
     DMA1_CMAR3  = (uint32_t) clockOffSeq;
@@ -128,12 +149,6 @@ void fault()
 
 void feedBack()
 {
-    // лучше пропустить первых несколько измерений, показывает фигню
-    // static uint8_t isFirst = 0;
-    // if( isFirst < 5 ) {
-    //     ++isFirst;
-    //     return;
-    // }
     tlPar.current = getAmps();
     tlPar.voltage = getVoltage();
     if( ( tlPar.current > CURRENT_LIMIT ) || \

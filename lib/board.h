@@ -3,12 +3,14 @@
 
 #include "../libopencm3/include/libopencm3/stm32/gpio.h"
 
-/*  хоть не объявлено макросами, но напишу что куда
-    TIM1  - на этом таймере работает дисплей
-    TIM3  - по нему работают выходы ШИМ
-    TIM14 - по этому таймеру отрабатывает обратная связь ШИМ
-    TIM15 - отрисовка меню
-    TIM16 - на этом таймере работает ШИМ вентилятора
+/*  This firmware works without any OS throw the timers interrupts. There are
+    timer funcions:
+    TIM1  - shift registers of the display
+    TIM3  - PWM outputs of the driver
+    TIM14 - driver feedback interrupt
+    TIM15 - menu update interrupt
+    TIM16 - cooling fan PWM
+    TIM17 - buttons checks
 */
 
 #define FAN_PORT      GPIOA
@@ -25,6 +27,8 @@
 #define NSS_NC             GPIO4
 #define CLOCK_PIN          GPIO5
 #define DATA_PIN           GPIO7
+
+#define TIMEOUT_CLKS       9e6
 
 void clkInit(void);
 void fanInit(void);

@@ -1,6 +1,7 @@
 #include "charger.h"
 #include "display.h"
 #include "tl.h"
+#include "time.h"
 #include "../libopencm3/include/libopencm3/stm32/rtc.h"
 
 
@@ -31,75 +32,15 @@ typedef struct {
 volatile struct chargeSettings {
     uint32_t state;
     uint32_t stabCnt;
-    uint32_t rtcTr;
-    uint32_t rtcDr;
     uint32_t nCycles;
     uint16_t totalTime;
     const uint32_t stabAmount;
     const uint32_t bulkTime;
     const uint32_t absorptionTime;
     const uint32_t equalizationTime;
-} chSet = {CHECK, 0, 0, 0, 0, 0, 200, 48*60, 8*60, 30};
+} chSet = {CHECK, 0, 0, 0, 200, 48*60, 8*60, 30};
 
 void charge(chargeTable *table);
-
-uint32_t catchTime()
-{
-    uint32_t elapsed = elapsedTime();
-    chSet.rtcDr = RTC_DR;
-    chSet.rtcTr = RTC_TR;
-    return elapsed;
-}
-
-uint32_t minutesFromMe(uint32_t rtcDrr, uint32_t rtcTrr)
-{
-    const uint32_t hour = 60;
-    const uint32_t day  = hour*24;
-    const uint32_t year = day*365;
-    uint32_t minutes = ((rtcDrr >> RTC_DR_YT_SHIFT) & RTC_DR_YT_MASK) * year*10;
-    minutes += ((rtcDrr >> RTC_DR_YU_SHIFT) & RTC_DR_YU_MASK) * year;
-    // учитываем дни за все високосные года
-    minutes += (minutes/year/4)*day;
-    uint32_t mounth = ((rtcDrr >> RTC_DR_MT_SHIFT) & RTC_DR_MT_MASK)*10 + \
-                      ((rtcDrr >> RTC_DR_MU_SHIFT) & RTC_DR_MU_MASK) - 1;
-    switch (mounth) {
-        case 11:
-            minutes += 31*day;
-        case 10:
-            minutes += 30*day;
-        case 9:
-            minutes += 31*day;
-        case 8:
-            minutes += 30*day;
-        case 7:
-            minutes += 31*day;
-        case 6:
-            minutes += 30*day;
-        case 5:
-            minutes += 31*day;
-        case 4:
-            minutes += 30*day;
-        case 3:
-            minutes += 31*day;
-        case 2:
-            minutes += 28*day;
-        case 1:
-            minutes += 31*day;
-            break;
-    }
-    minutes +=  ((rtcDrr >> RTC_DR_DT_SHIFT) & RTC_DR_DT_MASK)      * day*10;
-    minutes += (((rtcDrr >> RTC_DR_DU_SHIFT) & RTC_DR_DU_MASK) - 1) * day;
-    minutes += ((rtcTrr >> RTC_TR_HT_SHIFT) & RTC_TR_HT_MASK) * hour*10;
-    minutes += ((rtcTrr >> RTC_TR_HU_SHIFT) & RTC_TR_HU_MASK) * hour;
-    minutes += ((rtcTrr >> RTC_TR_MNT_SHIFT) & RTC_TR_MNT_MASK) * 10;
-    minutes += ((rtcTrr >> RTC_TR_MNU_SHIFT) & RTC_TR_MNU_MASK);
-    return minutes;
-}
-
-uint32_t elapsedTime()
-{
-    return minutesFromMe(RTC_DR, RTC_TR) - minutesFromMe(chSet.rtcDr, chSet.rtcTr);
-}
 
 void chargeLable(uint32_t mode)
 {
