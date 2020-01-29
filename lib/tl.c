@@ -17,15 +17,16 @@ extern volatile uint32_t dispBuffer[3];
 
 // TODO: сохранение настроек в flash
 // 512 = 100 кГц на выходе
-volatile tlParams tlPar = {768,     // number of timer counts per one period
+#define DIVIDER 768
+volatile tlParams tlPar = {DIVIDER, // number of timer counts per one period
                                     // (fTim = 48mHz)
                            1700,    // maximum voltage (volts*100)
                            0,       // minimum voltage
                            700,     // maximum curent (amperes*100)
                            100,     // minimum current
-                           (80*tlPar.divider)/100, // max duty cycle (if too big
+                           (80*DIVIDER)/100, // max duty cycle (if too big
                                                    // rail breakdown is possible)
-                           (1*tlPar.divider)/100,  // min dut cycle (if 0 indeterminate
+                           (1*DIVIDER)/100,  // min dut cycle (if 0 indeterminate
                                                    // behavior)
                            0,       // mean voltage (userful for the display)
                            0,       // mean current
@@ -33,7 +34,7 @@ volatile tlParams tlPar = {768,     // number of timer counts per one period
                            500,     // curent which the regulator is trying to set
                            100,     // voltage which measured instantly
                            100,     // current which measured instantly
-                           (1*tlPar.divider)/100 // current duty cycle
+                           (1*DIVIDER)/100 // current duty cycle
                         };
 
 // userful only for regulFormula function
@@ -162,10 +163,9 @@ void feedBack()
 
     int32_t voltErr = tlPar.setVoltage - tlPar.voltage;
     int32_t currErr = tlPar.setCurrent - tlPar.current;
+    int32_t minErr = currErr;
     if( voltErr < currErr ) {
         minErr = voltErr;
-    } else {
-        minErr = currErr;
     }
     tlPar.duty += regulFormula(minErr);
     if( tlPar.duty > tlPar.maxDuty ) {

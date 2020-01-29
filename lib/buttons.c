@@ -1,8 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
+#include "../libopencm3/include/libopencm3/stm32/rcc.h"
+#include "../libopencm3/include/libopencm3/stm32/exti.h"
 #include "../libopencm3/include/libopencm3/stm32/gpio.h"
 #include "../libopencm3/include/libopencm3/stm32/timer.h"
+#include "../libopencm3/include/libopencm3/cm3/nvic.h"
+#include "buttons.h"
+#include "menu.h"
 
 
 volatile uint32_t buttons = 0xffffffff;

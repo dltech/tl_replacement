@@ -1,0 +1,1267 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 2
+Title "Драйвер блока питания"
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L zorjadnik-rescue:R-zorjadnik-rescue R4
+U 1 1 5D3D182F
+P 5900 2650
+F 0 "R4" V 5980 2650 50  0000 C CNN
+F 1 "0.1R" V 5900 2650 50  0000 C CNN
+F 2 "Resistor_SMD:R_2010_5025Metric" V 5830 2650 50  0001 C CNN
+F 3 "" H 5900 2650 50  0001 C CNN
+	1    5900 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:R-zorjadnik-rescue R5
+U 1 1 5D3D18BE
+P 6050 2650
+F 0 "R5" V 6130 2650 50  0000 C CNN
+F 1 "0.1R" V 6050 2650 50  0000 C CNN
+F 2 "Resistor_SMD:R_2010_5025Metric" V 5980 2650 50  0001 C CNN
+F 3 "" H 6050 2650 50  0001 C CNN
+	1    6050 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:R-zorjadnik-rescue R6
+U 1 1 5D3D18F9
+P 6200 2650
+F 0 "R6" V 6280 2650 50  0000 C CNN
+F 1 "0.1R" V 6200 2650 50  0000 C CNN
+F 2 "Resistor_SMD:R_2010_5025Metric" V 6130 2650 50  0001 C CNN
+F 3 "" H 6200 2650 50  0001 C CNN
+	1    6200 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:R-zorjadnik-rescue R7
+U 1 1 5D3D1942
+P 6350 2650
+F 0 "R7" V 6430 2650 50  0000 C CNN
+F 1 "0.1R" V 6350 2650 50  0000 C CNN
+F 2 "Resistor_SMD:R_2010_5025Metric" V 6280 2650 50  0001 C CNN
+F 3 "" H 6350 2650 50  0001 C CNN
+	1    6350 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:R-zorjadnik-rescue R8
+U 1 1 5D3D197A
+P 6500 2650
+F 0 "R8" V 6580 2650 50  0000 C CNN
+F 1 "0.1R" V 6500 2650 50  0000 C CNN
+F 2 "Resistor_SMD:R_2010_5025Metric" V 6430 2650 50  0001 C CNN
+F 3 "" H 6500 2650 50  0001 C CNN
+	1    6500 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:R-zorjadnik-rescue R9
+U 1 1 5D3D19C7
+P 6650 2650
+F 0 "R9" V 6730 2650 50  0000 C CNN
+F 1 "0.1R" V 6650 2650 50  0000 C CNN
+F 2 "Resistor_SMD:R_2010_5025Metric" V 6580 2650 50  0001 C CNN
+F 3 "" H 6650 2650 50  0001 C CNN
+	1    6650 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:R-zorjadnik-rescue R10
+U 1 1 5D3D1B31
+P 6800 2650
+F 0 "R10" V 6880 2650 50  0000 C CNN
+F 1 "0.1R" V 6800 2650 50  0000 C CNN
+F 2 "Resistor_SMD:R_2010_5025Metric" V 6730 2650 50  0001 C CNN
+F 3 "" H 6800 2650 50  0001 C CNN
+	1    6800 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:R-zorjadnik-rescue R11
+U 1 1 5D3D1BA4
+P 6950 2650
+F 0 "R11" V 7030 2650 50  0000 C CNN
+F 1 "0.1R" V 6950 2650 50  0000 C CNN
+F 2 "Resistor_SMD:R_2010_5025Metric" V 6880 2650 50  0001 C CNN
+F 3 "" H 6950 2650 50  0001 C CNN
+	1    6950 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:R-zorjadnik-rescue R12
+U 1 1 5D3D1BE6
+P 7100 2650
+F 0 "R12" V 7180 2650 50  0000 C CNN
+F 1 "0.1R" V 7100 2650 50  0000 C CNN
+F 2 "Resistor_SMD:R_2010_5025Metric" V 7030 2650 50  0001 C CNN
+F 3 "" H 7100 2650 50  0001 C CNN
+	1    7100 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:R-zorjadnik-rescue R13
+U 1 1 5D3D1C37
+P 7250 2650
+F 0 "R13" V 7330 2650 50  0000 C CNN
+F 1 "0.1R" V 7250 2650 50  0000 C CNN
+F 2 "Resistor_SMD:R_2010_5025Metric" V 7180 2650 50  0001 C CNN
+F 3 "" H 7250 2650 50  0001 C CNN
+	1    7250 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:GNDA-power1 #PWR01
+U 1 1 5D3D1FDE
+P 5900 2900
+F 0 "#PWR01" H 5900 2650 50  0001 C CNN
+F 1 "GNDA" H 5900 2750 50  0000 C CNN
+F 2 "" H 5900 2900 50  0001 C CNN
+F 3 "" H 5900 2900 50  0001 C CNN
+	1    5900 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:R-zorjadnik-rescue R18
+U 1 1 5D3D2E43
+P 5950 3700
+F 0 "R18" V 6030 3700 50  0000 C CNN
+F 1 "4.7k" V 5950 3700 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 5880 3700 50  0001 C CNN
+F 3 "" H 5950 3700 50  0001 C CNN
+	1    5950 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:R-zorjadnik-rescue R17
+U 1 1 5D3D30E3
+P 5750 3900
+F 0 "R17" V 5830 3900 50  0000 C CNN
+F 1 "1k" V 5750 3900 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 5680 3900 50  0001 C CNN
+F 3 "" H 5750 3900 50  0001 C CNN
+	1    5750 3900
+	0    1    1    0   
+$EndComp
+$Comp
+L zorjadnik-rescue:C-zorjadnik-rescue C2
+U 1 1 5D3DBEF0
+P 3250 5200
+F 0 "C2" H 3275 5300 50  0000 L CNN
+F 1 "0.1" H 3275 5100 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 3288 5050 50  0001 C CNN
+F 3 "" H 3250 5200 50  0001 C CNN
+	1    3250 5200
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:C-zorjadnik-rescue C1
+U 1 1 5D3DC0E9
+P 2350 5200
+F 0 "C1" H 2375 5300 50  0000 L CNN
+F 1 "0.1" H 2375 5100 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 2388 5050 50  0001 C CNN
+F 3 "" H 2350 5200 50  0001 C CNN
+	1    2350 5200
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:GND-power1 #PWR04
+U 1 1 5D3DC3B5
+P 3250 5450
+F 0 "#PWR04" H 3250 5200 50  0001 C CNN
+F 1 "GND" H 3250 5300 50  0000 C CNN
+F 2 "" H 3250 5450 50  0001 C CNN
+F 3 "" H 3250 5450 50  0001 C CNN
+	1    3250 5450
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:+28V-power1 #PWR05
+U 1 1 5D3DCF2B
+P 1450 4600
+F 0 "#PWR05" H 1450 4450 50  0001 C CNN
+F 1 "+28V" H 1450 4750 50  0000 C CNN
+F 2 "" H 1700 4650 50  0001 C CNN
+F 3 "" H 1700 4650 50  0001 C CNN
+	1    1450 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:+3.3V-power1 #PWR06
+U 1 1 5D3DD139
+P 3250 4700
+F 0 "#PWR06" H 3250 4550 50  0001 C CNN
+F 1 "+3.3V" H 3250 4840 50  0000 C CNN
+F 2 "" H 3250 4700 50  0001 C CNN
+F 3 "" H 3250 4700 50  0001 C CNN
+	1    3250 4700
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:GND-power1 #PWR07
+U 1 1 5D3E60BB
+P 3650 3700
+F 0 "#PWR07" H 3650 3450 50  0001 C CNN
+F 1 "GND" H 3650 3550 50  0000 C CNN
+F 2 "" H 3650 3700 50  0001 C CNN
+F 3 "" H 3650 3700 50  0001 C CNN
+	1    3650 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:R-zorjadnik-rescue R1
+U 1 1 5D3E75CF
+P 2900 3100
+F 0 "R1" V 2980 3100 50  0000 C CNN
+F 1 "100" V 2900 3100 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 2830 3100 50  0001 C CNN
+F 3 "" H 2900 3100 50  0001 C CNN
+	1    2900 3100
+	0    1    1    0   
+$EndComp
+$Comp
+L zorjadnik-rescue:R-zorjadnik-rescue R2
+U 1 1 5D3E76F1
+P 2900 3300
+F 0 "R2" V 2980 3300 50  0000 C CNN
+F 1 "100" V 2900 3300 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 2830 3300 50  0001 C CNN
+F 3 "" H 2900 3300 50  0001 C CNN
+	1    2900 3300
+	0    1    1    0   
+$EndComp
+$Comp
+L zorjadnik-rescue:+3.3V-power1 #PWR08
+U 1 1 5D3E8059
+P 3650 1600
+F 0 "#PWR08" H 3650 1450 50  0001 C CNN
+F 1 "+3.3V" H 3650 1740 50  0000 C CNN
+F 2 "" H 3650 1600 50  0001 C CNN
+F 3 "" H 3650 1600 50  0001 C CNN
+	1    3650 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:C-zorjadnik-rescue C4
+U 1 1 5D411F2E
+P 3900 1850
+F 0 "C4" H 3925 1950 50  0000 L CNN
+F 1 "100nF" H 3925 1750 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 3938 1700 50  0001 C CNN
+F 3 "" H 3900 1850 50  0001 C CNN
+	1    3900 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:C-zorjadnik-rescue C3
+U 1 1 5D412007
+P 3500 1850
+F 0 "C3" H 3525 1950 50  0000 L CNN
+F 1 "100nF" H 3525 1750 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 3538 1700 50  0001 C CNN
+F 3 "" H 3500 1850 50  0001 C CNN
+	1    3500 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:GND-power1 #PWR09
+U 1 1 5D4122C9
+P 3500 2000
+F 0 "#PWR09" H 3500 1750 50  0001 C CNN
+F 1 "GND" H 3500 1850 50  0000 C CNN
+F 2 "" H 3500 2000 50  0001 C CNN
+F 3 "" H 3500 2000 50  0001 C CNN
+	1    3500 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:GND-power1 #PWR010
+U 1 1 5D4125B3
+P 3900 2000
+F 0 "#PWR010" H 3900 1750 50  0001 C CNN
+F 1 "GND" H 3900 1850 50  0000 C CNN
+F 2 "" H 3900 2000 50  0001 C CNN
+F 3 "" H 3900 2000 50  0001 C CNN
+	1    3900 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:R-zorjadnik-rescue R3
+U 1 1 5D41661E
+P 5700 2450
+F 0 "R3" V 5780 2450 50  0000 C CNN
+F 1 "1k" V 5700 2450 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 5630 2450 50  0001 C CNN
+F 3 "" H 5700 2450 50  0001 C CNN
+	1    5700 2450
+	0    1    1    0   
+$EndComp
+$Comp
+L zorjadnik-rescue:GNDA-power1 #PWR011
+U 1 1 5D416623
+P 6200 4350
+F 0 "#PWR011" H 6200 4100 50  0001 C CNN
+F 1 "GNDA" H 6200 4200 50  0000 C CNN
+F 2 "" H 6200 4350 50  0001 C CNN
+F 3 "" H 6200 4350 50  0001 C CNN
+	1    6200 4350
+	1    0    0    -1  
+$EndComp
+$Sheet
+S 1950 1000 500  200 
+U 5D41F71E
+F0 "Sheet5D41F71D" 60
+F1 "file5D41F71D.sch" 60
+$EndSheet
+$Comp
+L zorjadnik-rescue:AP1117-33-zorjadnik-rescue U1
+U 1 1 5D3DBC9B
+P 2800 5000
+F 0 "U1" H 2650 5125 50  0000 C CNN
+F 1 "AP1117-33" H 2800 5125 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-223" H 2800 5200 50  0001 C CNN
+F 3 "" H 2900 4750 50  0001 C CNN
+	1    2800 5000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5900 2800 5900 2850
+Wire Wire Line
+	5900 2850 6050 2850
+Wire Wire Line
+	6050 2850 6050 2800
+Wire Wire Line
+	6200 2850 6200 2800
+Connection ~ 6050 2850
+Wire Wire Line
+	6350 2850 6350 2800
+Connection ~ 6200 2850
+Wire Wire Line
+	6500 2850 6500 2800
+Connection ~ 6350 2850
+Wire Wire Line
+	6650 2850 6650 2800
+Connection ~ 6500 2850
+Wire Wire Line
+	6800 2850 6800 2800
+Connection ~ 6650 2850
+Wire Wire Line
+	6950 2850 6950 2800
+Connection ~ 6800 2850
+Wire Wire Line
+	7100 2850 7100 2800
+Connection ~ 6950 2850
+Wire Wire Line
+	7250 2800 7250 2850
+Connection ~ 7100 2850
+Wire Wire Line
+	5900 2500 5900 2450
+Wire Wire Line
+	6050 2450 6050 2500
+Wire Wire Line
+	6200 2450 6200 2500
+Connection ~ 6050 2450
+Wire Wire Line
+	6350 2450 6350 2500
+Connection ~ 6200 2450
+Wire Wire Line
+	6500 2450 6500 2500
+Connection ~ 6350 2450
+Wire Wire Line
+	6650 2450 6650 2500
+Connection ~ 6500 2450
+Wire Wire Line
+	6800 2450 6800 2500
+Connection ~ 6650 2450
+Wire Wire Line
+	6950 2450 6950 2500
+Connection ~ 6800 2450
+Wire Wire Line
+	7100 2450 7100 2500
+Connection ~ 6950 2450
+Connection ~ 7100 2450
+Connection ~ 7250 2850
+Connection ~ 5900 2450
+Wire Wire Line
+	6200 3900 6200 3950
+Connection ~ 7250 2450
+Wire Wire Line
+	3100 5000 3250 5000
+Wire Wire Line
+	3250 5350 3250 5400
+Wire Wire Line
+	2800 5400 2800 5300
+Connection ~ 3250 5400
+Connection ~ 2800 5400
+Connection ~ 2350 5000
+Connection ~ 3250 5000
+Connection ~ 5900 2850
+Wire Wire Line
+	3650 3700 3650 3650
+Wire Wire Line
+	3050 3300 3100 3300
+Wire Wire Line
+	3100 3300 3100 3250
+Wire Wire Line
+	3100 3250 3150 3250
+Wire Wire Line
+	3050 3100 3100 3100
+Wire Wire Line
+	3100 3100 3100 3150
+Wire Wire Line
+	3100 3150 3150 3150
+Wire Wire Line
+	2350 5400 2800 5400
+Wire Wire Line
+	2350 5400 2350 5350
+Wire Wire Line
+	3500 1700 3500 1650
+Wire Wire Line
+	3500 1650 3650 1650
+Connection ~ 3650 1650
+Connection ~ 3750 1650
+Wire Wire Line
+	5850 2450 5900 2450
+$Comp
+L zorjadnik-rescue:C-zorjadnik-rescue C5
+U 1 1 5D437A56
+P 2850 2550
+F 0 "C5" H 2875 2650 50  0000 L CNN
+F 1 "0.1" H 2875 2450 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 2888 2400 50  0001 C CNN
+F 3 "" H 2850 2550 50  0001 C CNN
+	1    2850 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:GND-power1 #PWR014
+U 1 1 5D437FC3
+P 3050 2800
+F 0 "#PWR014" H 3050 2550 50  0001 C CNN
+F 1 "GND" H 3050 2650 50  0000 C CNN
+F 2 "" H 3050 2800 50  0001 C CNN
+F 3 "" H 3050 2800 50  0001 C CNN
+	1    3050 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2850 2350 2850 2400
+Wire Wire Line
+	2850 2700 2850 2750
+Wire Wire Line
+	2850 2750 3050 2750
+Wire Wire Line
+	3050 2550 3050 2750
+Wire Wire Line
+	3150 2550 3050 2550
+Connection ~ 3050 2750
+$Comp
+L zorjadnik-rescue:Conn_01x01-Connector_Generic1 J2
+U 1 1 5D439867
+P 1100 3200
+F 0 "J2" H 1100 3300 50  0000 C CNN
+F 1 "OUT2" H 1100 3100 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 1100 3200 50  0001 C CNN
+F 3 "" H 1100 3200 50  0001 C CNN
+	1    1100 3200
+	-1   0    0    1   
+$EndComp
+$Comp
+L zorjadnik-rescue:Conn_01x01-Connector_Generic1 J1
+U 1 1 5D4399DF
+P 1100 2600
+F 0 "J1" H 1100 2700 50  0000 C CNN
+F 1 "OUT1" H 1100 2500 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 1100 2600 50  0001 C CNN
+F 3 "" H 1100 2600 50  0001 C CNN
+	1    1100 2600
+	-1   0    0    1   
+$EndComp
+$Comp
+L zorjadnik-rescue:Conn_01x01-Connector_Generic1 J3
+U 1 1 5D43A392
+P 1100 1850
+F 0 "J3" H 1100 1950 50  0000 C CNN
+F 1 "Vsb" H 1100 1750 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 1100 1850 50  0001 C CNN
+F 3 "" H 1100 1850 50  0001 C CNN
+	1    1100 1850
+	-1   0    0    1   
+$EndComp
+$Comp
+L zorjadnik-rescue:+28V-power1 #PWR015
+U 1 1 5D43A67B
+P 1350 1800
+F 0 "#PWR015" H 1350 1650 50  0001 C CNN
+F 1 "+28V" H 1350 1950 50  0000 C CNN
+F 2 "" H 1600 1850 50  0001 C CNN
+F 3 "" H 1600 1850 50  0001 C CNN
+	1    1350 1800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1300 1850 1350 1850
+Wire Wire Line
+	1350 1850 1350 1800
+$Comp
+L zorjadnik-rescue:Conn_01x01-Connector_Generic1 J4
+U 1 1 5D43AA85
+P 1100 2150
+F 0 "J4" H 1100 2250 50  0000 C CNN
+F 1 "GND" H 1100 2050 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 1100 2150 50  0001 C CNN
+F 3 "" H 1100 2150 50  0001 C CNN
+	1    1100 2150
+	-1   0    0    1   
+$EndComp
+$Comp
+L zorjadnik-rescue:GND-power1 #PWR016
+U 1 1 5D43ACC4
+P 1350 2200
+F 0 "#PWR016" H 1350 1950 50  0001 C CNN
+F 1 "GND" H 1350 2050 50  0000 C CNN
+F 2 "" H 1350 2200 50  0001 C CNN
+F 3 "" H 1350 2200 50  0001 C CNN
+	1    1350 2200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1300 2150 1350 2150
+Wire Wire Line
+	1350 2150 1350 2200
+Wire Wire Line
+	5550 2450 5500 2450
+$Comp
+L led_digits:BCR512 Q1
+U 1 1 5D43E6DF
+P 6050 5550
+F 0 "Q1" H 6250 5625 50  0000 L CNN
+F 1 "BCR512" H 6250 5550 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 6050 5550 50  0001 L CNN
+F 3 "" H 6050 5550 50  0001 L CNN
+	1    6050 5550
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:+VDC-power1 #PWR017
+U 1 1 5D43F586
+P 5750 4900
+F 0 "#PWR017" H 5750 4800 50  0001 C CNN
+F 1 "+VDC" H 5750 5150 50  0000 C CNN
+F 2 "" H 5750 4900 50  0001 C CNN
+F 3 "" H 5750 4900 50  0001 C CNN
+	1    5750 4900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5600 5550 5800 5550
+Wire Wire Line
+	3900 1650 3900 1700
+Wire Wire Line
+	3650 1600 3650 1650
+Wire Wire Line
+	2350 5000 2500 5000
+Wire Wire Line
+	7400 2850 7400 2800
+Wire Wire Line
+	7400 2450 7400 2500
+$Comp
+L zorjadnik-rescue:R-zorjadnik-rescue R19
+U 1 1 5D3D2EAE
+P 5950 4100
+F 0 "R19" V 6030 4100 50  0000 C CNN
+F 1 "510" V 5950 4100 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 5880 4100 50  0001 C CNN
+F 3 "" H 5950 4100 50  0001 C CNN
+	1    5950 4100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5900 3900 5950 3900
+Wire Wire Line
+	5950 3850 5950 3900
+Connection ~ 5950 3900
+Wire Wire Line
+	5950 4250 5950 4300
+Wire Wire Line
+	5950 4300 6200 4300
+Wire Wire Line
+	6200 4250 6200 4300
+Connection ~ 6200 4300
+Wire Wire Line
+	3750 2150 3750 1650
+Wire Wire Line
+	6050 2850 6200 2850
+Wire Wire Line
+	6200 2850 6350 2850
+Wire Wire Line
+	6350 2850 6500 2850
+Wire Wire Line
+	6500 2850 6650 2850
+Wire Wire Line
+	6650 2850 6800 2850
+Wire Wire Line
+	6800 2850 6950 2850
+Wire Wire Line
+	6950 2850 7100 2850
+Wire Wire Line
+	7100 2850 7250 2850
+Wire Wire Line
+	6050 2450 6200 2450
+Wire Wire Line
+	6200 2450 6350 2450
+Wire Wire Line
+	6350 2450 6500 2450
+Wire Wire Line
+	6500 2450 6650 2450
+Wire Wire Line
+	6650 2450 6800 2450
+Wire Wire Line
+	6800 2450 6950 2450
+Wire Wire Line
+	6950 2450 7100 2450
+Wire Wire Line
+	7100 2450 7250 2450
+Wire Wire Line
+	7250 2850 7400 2850
+Wire Wire Line
+	5900 2450 6050 2450
+Wire Wire Line
+	7250 2450 7250 2500
+Wire Wire Line
+	3250 5400 3250 5450
+Wire Wire Line
+	2800 5400 3250 5400
+Wire Wire Line
+	2350 5000 2350 5050
+Wire Wire Line
+	3250 5000 3250 5050
+Wire Wire Line
+	5900 2850 5900 2900
+Wire Wire Line
+	3650 1650 3750 1650
+Wire Wire Line
+	3650 1650 3650 2150
+Wire Wire Line
+	3750 1650 3900 1650
+Wire Wire Line
+	3050 2750 3050 2800
+Wire Wire Line
+	5950 3900 6200 3900
+Wire Wire Line
+	5950 3900 5950 3950
+Wire Wire Line
+	6200 4300 6200 4350
+Wire Wire Line
+	7250 2450 7400 2450
+$Comp
+L zorjadnik-rescue:Conn_01x01-Connector_Generic1 J9
+U 1 1 5D54F988
+P 5950 3250
+F 0 "J9" H 5950 3350 50  0000 C CNN
+F 1 "power supply Vout" H 5950 3150 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 5950 3250 50  0001 C CNN
+F 3 "" H 5950 3250 50  0001 C CNN
+	1    5950 3250
+	0    -1   -1   0   
+$EndComp
+$Comp
+L led_digits:D_Zener_SOT23 D5
+U 1 1 5D55F5C4
+P 7400 2650
+F 0 "D5" V 7354 2729 50  0000 L CNN
+F 1 "D_Zener_SOT23" V 7445 2729 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 7400 2650 50  0001 C CNN
+F 3 "~" H 7400 2650 50  0001 C CNN
+	1    7400 2650
+	0    1    1    0   
+$EndComp
+$Comp
+L led_digits:D_Zener_SOT23 D4
+U 1 1 5D562CED
+P 6200 4100
+F 0 "D4" V 6154 4179 50  0000 L CNN
+F 1 "D_Zener_SOT23" V 6245 4179 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 6200 4100 50  0001 C CNN
+F 3 "~" H 6200 4100 50  0001 C CNN
+	1    6200 4100
+	0    1    1    0   
+$EndComp
+$Comp
+L zorjadnik-rescue:+VDC-power1 #PWR0101
+U 1 1 5D58536F
+P 6200 3400
+F 0 "#PWR0101" H 6200 3300 50  0001 C CNN
+F 1 "+VDC" H 6200 3650 50  0000 C CNN
+F 2 "" H 6200 3400 50  0001 C CNN
+F 3 "" H 6200 3400 50  0001 C CNN
+	1    6200 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5950 3450 5950 3500
+Wire Wire Line
+	5950 3500 6200 3500
+Wire Wire Line
+	6200 3500 6200 3400
+Connection ~ 5950 3500
+Wire Wire Line
+	5950 3500 5950 3550
+$Comp
+L zorjadnik-rescue:GNDA-power1 #PWR0102
+U 1 1 5D598089
+P 6150 5750
+F 0 "#PWR0102" H 6150 5500 50  0001 C CNN
+F 1 "GNDA" H 6150 5600 50  0000 C CNN
+F 2 "" H 6150 5750 50  0001 C CNN
+F 3 "" H 6150 5750 50  0001 C CNN
+	1    6150 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:GNDA-power1 #PWR0103
+U 1 1 5D59981C
+P 3800 5450
+F 0 "#PWR0103" H 3800 5200 50  0001 C CNN
+F 1 "GNDA" H 3800 5300 50  0000 C CNN
+F 2 "" H 3800 5450 50  0001 C CNN
+F 3 "" H 3800 5450 50  0001 C CNN
+	1    3800 5450
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:GND-power1 #PWR0104
+U 1 1 5D59CD09
+P 4000 5450
+F 0 "#PWR0104" H 4000 5200 50  0001 C CNN
+F 1 "GND" H 4000 5300 50  0000 C CNN
+F 2 "" H 4000 5450 50  0001 C CNN
+F 3 "" H 4000 5450 50  0001 C CNN
+	1    4000 5450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3800 5450 3800 5350
+Wire Wire Line
+	3800 5350 4000 5350
+Wire Wire Line
+	4000 5350 4000 5450
+$Comp
+L zorjadnik-rescue:Screw_Terminal_01x02-Connector1 J10
+U 1 1 5D42F4A5
+P 7500 2250
+F 0 "J10" V 7464 2062 50  0000 R CNN
+F 1 "output GND" V 7373 2062 50  0000 R CNN
+F 2 "escor:KF350x2" H 7500 2250 50  0001 C CNN
+F 3 "~" H 7500 2250 50  0001 C CNN
+	1    7500 2250
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7400 2450 7500 2450
+Connection ~ 7400 2450
+Wire Wire Line
+	7500 2850 7400 2850
+Connection ~ 7400 2850
+Connection ~ 7500 2450
+Wire Wire Line
+	7500 2450 7600 2450
+$Comp
+L zorjadnik-rescue:Screw_Terminal_01x02-Connector1 J11
+U 1 1 5D4739B7
+P 7600 3050
+F 0 "J11" V 7472 3130 50  0000 L CNN
+F 1 "power supply GND" V 7563 3130 50  0000 L CNN
+F 2 "escor:KF350x2" H 7600 3050 50  0001 C CNN
+F 3 "~" H 7600 3050 50  0001 C CNN
+	1    7600 3050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7600 2850 7500 2850
+Connection ~ 7500 2850
+$Comp
+L zorjadnik-rescue:C-Device1 C7
+U 1 1 5D4BA048
+P 5500 2600
+F 0 "C7" H 5615 2646 50  0000 L CNN
+F 1 "10n" H 5615 2555 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 5538 2450 50  0001 C CNN
+F 3 "~" H 5500 2600 50  0001 C CNN
+	1    5500 2600
+	1    0    0    -1  
+$EndComp
+Connection ~ 5500 2450
+$Comp
+L zorjadnik-rescue:GND-power1 #PWR0107
+U 1 1 5D4BC336
+P 5500 2750
+F 0 "#PWR0107" H 5500 2500 50  0001 C CNN
+F 1 "GND" H 5505 2577 50  0000 C CNN
+F 2 "" H 5500 2750 50  0001 C CNN
+F 3 "" H 5500 2750 50  0001 C CNN
+	1    5500 2750
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:C-Device1 C8
+U 1 1 5D4CA840
+P 5550 4100
+F 0 "C8" H 5665 4146 50  0000 L CNN
+F 1 "10n" H 5665 4055 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 5588 3950 50  0001 C CNN
+F 3 "~" H 5550 4100 50  0001 C CNN
+	1    5550 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:GND-power1 #PWR0108
+U 1 1 5D4D1725
+P 5550 4250
+F 0 "#PWR0108" H 5550 4000 50  0001 C CNN
+F 1 "GND" H 5555 4077 50  0000 C CNN
+F 2 "" H 5550 4250 50  0001 C CNN
+F 3 "" H 5550 4250 50  0001 C CNN
+	1    5550 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:GND-power1 #PWR0105
+U 1 1 5D77DB82
+P 5000 1800
+F 0 "#PWR0105" H 5000 1550 50  0001 C CNN
+F 1 "GND" H 5000 1650 50  0000 C CNN
+F 2 "" H 5000 1800 50  0001 C CNN
+F 3 "" H 5000 1800 50  0001 C CNN
+	1    5000 1800
+	1    0    0    -1  
+$EndComp
+Entry Wire Line
+	4800 1750 4700 1850
+$Comp
+L zorjadnik-rescue:C-Device1 C10
+U 1 1 5D601FED
+P 5600 5750
+F 0 "C10" H 5715 5796 50  0000 L CNN
+F 1 "0.1" H 5715 5705 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 5638 5600 50  0001 C CNN
+F 3 "~" H 5600 5750 50  0001 C CNN
+	1    5600 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:GNDA-power1 #PWR0106
+U 1 1 5D602460
+P 5600 5900
+F 0 "#PWR0106" H 5600 5650 50  0001 C CNN
+F 1 "GNDA" H 5600 5750 50  0000 C CNN
+F 2 "" H 5600 5900 50  0001 C CNN
+F 3 "" H 5600 5900 50  0001 C CNN
+	1    5600 5900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5600 5600 5600 5550
+Connection ~ 5600 5550
+NoConn ~ 4150 2750
+Entry Wire Line
+	4700 1650 4800 1550
+Wire Wire Line
+	5000 1800 5000 1650
+Text Label 4800 1550 0    50   ~ 0
+SWDIO
+Text Label 4800 1750 0    50   ~ 0
+SWCLK
+Wire Wire Line
+	4800 1750 5100 1750
+Wire Wire Line
+	5000 1650 5100 1650
+Wire Wire Line
+	4800 1550 5100 1550
+$Comp
+L zorjadnik-rescue:Conn_01x03-Connector_Generic1 J6
+U 1 1 5D75E3AE
+P 5300 1650
+F 0 "J6" H 5380 1692 50  0000 L CNN
+F 1 "firmware" H 5380 1601 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 5300 1650 50  0001 C CNN
+F 3 "~" H 5300 1650 50  0001 C CNN
+	1    5300 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5550 3900 5600 3900
+Wire Wire Line
+	5550 3900 5550 3950
+$Comp
+L zorjadnik-rescue:R-Device1 R16
+U 1 1 5D94383F
+P 5550 2000
+F 0 "R16" V 5650 1900 50  0000 L CNN
+F 1 "1.5k" V 5550 1900 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 5480 2000 50  0001 C CNN
+F 3 "~" H 5550 2000 50  0001 C CNN
+	1    5550 2000
+	0    1    1    0   
+$EndComp
+$Comp
+L zorjadnik-rescue:Conn_01x02-Connector_Generic1 J12
+U 1 1 5D94A77F
+P 5950 2000
+F 0 "J12" H 5950 2100 50  0000 C CNN
+F 1 "spare port" H 5950 1800 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 5950 2000 50  0001 C CNN
+F 3 "" H 5950 2000 50  0001 C CNN
+	1    5950 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5700 2000 5750 2000
+$Comp
+L zorjadnik-rescue:GNDA-power1 #PWR0113
+U 1 1 5D951CEC
+P 5750 2150
+F 0 "#PWR0113" H 5750 1900 50  0001 C CNN
+F 1 "GNDA" H 5750 2000 50  0000 C CNN
+F 2 "" H 5750 2150 50  0001 C CNN
+F 3 "" H 5750 2150 50  0001 C CNN
+	1    5750 2150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5750 2150 5750 2100
+Wire Wire Line
+	4800 5000 5600 5000
+Wire Wire Line
+	5550 3900 4900 3900
+Wire Wire Line
+	4900 3900 4900 2650
+Connection ~ 5550 3900
+Wire Wire Line
+	5350 2550 5350 2450
+Wire Wire Line
+	5350 2450 5500 2450
+Wire Wire Line
+	5250 2450 5250 2000
+Wire Wire Line
+	5250 2000 5400 2000
+Wire Wire Line
+	5600 5000 5600 5050
+Wire Wire Line
+	5600 5550 5600 5350
+$Comp
+L zorjadnik-rescue:R-Device1 R23
+U 1 1 5D4C7FD8
+P 5600 5200
+F 0 "R23" V 5700 5150 50  0000 L CNN
+F 1 "100" V 5600 5150 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 5530 5200 50  0001 C CNN
+F 3 "~" H 5600 5200 50  0001 C CNN
+	1    5600 5200
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:R-Device1 R24
+U 1 1 5DC2B8F0
+P 5950 4950
+F 0 "R24" V 6050 4900 50  0000 L CNN
+F 1 "63" V 5950 4900 50  0000 L CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 5880 4950 50  0001 C CNN
+F 3 "~" H 5950 4950 50  0001 C CNN
+	1    5950 4950
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3250 4800 3250 5000
+Wire Wire Line
+	3250 4800 3250 4700
+Connection ~ 3250 4800
+$Comp
+L zorjadnik-rescue:D_Zener-Device1 D6
+U 1 1 5DC8CF03
+P 2100 5200
+F 0 "D6" V 2054 5279 50  0000 L CNN
+F 1 "D_Zener" V 2145 5279 50  0000 L CNN
+F 2 "Diode_SMD:D_SOT-23_NKA" H 2100 5200 50  0001 C CNN
+F 3 "~" H 2100 5200 50  0001 C CNN
+	1    2100 5200
+	0    1    1    0   
+$EndComp
+$Comp
+L zorjadnik-rescue:L_Small-Device1 L1
+U 1 1 5DC9E5F5
+P 1650 4800
+F 0 "L1" V 1835 4800 50  0000 C CNN
+F 1 "47µH" V 1744 4800 50  0000 C CNN
+F 2 "Inductor_SMD:L_1210_3225Metric" H 1650 4800 50  0001 C CNN
+F 3 "~" H 1650 4800 50  0001 C CNN
+	1    1650 4800
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1450 4600 1450 4800
+Wire Wire Line
+	1450 4800 1550 4800
+Wire Wire Line
+	1750 4800 1800 4800
+Wire Wire Line
+	2100 5000 2100 5050
+Connection ~ 2100 5000
+Wire Wire Line
+	2100 5350 2100 5400
+Wire Wire Line
+	2100 5400 2350 5400
+Connection ~ 2350 5400
+$Comp
+L zorjadnik-rescue:CP-Device1 C11
+U 1 1 5DCD7FFC
+P 3500 5200
+F 0 "C11" H 3618 5246 50  0000 L CNN
+F 1 "10µF" H 3618 5155 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric" H 3538 5050 50  0001 C CNN
+F 3 "~" H 3500 5200 50  0001 C CNN
+	1    3500 5200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3250 5400 3500 5400
+Wire Wire Line
+	3500 5400 3500 5350
+Wire Wire Line
+	3500 5050 3500 5000
+Wire Wire Line
+	3500 5000 3250 5000
+$Comp
+L led_digits:BCR108 Q2
+U 1 1 5DD1C26F
+P 2100 2950
+F 0 "Q2" H 2287 2996 50  0000 L CNN
+F 1 "BCR108" H 2287 2905 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 2100 2950 50  0001 L CNN
+F 3 "" H 2100 2950 50  0001 L CNN
+	1    2100 2950
+	-1   0    0    -1  
+$EndComp
+$Comp
+L led_digits:BCR108 Q3
+U 1 1 5DD1D4DE
+P 2250 3450
+F 0 "Q3" H 2437 3496 50  0000 L CNN
+F 1 "BCR108" H 2437 3405 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 2250 3450 50  0001 L CNN
+F 3 "" H 2250 3450 50  0001 L CNN
+	1    2250 3450
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	2750 3300 2600 3300
+Wire Wire Line
+	2600 3300 2600 3450
+Wire Wire Line
+	2600 3450 2500 3450
+Wire Wire Line
+	2150 3250 2150 3200
+Wire Wire Line
+	1750 3700 2000 3700
+Wire Wire Line
+	2150 3700 2150 3650
+Wire Wire Line
+	2000 3150 2000 3700
+Connection ~ 2000 3700
+Wire Wire Line
+	2000 3700 2150 3700
+$Comp
+L zorjadnik-rescue:GND-power1 #PWR02
+U 1 1 5DDBDAE8
+P 2000 3750
+F 0 "#PWR02" H 2000 3500 50  0001 C CNN
+F 1 "GND" H 2000 3600 50  0000 C CNN
+F 2 "" H 2000 3750 50  0001 C CNN
+F 3 "" H 2000 3750 50  0001 C CNN
+	1    2000 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2000 3750 2000 3700
+Wire Wire Line
+	2000 2600 2000 2750
+Wire Wire Line
+	1750 2900 1700 2900
+Wire Wire Line
+	1750 2900 1750 3700
+$Comp
+L zorjadnik-rescue:D_x2_ACom_KKA-Device1 D2
+U 1 1 5DE9FF13
+P 1500 2900
+F 0 "D2" V 1546 2979 50  0000 L CNN
+F 1 "D_x2_ACom_KKA" V 1455 2979 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 1500 2900 50  0001 C CNN
+F 3 "~" H 1500 2900 50  0001 C CNN
+	1    1500 2900
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1300 3200 1500 3200
+Wire Wire Line
+	1300 2600 1500 2600
+Connection ~ 1500 3200
+Wire Wire Line
+	1500 3200 2150 3200
+Connection ~ 1500 2600
+Wire Wire Line
+	1500 2600 2000 2600
+$Comp
+L zorjadnik-rescue:D_x2_KCom_AAK-Device1 D3
+U 1 1 5DEBBBCE
+P 2100 4800
+F 0 "D3" H 2100 5016 50  0000 C CNN
+F 1 "D_x2_KCom_AAK" H 2100 4925 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 2100 4800 50  0001 C CNN
+F 3 "~" H 2100 4800 50  0001 C CNN
+	1    2100 4800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2100 5000 2350 5000
+Wire Wire Line
+	2400 4800 3250 4800
+$Comp
+L zorjadnik-rescue:Conn_01x02-Connector_Generic1 J7
+U 1 1 5D4406AD
+P 6650 5100
+F 0 "J7" H 6650 5200 50  0000 C CNN
+F 1 "cooling fan" H 6650 4900 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 6650 5100 50  0001 C CNN
+F 3 "" H 6650 5100 50  0001 C CNN
+	1    6650 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L zorjadnik-rescue:CP-Device1 C12
+U 1 1 5DF08F00
+P 6150 5150
+F 0 "C12" H 6268 5196 50  0000 L CNN
+F 1 "10µF" H 6268 5105 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric" H 6188 5000 50  0001 C CNN
+F 3 "~" H 6150 5150 50  0001 C CNN
+	1    6150 5150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6150 5350 6150 5300
+Wire Wire Line
+	6450 5200 6400 5200
+Wire Wire Line
+	6400 5200 6400 5300
+Wire Wire Line
+	6400 5300 6150 5300
+Connection ~ 6150 5300
+Wire Wire Line
+	6450 5100 6400 5100
+Wire Wire Line
+	6400 5100 6400 4950
+Wire Wire Line
+	6400 4950 6150 4950
+Wire Wire Line
+	6150 5000 6150 4950
+Connection ~ 6150 4950
+Wire Wire Line
+	6150 4950 6100 4950
+Wire Wire Line
+	5800 4950 5750 4950
+Wire Wire Line
+	5750 4950 5750 4900
+Wire Wire Line
+	2600 2950 2600 3100
+Wire Wire Line
+	2600 3100 2750 3100
+Wire Wire Line
+	2350 2950 2600 2950
+Wire Wire Line
+	4800 2950 4800 5000
+Text GLabel 4200 3050 2    60   Input ~ 0
+MOSI
+Text GLabel 4200 3250 2    60   Input ~ 0
+sel_but
+Text GLabel 4200 2850 2    60   Input ~ 0
+SCK
+Text GLabel 4200 3150 2    60   Input ~ 0
+mode_but
+Wire Wire Line
+	3150 2350 2850 2350
+$Comp
+L zorjadnik-rescue:STM32F030F4Px-MCU_ST_STM32F01 U2
+U 1 1 5D2F14CC
+P 3650 2850
+F 0 "U2" H 3250 3500 50  0000 L CNN
+F 1 "STM32F030F4Px" H 3850 3500 50  0000 L CNN
+F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 3250 2150 50  0001 R CNN
+F 3 "" H 3650 2850 50  0001 C CNN
+	1    3650 2850
+	1    0    0    -1  
+$EndComp
+Text GLabel 3050 3500 0    60   Input ~ 0
+ST_CP
+Wire Wire Line
+	3050 3500 3100 3500
+Wire Wire Line
+	3100 3500 3100 3450
+Wire Wire Line
+	3100 3450 3150 3450
+Wire Wire Line
+	4150 3450 4200 3450
+Wire Wire Line
+	4150 3350 4200 3350
+Wire Wire Line
+	4150 3250 4200 3250
+Wire Wire Line
+	4150 3150 4200 3150
+Wire Wire Line
+	4150 3050 4200 3050
+Wire Wire Line
+	4150 2950 4800 2950
+Wire Wire Line
+	4150 2850 4200 2850
+Text GLabel 4200 2350 2    60   Input ~ 0
+pot
+Wire Wire Line
+	4150 2350 4200 2350
+Wire Wire Line
+	4150 2450 5250 2450
+Wire Wire Line
+	4150 2550 5350 2550
+Wire Wire Line
+	4150 2650 4900 2650
+Text Label 4500 3400 2    50   ~ 0
+SWDIO
+Text Label 4500 3500 2    50   ~ 0
+SWCLK
+Wire Wire Line
+	4200 3350 4200 3400
+Entry Wire Line
+	4600 3400 4700 3500
+Entry Wire Line
+	4600 3500 4700 3600
+Wire Wire Line
+	4200 3400 4600 3400
+Wire Wire Line
+	4200 3450 4200 3500
+Wire Wire Line
+	4200 3500 4600 3500
+Wire Bus Line
+	4700 1600 4700 3650
+$EndSCHEMATC

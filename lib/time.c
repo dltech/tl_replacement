@@ -1,6 +1,9 @@
+#include "../libopencm3/include/libopencm3/stm32/pwr.h"
+#include "../libopencm3/include/libopencm3/stm32/rcc.h"
+#include "../libopencm3/include/libopencm3/stm32/rtc.h"
 #include "time.h"
 
-volatile struct chargeSettings {
+volatile struct timeType {
     uint32_t tr;
     uint32_t dr;
 } time = {0,0};

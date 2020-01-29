@@ -191,7 +191,6 @@ void menu()
             }
             break;
         case CHARGER_12:
-            chargeLable((menuSet.cnt/100)%4);
             chargeAuto();
             break;
         case CHARGER_6_NEWBIE:
@@ -205,7 +204,6 @@ void menu()
             }
             break;
         case CHARGER_6:
-            chargeLable((menuSet.cnt/100)%4);
             chargeMoto();
             break;
     }

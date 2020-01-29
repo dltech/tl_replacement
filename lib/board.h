@@ -16,11 +16,6 @@
 #define FAN_PORT      GPIOA
 #define FAN_PIN       GPIO6
 
-#define BUTTON_PORT        GPIOA
-#define BUTTON_READ        GPIOA_IDR
-#define SET_PIN            GPIO9
-#define CHOOSE_PIN         GPIO10
-
 #define DISPLAY_EN_PORT    GPIOB
 #define EN_PIN             GPIO1
 #define DISPLAY_PORT       GPIOA

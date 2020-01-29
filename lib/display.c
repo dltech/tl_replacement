@@ -8,7 +8,7 @@
 volatile uint32_t dispBuffer[DIGITS] = {0, 0, 0};
 
 uint32_t alphabet(char s);
-void nextSymbol(uint32_t *buffer, uint32_t *n);
+void nextSymbol(uint32_t *buffer, uint8_t *n);
 
 // свой спринтф, символы по 32 разряда для совместимости с интерфейсом
 void dsprintf(uint32_t *output, char *format, ... )
@@ -39,7 +39,7 @@ void dsprintf(uint32_t *output, char *format, ... )
 }
 
 
-void nextSymbol(uint32_t *buffer, uint32_t *n)
+void nextSymbol(uint32_t *buffer, uint8_t *n)
 {
     switch (*n)
     {
@@ -67,8 +67,23 @@ uint32_t alphabet(char s)
         case ',':
             return SEGDP;
             break;
+        case '=':
+            return SEGD + SEGD;
+            break;
         case '-':
             return SEGG;
+            break;
+        case '_':
+            return SEGD;
+            break;
+        case '"':
+            return SEGB + SEGF;
+            break;
+        case '\'':
+            return SEGF;
+            break;
+        case ']':
+            return SEGA + SEGB + SEGC + SEGD;
             break;
         case '2':
             return SEGA + SEGB + SEGD + SEGE + SEGG;
@@ -102,6 +117,7 @@ uint32_t alphabet(char s)
         case 'b':
             return SEGC + SEGD + SEGE + SEGF + SEGG;
             break;
+        case '[' :
         case 'C' :
         case 'c' :
             return SEGA + SEGD + SEGE + SEGF;
