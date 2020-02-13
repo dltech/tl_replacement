@@ -1,4 +1,5 @@
 #include <limits.h>
+#include <math.h>
 #include "../libopencm3/include/libopencm3/stm32/timer.h"
 #include "menu.h"
 #include "measure.h"
@@ -7,8 +8,6 @@
 #include "charger.h"
 
 
-
-extern volatile uint32_t dispBuffer[DIGITS];
 extern volatile tlParams tlPar;
 
 enum menuState {
@@ -21,25 +20,20 @@ enum menuState {
     CHARGER_12_NEWBIE,
     CHARGER_12,
     CHARGER_6_NEWBIE,
-    CHARGER_6
+    CHARGER_6,
+    OFF
 };
 
 volatile struct menuSettings{
     uint32_t state;
-    uint32_t chargerDispMode;
     uint32_t meanVoltage;
     uint32_t meanCurrent;
     uint32_t handle;
     uint32_t cnt;
     const uint32_t updateFreq;
     const uint32_t cntMax;
-} menuSet = {MANUAL_VOLTAGE, 0, 0, 0, 101, 0, 10, 10*2 };
+} menuSet = {MANUAL_VOLTAGE, 0, 0, 101, 0, 10, 10*2 };
 
-enum chargerDispModeEnum {
-    DISP_VOLTAGE = 1,
-    DISP_CURRENT,
-    DISP_TEXT
-};
 
 void checkHandle(void);
 uint32_t handleToCurrent(void);
@@ -50,17 +44,21 @@ void setButton()
 {
     menuSet.cnt = 0;
     switch ( menuSet.state ) {
-        case MANUAL_CURRENT:
         case MANUAL_VOLTAGE:
         case MANUAL_VOLTAGE_CHANGED:
+        case MANUAL_VOLTAGE_NEWBIE:
+        case MANUAL_CURRENT:
         case MANUAL_CURRENT_CHANGED:
+        case MANUAL_CURRENT_NEWBIE:
             menuSet.state = CHARGER_12_NEWBIE;
             break;
+        case CHARGER_12_NEWBIE:
         case CHARGER_12:
             menuSet.state = CHARGER_6_NEWBIE;
             break;
+        case CHARGER_6_NEWBIE:
         case CHARGER_6:
-            menuSet.state = MANUAL_VOLTAGE;
+            menuSet.state = MANUAL_VOLTAGE_NEWBIE;
             break;
         default:
             menuSet.state = MANUAL_VOLTAGE;
@@ -72,15 +70,21 @@ void currentVoltageButton()
     menuSet.cnt = 0;
     switch ( menuSet.state ) {
         case MANUAL_VOLTAGE:
+        case MANUAL_VOLTAGE_NEWBIE:
         case MANUAL_VOLTAGE_CHANGED:
             menuSet.state = MANUAL_CURRENT_NEWBIE;
             break;
         case MANUAL_CURRENT:
+        case MANUAL_CURRENT_NEWBIE:
         case MANUAL_CURRENT_CHANGED:
             menuSet.state = MANUAL_VOLTAGE_NEWBIE;
             break;
+        case CHARGER_6_NEWBIE:
+        case CHARGER_12_NEWBIE:
+            break;
+        case CHARGER_6:
         case CHARGER_12:
-            menuSet.chargerDispMode = DISP_TEXT;
+            chargeLable(1);
             break;
         default:
             menuSet.state = MANUAL_VOLTAGE;
@@ -89,22 +93,63 @@ void currentVoltageButton()
 
 void checkHandle()
 {
-    uint32_t pos = getHandlePos();
-    if( pos != menuSet.handle ) {
-        switch ( menuSet.state ) {
-            case MANUAL_VOLTAGE:
-            case MANUAL_VOLTAGE_CHANGED:
-                menuSet.cnt = 0;
-                menuSet.state = MANUAL_VOLTAGE_CHANGED;
-                break;
-            case MANUAL_CURRENT:
-            case MANUAL_CURRENT_CHANGED:
-                menuSet.cnt = 0;
-                menuSet.state = MANUAL_CURRENT_CHANGED;
-                break;
-        }
-        menuSet.handle = pos;
+    uint32_t pos = 100 - getHandlePos();
+    if( fabs(pos - menuSet.handle) < HANDLE_DELTA ) {
+        return;
     }
+
+    switch ( menuSet.state ) {
+        case MANUAL_VOLTAGE_NEWBIE:
+            if(pos < HANDLE_DELTA) {
+                tlPar.setVoltage = 0;
+                menuSet.state = OFF;
+            }
+            break;
+        case MANUAL_VOLTAGE:
+        case MANUAL_VOLTAGE_CHANGED:
+            menuSet.cnt = 0;
+            if(pos < HANDLE_DELTA) {
+                tlPar.setVoltage = 0;
+                menuSet.state = OFF;
+            } else {
+                menuSet.state = MANUAL_VOLTAGE_CHANGED;
+            }
+            break;
+        case MANUAL_CURRENT_NEWBIE:
+            if(pos < HANDLE_DELTA) {
+                tlPar.setVoltage = 0;
+                tlPar.setCurrent = 0;
+                menuSet.state = OFF;
+            }
+            break;
+        case MANUAL_CURRENT:
+        case MANUAL_CURRENT_CHANGED:
+            menuSet.cnt = 0;
+            if(pos < HANDLE_DELTA) {
+                tlPar.setVoltage = 0;
+                tlPar.setCurrent = 0;
+                menuSet.state = OFF;
+            } else {
+                menuSet.state = MANUAL_CURRENT_CHANGED;
+            }
+            break;
+        case CHARGER_6_NEWBIE:
+        case CHARGER_12_NEWBIE:
+        case CHARGER_6:
+        case CHARGER_12:
+            if(pos < HANDLE_DELTA) {
+                tlPar.setVoltage = 0;
+                tlPar.setCurrent = 0;
+                menuSet.state = OFF;
+            }
+            break;
+        case OFF:
+            if(pos >= HANDLE_DELTA) {
+                menuSet.state = MANUAL_VOLTAGE_NEWBIE;
+            }
+            break;
+    }
+    menuSet.handle = pos;
 }
 
 uint32_t handleToVoltage()
@@ -112,6 +157,8 @@ uint32_t handleToVoltage()
     uint32_t volt = menuSet.handle*tlPar.maxVoltage / 100;
     if( volt > tlPar.maxVoltage ) {
         volt = tlPar.maxVoltage;
+    } else if( volt < (tlPar.minVoltage / 2) ) {
+        volt = 0;
     } else if( volt < tlPar.minVoltage ) {
         volt = tlPar.minVoltage;
     }
@@ -136,7 +183,7 @@ void menu()
     {
         case MANUAL_VOLTAGE_NEWBIE:
             if( menuSet.cnt == 0 ) {
-                dsprintf((uint32_t*)dispBuffer, "vol");
+                myprintf("vol");
             }
             if( menuSet.cnt > menuSet.cntMax ) {
                 menuSet.meanVoltage = tlPar.voltage;
@@ -144,22 +191,22 @@ void menu()
             }
             break;
         case MANUAL_VOLTAGE:
-            dsprintf((uint32_t*)dispBuffer, "%02d.%01d", tlPar.meanVoltage/100, (tlPar.meanVoltage%100)/10);
+            myprintf("%02d.%01d", tlPar.meanVoltage/100, (tlPar.meanVoltage%100)/10);
             break;
         case MANUAL_VOLTAGE_CHANGED:
             if( menuSet.cnt == 0 ) {
                 tlPar.setVoltage = handleToVoltage();
-                dsprintf((uint32_t*)dispBuffer, "%02d.%01d",  tlPar.setVoltage/100, (tlPar.setVoltage%100)/10);
+                myprintf("%02d.%01d",  tlPar.setVoltage/100, (tlPar.setVoltage%100)/10);
             }
             if( menuSet.cnt > menuSet.cntMax ) {
                 menuSet.cnt = 0;
-                dsprintf((uint32_t*)dispBuffer, "%02d.%01d",  tlPar.voltage/100, (tlPar.voltage%100)/10);
+                myprintf("%02d.%01d",  tlPar.voltage/100, (tlPar.voltage%100)/10);
                 menuSet.state = MANUAL_VOLTAGE;
             }
             break;
         case MANUAL_CURRENT_NEWBIE:
             if( menuSet.cnt == 0 ) {
-                dsprintf((uint32_t*)dispBuffer, "amp");
+                myprintf("amp");
             }
             if( menuSet.cnt > menuSet.cntMax ) {
                 menuSet.meanCurrent = tlPar.current;
@@ -167,22 +214,22 @@ void menu()
             }
             break;
         case MANUAL_CURRENT:
-            dsprintf((uint32_t*)dispBuffer, "%02d.%01d", tlPar.meanCurrent/100, (tlPar.meanCurrent%100)/10);
+            myprintf("%02d.%01d", tlPar.meanCurrent/100, (tlPar.meanCurrent%100)/10);
             break;
         case MANUAL_CURRENT_CHANGED:
             if( menuSet.cnt == 0 ) {
                 tlPar.setCurrent = handleToCurrent();
-                dsprintf((uint32_t*)dispBuffer, "%02d.%01d", tlPar.setCurrent/100, (tlPar.setCurrent%100)/10);
+                myprintf("%02d.%01d", tlPar.setCurrent/100, (tlPar.setCurrent%100)/10);
             }
             if( menuSet.cnt > menuSet.cntMax ) {
                 menuSet.cnt = 0;
-                dsprintf((uint32_t*)dispBuffer, "%02d.%01d", tlPar.current/100, (tlPar.current%100)/10);
+                myprintf("%02d.%01d", tlPar.current/100, (tlPar.current%100)/10);
                 menuSet.state = MANUAL_CURRENT;
             }
             break;
         case CHARGER_12_NEWBIE:
             if( menuSet.cnt == 0 ) {
-                dsprintf((uint32_t*)dispBuffer, "b12");
+                myprintf("b12");
             }
             if( menuSet.cnt > menuSet.cntMax ) {
                 resetCharger();
@@ -195,7 +242,7 @@ void menu()
             break;
         case CHARGER_6_NEWBIE:
             if( menuSet.cnt == 0 ) {
-                dsprintf((uint32_t*)dispBuffer, "b06");
+                myprintf("b06");
             }
             if( menuSet.cnt > menuSet.cntMax ) {
                 menuSet.cnt = 0;
@@ -205,6 +252,9 @@ void menu()
             break;
         case CHARGER_6:
             chargeMoto();
+            break;
+        case OFF:
+            myprintf("off");
             break;
     }
     ++menuSet.cnt;

@@ -10,10 +10,7 @@
 #include "../libopencm3/include/libopencm3/cm3/scb.h"
 #include "../libopencm3/include/libopencm3/cm3/nvic.h"
 #include "measure.h"
-#include "display.h"
 #include "tl.h"
-
-extern volatile uint32_t dispBuffer[3];
 
 // TODO: сохранение настроек в flash
 // 512 = 100 кГц на выходе
@@ -21,19 +18,19 @@ extern volatile uint32_t dispBuffer[3];
 volatile tlParams tlPar = {DIVIDER, // number of timer counts per one period
                                     // (fTim = 48mHz)
                            1700,    // maximum voltage (volts*100)
-                           0,       // minimum voltage
+                           300,     // minimum voltage
                            700,     // maximum curent (amperes*100)
                            100,     // minimum current
                            (80*DIVIDER)/100, // max duty cycle (if too big
-                                                   // rail breakdown is possible)
+                                             // rail breakdown is possible)
                            (1*DIVIDER)/100,  // min dut cycle (if 0 indeterminate
-                                                   // behavior)
+                                             // behavior)
                            0,       // mean voltage (userful for the display)
                            0,       // mean current
                            1,       // voltage which the regulator is trying to set
                            500,     // curent which the regulator is trying to set
-                           100,     // voltage which measured instantly
-                           100,     // current which measured instantly
+                           100,     // voltage which is measured instantly
+                           100,     // current which is measured instantly
                            (1*DIVIDER)/100 // current duty cycle
                         };
 
@@ -156,7 +153,7 @@ void feedBack()
         ( tlPar.voltage > VOLTAGE_LIMIT ) || \
         ( getTemperature() > TEMP_LIMIT ) )
     {
-        fault();
+//        fault();
     }
     tlPar.meanCurrent = (tlPar.meanCurrent + tlPar.current) / 2;
     tlPar.meanVoltage = (tlPar.meanVoltage + tlPar.voltage) / 2;

@@ -4,7 +4,6 @@
 #include "time.h"
 
 
-extern volatile uint32_t dispBuffer[DIGITS];
 extern volatile tlParams tlPar;
 
 enum chargeState {
@@ -42,10 +41,9 @@ volatile struct chargeSettings {
     const uint32_t equalizationTime;
 } chSet = {CHECK, 0, 0, 0, 25, 200, 48*60, 8*60, 30};
 
-void chargeLable(void);
 void charge(chargeTable *table);
 
-void chargeLable()
+void chargeLable(uint8_t next)
 {
     enum display {
         LABEL = 0,
@@ -60,35 +58,36 @@ void chargeLable()
                                      {'3', '_', '3', '\0'},
                                      {' ', 'o', 'k', '\0'},
                                      {'e', 'r', 'r', '\0'} };
+    // щелкает либо сам (каждые n вызовов меняет лейбл), либо сразу, как скажете
     static uint8_t cnt = 0;
     static uint8_t mode = LABEL;
-    if(++cnt < chSet.dispUpdateDiv) {
+    if( (++cnt < chSet.dispUpdateDiv) && (next == 0) ) {
         return;
     }
+    cnt = 0;
     if(++mode > TIME) {
         mode = LABEL;
     }
-
     if( chSet.state == ERROR ) {
-        dsprintf((uint32_t*)dispBuffer, "%s", lbl[ERROR]);
+        myprintf("%s", lbl[ERROR]);
         return;
     }
     if( chSet.state == START ) {
-        dsprintf((uint32_t*)dispBuffer, "%s", lbl[START]);
+        myprintf("%s", lbl[START]);
         return;
     }
     switch( mode ) {
         case LABEL:
-            dsprintf((uint32_t*)dispBuffer, "%s", lbl[chSet.state]);
+            myprintf("%s", lbl[chSet.state]);
             break;
         case VOLTAGE:
-            dsprintf((uint32_t*)dispBuffer, "%02d%c", tlPar.meanVoltage/100, 'v');
+            myprintf("%02d%c", tlPar.meanVoltage/100, 'v');
             break;
         case CURRENT:
-            dsprintf((uint32_t*)dispBuffer, "%01d.%01d%c", tlPar.meanCurrent/100, (tlPar.meanCurrent%100)/10, 'a');
+            myprintf("%01d.%01d%c", tlPar.meanCurrent/100, (tlPar.meanCurrent%100)/10, 'a');
             break;
         case TIME:
-            dsprintf((uint32_t*)dispBuffer, "%02d%c", chSet.totalTime/60, 'h');
+            myprintf("%02d%c", chSet.totalTime/60, 'h');
     }
 }
 
@@ -102,7 +101,7 @@ void charge(chargeTable *table)
     uint32_t par = 0;
     static uint32_t parOld = 0;
 
-    chargeLable();
+    chargeLable(0);
     switch( chSet.state )
     {
         case START:
@@ -121,7 +120,7 @@ void charge(chargeTable *table)
                 chSet.stabCnt = 0;
             }
             if( chSet.stabCnt > chSet.stabAmount ) {
-                tlPar.setVoltage = table->constantAmp;uint8_t percent(void);
+                tlPar.setVoltage = table->constantAmp;
 
                 tlPar.setCurrent = table->constantCurrent;
                 chSet.stabCnt = 0;

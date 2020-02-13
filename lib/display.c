@@ -8,10 +8,9 @@
 volatile uint32_t dispBuffer[DIGITS] = {0, 0, 0};
 
 uint32_t alphabet(char s);
-void nextSymbol(uint32_t *buffer, uint8_t *n);
+void nextSymbolPrintf(uint8_t *n);
 
-// свой спринтф, символы по 32 разряда для совместимости с интерфейсом
-void dsprintf(uint32_t *output, char *format, ... )
+void myprintf(char *format, ... )
 {
     char buffer[DIGITS*4];
     va_list args;
@@ -25,34 +24,36 @@ void dsprintf(uint32_t *output, char *format, ... )
     // Перевод в кодировку семисегментника, учитывается то условие, что точка
     // и символ на одном и том же знакоместе, а не отдельно.
     uint8_t outCnt = 0;
-    for( uint8_t i = 0 ; i < strlen(buffer) ; ++i )
+    for( uint8_t i = 0 ; (i < strlen(buffer)) && (outCnt < DIGITS) ; ++i )
     {
         if(   (buffer[i] != '.')   && (buffer[i] != ',') && \
             ( (buffer[i+1] == '.') || (buffer[i+1] == ',') ) ) {
-            output[outCnt] = MASK & (~(alphabet(buffer[i++]) | SEGDP));
-            nextSymbol(output, &outCnt);
+            dispBuffer[outCnt] = MASK & (~(alphabet(buffer[i++]) | SEGDP));
+            nextSymbolPrintf(&outCnt);
         } else {
-            output[outCnt++] = MASK & (~(alphabet(buffer[i])));
-            nextSymbol(output, &outCnt);
+            dispBuffer[outCnt] = MASK & (~(alphabet(buffer[i])));
+            nextSymbolPrintf(&outCnt);
         }
     }
 }
 
-
-void nextSymbol(uint32_t *buffer, uint8_t *n)
+void nextSymbolPrintf(uint8_t *n)
 {
     switch (*n)
     {
         case 0:
-            buffer[0] |= (uint32_t) BYTE0;
+            dispBuffer[0] |= (uint32_t) BYTE0;
+            dispBuffer[0] &= (uint32_t) 0x0000ffff;
             (*n)++;
             break;
         case 1:
-            buffer[1] |= (uint32_t) BYTE1;
+            dispBuffer[1] |= (uint32_t) BYTE1;
+            dispBuffer[1] &= (uint32_t) 0x0000ffff;
             (*n)++;
             break;
         case 2:
-            buffer[2] |= (uint32_t) BYTE2;
+            dispBuffer[2] |= (uint32_t) BYTE2;
+            dispBuffer[2] &= (uint32_t) 0x0000ffff;
             (*n)++;
             break;
     }
@@ -63,10 +64,6 @@ uint32_t alphabet(char s)
 {
     switch (s)
     {
-        case '.':
-        case ',':
-            return SEGDP;
-            break;
         case '=':
             return SEGD + SEGD;
             break;

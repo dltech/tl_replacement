@@ -416,28 +416,6 @@ Wire Wire Line
 Wire Wire Line
 	5550 5400 5600 5400
 Connection ~ 6650 3550
-$Comp
-L zorjadnik-rescue:R-Device1 R14
-U 1 1 5D66A22A
-P 4900 1800
-F 0 "R14" V 4800 1800 50  0000 C CNN
-F 1 "100" V 4900 1800 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 4830 1800 50  0001 C CNN
-F 3 "~" H 4900 1800 50  0001 C CNN
-	1    4900 1800
-	0    1    1    0   
-$EndComp
-$Comp
-L zorjadnik-rescue:R-Device1 R15
-U 1 1 5D66FFB1
-P 4900 1950
-F 0 "R15" V 5000 1950 50  0000 C CNN
-F 1 "100" V 4900 1950 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 4830 1950 50  0001 C CNN
-F 3 "~" H 4900 1950 50  0001 C CNN
-	1    4900 1950
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	6400 5400 6550 5400
 Wire Wire Line
@@ -536,11 +514,11 @@ MOSI
 Wire Wire Line
 	4650 2550 5600 2550
 Wire Wire Line
-	4650 1950 4750 1950
-Wire Wire Line
-	4750 1800 4650 1800
-Wire Wire Line
 	4650 1300 5050 1300
+Wire Wire Line
+	4650 1800 5050 1800
+Wire Wire Line
+	4650 1950 5050 1950
 Wire Bus Line
 	8400 2700 8400 3550
 Wire Bus Line

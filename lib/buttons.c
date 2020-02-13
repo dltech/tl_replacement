@@ -33,7 +33,7 @@ void buttonsInit()
     RCC_APB2ENR |= RCC_APB2ENR_TIM17EN;
     TIM17_CR1   = (uint32_t) TIM_CR1_CKD_CK_INT | TIM_CR1_ARPE | TIM_CR1_OPM;
     TIM17_PSC   = (uint32_t) 65535;
-    TIM17_ARR   = (uint32_t) 3;
+    TIM17_ARR   = (uint32_t) 5;
     TIM17_DIER  = (uint32_t) TIM_DIER_UIE;
     TIM17_EGR  |= (uint32_t) TIM_EGR_UG;
     TIM17_SR = 0;

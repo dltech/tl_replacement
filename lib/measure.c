@@ -132,12 +132,13 @@ int getTemperature()
 
 uint32_t getHandlePos()
 {
-    const int handleMin = 150;
+    const int handleMin = 0;
     const int handleMax = 3400;
     int pos = ((((int)measures.handle) - handleMin) * 100) / (handleMax - handleMin);
     if( pos > 100 ) pos = 100;
     if( pos < 0 )   pos = 0;
     return (uint32_t)pos;
+//    return adcToVoltage(measures.handle);
 }
 
 uint32_t getVoltage()

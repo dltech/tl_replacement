@@ -4,6 +4,7 @@
 #include <inttypes.h>
 
 void resetCharger(void);
+void chargeLable(uint8_t next);
 void chargeAuto(void);
 void chargeMoto(void);
 

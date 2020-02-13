@@ -19,6 +19,6 @@
 
 #define DIGITS 3
 
-void dsprintf(uint32_t *output, char *format, ... );
+void myprintf(char *format, ... );
 
 #endif

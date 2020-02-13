@@ -1,3 +1,3 @@
 target remote localhost:5555
-load zarjadnik/tl494_replacement.elf
+load tl_replacement/tl494_replacement.elf
 continue
