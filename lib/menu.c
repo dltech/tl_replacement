@@ -60,6 +60,8 @@ void setButton()
         case CHARGER_6:
             menuSet.state = MANUAL_VOLTAGE_NEWBIE;
             break;
+        case OFF:
+            break;
         default:
             menuSet.state = MANUAL_VOLTAGE;
     }
@@ -85,6 +87,8 @@ void currentVoltageButton()
         case CHARGER_6:
         case CHARGER_12:
             chargeLable(1);
+            break;
+        case OFF:
             break;
         default:
             menuSet.state = MANUAL_VOLTAGE;
@@ -254,7 +258,11 @@ void menu()
             chargeMoto();
             break;
         case OFF:
-            myprintf("off");
+            if( tlPar.meanVoltage > tlPar.minVoltage/10 ) {
+                myprintf("%02d.%01d", tlPar.meanVoltage/100, (tlPar.meanVoltage%100)/10);
+            } else {
+                myprintf("off");
+            }
             break;
     }
     ++menuSet.cnt;
@@ -262,3 +270,10 @@ void menu()
         menuSet.cnt = menuSet.cntMax;
     }
 }
+
+void saveSettings()
+{
+    
+}
+
+void loadSettings();

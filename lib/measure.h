@@ -17,6 +17,7 @@
 #define VOLTAGE_PIN   GPIO3
 #define CURRENT_PIN   GPIO2
 #define HANDLE_PIN    GPIO0
+#define MEASURE_PINS  VOLTAGE_PIN | CURRENT_PIN | HANDLE_PIN
 
 typedef struct {
     uint32_t handle;

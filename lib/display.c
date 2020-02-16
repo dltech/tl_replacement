@@ -64,6 +64,10 @@ uint32_t alphabet(char s)
 {
     switch (s)
     {
+        case '.':
+        case ',':
+            return SEGDP;
+            break;
         case '=':
             return SEGD + SEGD;
             break;

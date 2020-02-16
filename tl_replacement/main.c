@@ -1,4 +1,3 @@
-
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,9 +19,7 @@ int main(void)
     menuInit();
     tl_init();
 
-    while(1) {
-// нахуй (дабы подчеркнуть свое превосходство в правильном выборе технологий, а именно, микрочипа)
-    }
+    while(1);
 }
 
 void delay(void)

@@ -44,7 +44,7 @@ uint32_t measureVref()
     uint32_t vRef = 0;
     uint32_t cnt = 0;
     timeout = INT_MAX;
-    // измеряю пока хотя бы оин вльт не покажет
+    // измеряю пока хотя бы один вольт не покажет
     while( (vRef < 1000) && (cnt++ < 1e5) ) {
         ADC1_CR |= ADC_CR_ADSTART;
         timeout = INT_MAX;
@@ -97,7 +97,7 @@ void measureInit()
     DMA1_CCR1 = ccr;
     // порты
     RCC_AHBENR |= RCC_AHBENR_GPIOAEN;
-    gpio_mode_setup(MEASURE_PORT, GPIO_MODE_ANALOG, GPIO_PUPD_NONE, VOLTAGE_PIN | CURRENT_PIN | HANDLE_PIN);
+    gpio_mode_setup(MEASURE_PORT, GPIO_MODE_ANALOG, GPIO_PUPD_NONE, MEASURE_PINS);
     // вкл DMA и АЦП
     ADC1_ISR = 0xffffffff;
     DMA1_CCR1 |= DMA_CCR_EN;
@@ -138,7 +138,6 @@ uint32_t getHandlePos()
     if( pos > 100 ) pos = 100;
     if( pos < 0 )   pos = 0;
     return (uint32_t)pos;
-//    return adcToVoltage(measures.handle);
 }
 
 uint32_t getVoltage()

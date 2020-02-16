@@ -339,8 +339,6 @@ Wire Wire Line
 	5450 5300 5600 5300
 Wire Wire Line
 	5350 5000 5600 5000
-Wire Bus Line
-	6650 3550 8400 3550
 Wire Wire Line
 	6400 5200 6550 5200
 $Comp
@@ -415,7 +413,6 @@ Wire Wire Line
 	5550 5500 5550 5400
 Wire Wire Line
 	5550 5400 5600 5400
-Connection ~ 6650 3550
 Wire Wire Line
 	6400 5400 6550 5400
 Wire Wire Line
@@ -519,10 +516,14 @@ Wire Wire Line
 	4650 1800 5050 1800
 Wire Wire Line
 	4650 1950 5050 1950
+Entry Bus Bus
+	6650 3750 6750 3650
+Entry Bus Bus
+	8300 3650 8400 3550
+Wire Bus Line
+	8300 3650 6750 3650
 Wire Bus Line
 	8400 2700 8400 3550
 Wire Bus Line
-	6650 3550 6650 5400
-Wire Bus Line
-	6650 2450 6650 3550
+	6650 2450 6650 5400
 $EndSCHEMATC
