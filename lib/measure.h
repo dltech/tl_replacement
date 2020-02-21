@@ -30,7 +30,7 @@ typedef struct {
 void measureInit(void);
 
 int getTemperature(void);
-uint32_t getHandlePos(void);
+int8_t getHandlePos(void);
 uint32_t getVoltage(void);
 uint32_t getAmps(void);
 

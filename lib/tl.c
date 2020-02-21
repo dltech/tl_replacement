@@ -46,7 +46,7 @@ volatile struct pidrr {
     int32_t e1;
 } pidr = {10,
            8,
-          30,
+          20,
           1, 0, 0, 0, 0};
 extern volatile adcDma measures;
 
@@ -174,6 +174,13 @@ void feedBack()
     PWM_BORDER = tlPar.duty;
 }
 
+void adc_comp_isr()
+{
+    ADC1_ISR |= ADC_ISR_EOSEQ;
+    feedBack();
+}
+
+// при любой ошибке перезагружайся
 void dma1_channel1_isr()
 {
     fault();
@@ -189,13 +196,12 @@ void dma1_channel4_7_dma2_channel3_5_isr()
     fault();
 }
 
-void adc_comp_isr()
+void spi1_isr(void)
 {
-    ADC1_ISR |= ADC_ISR_EOSEQ;
-    feedBack();
+    fault();
 }
 
-void spi1_isr(void)
+void flash_isr(void)
 {
     fault();
 }

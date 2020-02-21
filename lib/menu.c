@@ -1,108 +1,63 @@
 #include <limits.h>
 #include <math.h>
 #include "../libopencm3/include/libopencm3/stm32/timer.h"
+#include "../libopencm3/include/libopencm3/cm3/nvic.h"
 #include "menu.h"
 #include "measure.h"
 #include "tl.h"
 #include "display.h"
 #include "charger.h"
-
+#include "settings.h"
 
 extern volatile tlParams tlPar;
 
-enum menuState {
-    MANUAL_VOLTAGE_NEWBIE = 1,
-    MANUAL_VOLTAGE,
-    MANUAL_VOLTAGE_CHANGED,
-    MANUAL_CURRENT_NEWBIE,
-    MANUAL_CURRENT,
-    MANUAL_CURRENT_CHANGED,
-    CHARGER_12_NEWBIE,
-    CHARGER_12,
-    CHARGER_6_NEWBIE,
-    CHARGER_6,
-    OFF
-};
-
-volatile struct menuSettings{
-    uint32_t state;
-    uint32_t meanVoltage;
-    uint32_t meanCurrent;
-    uint32_t handle;
-    uint32_t cnt;
-    const uint32_t updateFreq;
-    const uint32_t cntMax;
-} menuSet = {MANUAL_VOLTAGE, 0, 0, 101, 0, 10, 10*2 };
+volatile menuSettings menuSet = {MANUAL_VOLTAGE, 101, 0, 0, 0, 0, 0, 0, 0, 10, 10*2 };
 
 
 void checkHandle(void);
 uint32_t handleToCurrent(void);
 uint32_t handleToVoltage(void);
+void menuCounter(void);
+void changeState(uint8_t st);
 
 
-void setButton()
+void menuCounter()
 {
-    menuSet.cnt = 0;
-    switch ( menuSet.state ) {
-        case MANUAL_VOLTAGE:
-        case MANUAL_VOLTAGE_CHANGED:
-        case MANUAL_VOLTAGE_NEWBIE:
-        case MANUAL_CURRENT:
-        case MANUAL_CURRENT_CHANGED:
-        case MANUAL_CURRENT_NEWBIE:
-            menuSet.state = CHARGER_12_NEWBIE;
-            break;
-        case CHARGER_12_NEWBIE:
-        case CHARGER_12:
-            menuSet.state = CHARGER_6_NEWBIE;
-            break;
-        case CHARGER_6_NEWBIE:
-        case CHARGER_6:
-            menuSet.state = MANUAL_VOLTAGE_NEWBIE;
-            break;
-        case OFF:
-            break;
-        default:
-            menuSet.state = MANUAL_VOLTAGE;
+    menuSet.newFlag = 0;
+    if( menuSet.cnt > INT_MAX ) {
+        menuSet.cnt = 1;
+    } else if( menuSet.cnt > menuSet.changeTime ) {
+        menuSet.ovrFlag = 1;
+    } else if( menuSet.cnt == 0 ) {
+        menuSet.newFlag = 1;
+        menuSet.ovrFlag = 0;
     }
+    ++menuSet.cnt;
 }
 
-void currentVoltageButton()
+void changeState(uint8_t st)
 {
     menuSet.cnt = 0;
-    switch ( menuSet.state ) {
-        case MANUAL_VOLTAGE:
-        case MANUAL_VOLTAGE_NEWBIE:
-        case MANUAL_VOLTAGE_CHANGED:
-            menuSet.state = MANUAL_CURRENT_NEWBIE;
-            break;
-        case MANUAL_CURRENT:
-        case MANUAL_CURRENT_NEWBIE:
-        case MANUAL_CURRENT_CHANGED:
-            menuSet.state = MANUAL_VOLTAGE_NEWBIE;
-            break;
-        case CHARGER_6_NEWBIE:
-        case CHARGER_12_NEWBIE:
-            break;
-        case CHARGER_6:
-        case CHARGER_12:
-            chargeLable(1);
-            break;
-        case OFF:
-            break;
-        default:
-            menuSet.state = MANUAL_VOLTAGE;
-    }
+    menuSet.handleFlag = 0;
+    menuSet.setButFlag = 0;
+    menuSet.cvButFlag = 0;
+    menuSet.offFlag = 0;
+    menuSet.state = st;
 }
 
 void checkHandle()
 {
-    uint32_t pos = 100 - getHandlePos();
-    if( fabs(pos - menuSet.handle) < HANDLE_DELTA ) {
-        return;
+    int8_t pos = 100 - getHandlePos();
+    if( pos < HANDLE_DELTA ) {
+        menuSet.offFlag = 1;
+    } else {
+        menuSet.offFlag = 0;
     }
-
-    switch ( menuSet.state ) {
+    if( pos != menuSet.handle ) {
+        menuSet.handleFlag = 1;
+    }
+    menuSet.handle = pos;
+/*    switch ( menuSet.state ) {
         case MANUAL_VOLTAGE_NEWBIE:
             if(pos < HANDLE_DELTA) {
                 tlPar.setVoltage = 0;
@@ -148,12 +103,11 @@ void checkHandle()
             }
             break;
         case OFF:
-            if(pos >= HANDLE_DELTA) {
-                menuSet.state = MANUAL_VOLTAGE_NEWBIE;
+            if(pos > HANDLE_DELTA) {
+                loadSettings();
             }
             break;
-    }
-    menuSet.handle = pos;
+    } */
 }
 
 uint32_t handleToVoltage()
@@ -180,82 +134,119 @@ uint32_t handleToCurrent()
     return curr;
 }
 
+
 void menu()
 {
+    nvic_disable_irq(NVIC_TIM14_IRQ);
     checkHandle();
+    // запускается после проверок до аутомата (чтобы правильно проставить флаги)
+    menuCounter();
     switch( menuSet.state )
     {
-        case MANUAL_VOLTAGE_NEWBIE:
-            if( menuSet.cnt == 0 ) {
+        case MANUAL_VOLTAGE:
+            if( menuSet.newFlag ) {
                 myprintf("vol");
             }
-            if( menuSet.cnt > menuSet.cntMax ) {
-                menuSet.meanVoltage = tlPar.voltage;
-                menuSet.state = MANUAL_VOLTAGE;
+            if( menuSet.ovrFlag ) {
+                myprintf("%02d.%01d", tlPar.meanVoltage/100, (tlPar.meanVoltage%100)/10);
             }
-            break;
-        case MANUAL_VOLTAGE:
-            myprintf("%02d.%01d", tlPar.meanVoltage/100, (tlPar.meanVoltage%100)/10);
+            if( menuSet.offFlag ) {
+                changeState(OFF);
+            } else if( menuSet.handleFlag ) {
+                changeState(MANUAL_VOLTAGE_CHANGED);
+            } else if( menuSet.setButFlag ) {
+                changeState(CHARGER_12);
+                saveSettings();
+            } else if( menuSet.cvButFlag ) {
+                changeState(MANUAL_CURRENT);
+                saveSettings();
+            }
             break;
         case MANUAL_VOLTAGE_CHANGED:
-            if( menuSet.cnt == 0 ) {
+            if( menuSet.newFlag ) {
                 tlPar.setVoltage = handleToVoltage();
-                myprintf("%02d.%01d",  tlPar.setVoltage/100, (tlPar.setVoltage%100)/10);
+                myprintf("%02d.%01d", tlPar.setVoltage/100, (tlPar.setVoltage%100)/10);
             }
-            if( menuSet.cnt > menuSet.cntMax ) {
-                menuSet.cnt = 0;
-                myprintf("%02d.%01d",  tlPar.voltage/100, (tlPar.voltage%100)/10);
-                menuSet.state = MANUAL_VOLTAGE;
-            }
-            break;
-        case MANUAL_CURRENT_NEWBIE:
-            if( menuSet.cnt == 0 ) {
-                myprintf("amp");
-            }
-            if( menuSet.cnt > menuSet.cntMax ) {
-                menuSet.meanCurrent = tlPar.current;
-                menuSet.state = MANUAL_CURRENT;
+            if( menuSet.handleFlag ) {
+                changeState(MANUAL_VOLTAGE_CHANGED);
+            } else if( menuSet.ovrFlag ) {
+                myprintf("%02d.%01d", tlPar.voltage/100, (tlPar.voltage%100)/10);
+                saveSettings();
+                changeState(MANUAL_VOLTAGE);
+                menuSet.cnt = menuSet.changeTime + 1;
             }
             break;
         case MANUAL_CURRENT:
-            myprintf("%02d.%01d", tlPar.meanCurrent/100, (tlPar.meanCurrent%100)/10);
+            if( menuSet.newFlag ) {
+                myprintf("cur");
+            }
+            if( menuSet.ovrFlag ) {
+                myprintf("%02d.%01d", tlPar.meanCurrent/100, (tlPar.meanCurrent%100)/10);
+            }
+            if( menuSet.offFlag ) {
+                changeState(OFF);
+            } else if( menuSet.handleFlag ) {
+                changeState(MANUAL_CURRENT_CHANGED);
+            } else if( menuSet.setButFlag ) {
+                changeState(CHARGER_12);
+                saveSettings();
+            } else if( menuSet.cvButFlag ) {
+                changeState(MANUAL_VOLTAGE);
+                saveSettings();
+            }
             break;
         case MANUAL_CURRENT_CHANGED:
-            if( menuSet.cnt == 0 ) {
+            if( menuSet.newFlag ) {
                 tlPar.setCurrent = handleToCurrent();
                 myprintf("%02d.%01d", tlPar.setCurrent/100, (tlPar.setCurrent%100)/10);
             }
-            if( menuSet.cnt > menuSet.cntMax ) {
-                menuSet.cnt = 0;
-                myprintf("%02d.%01d", tlPar.current/100, (tlPar.current%100)/10);
-                menuSet.state = MANUAL_CURRENT;
-            }
-            break;
-        case CHARGER_12_NEWBIE:
-            if( menuSet.cnt == 0 ) {
-                myprintf("b12");
-            }
-            if( menuSet.cnt > menuSet.cntMax ) {
-                resetCharger();
-                menuSet.cnt = 0;
-                menuSet.state = CHARGER_12;
+            if( menuSet.handleFlag ) {
+                changeState(MANUAL_CURRENT_CHANGED);
+            } else if( menuSet.ovrFlag ) {
+                myprintf("%02d.%01d", tlPar.setCurrent/100, (tlPar.setCurrent%100)/10);
+                saveSettings();
+                changeState(MANUAL_CURRENT);
+                menuSet.cnt = menuSet.changeTime + 1;
             }
             break;
         case CHARGER_12:
-            chargeAuto();
-            break;
-        case CHARGER_6_NEWBIE:
-            if( menuSet.cnt == 0 ) {
-                myprintf("b06");
-            }
-            if( menuSet.cnt > menuSet.cntMax ) {
-                menuSet.cnt = 0;
+            if( menuSet.newFlag ) {
+                myprintf("b12");
                 resetCharger();
-                menuSet.state = CHARGER_6;
+            }
+            if( menuSet.ovrFlag ) {
+                chargeLable(0);
+                chargeAuto();
+            }
+            if( menuSet.offFlag ) {
+                changeState(OFF);
+            } else if( menuSet.setButFlag ) {
+                changeState(CHARGER_6);
+                saveSettings();
+            } else if( menuSet.cvButFlag ) {
+                chargeLable(1);
+            } else {
+                chargeLable(0);
             }
             break;
         case CHARGER_6:
-            chargeMoto();
+            if( menuSet.newFlag ) {
+                myprintf("b06");
+                resetCharger();
+            }
+            if( menuSet.ovrFlag ) {
+                chargeMoto();
+            }
+            if( menuSet.offFlag ) {
+                changeState(OFF);
+            } else if( menuSet.setButFlag ) {
+                changeState(MANUAL_VOLTAGE);
+                saveSettings();
+            } else if( menuSet.cvButFlag ) {
+                chargeLable(1);
+            } else {
+                chargeLable(0);
+            }
             break;
         case OFF:
             if( tlPar.meanVoltage > tlPar.minVoltage/10 ) {
@@ -263,17 +254,10 @@ void menu()
             } else {
                 myprintf("off");
             }
+            if( menuSet.offFlag == 0 ) {
+                changeState(loadSettings());
+            }
             break;
     }
-    ++menuSet.cnt;
-    if( menuSet.cnt > INT_MAX ) {
-        menuSet.cnt = menuSet.cntMax;
-    }
+    nvic_enable_irq(NVIC_TIM14_IRQ);
 }
-
-void saveSettings()
-{
-    
-}
-
-void loadSettings();

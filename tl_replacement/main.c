@@ -6,8 +6,6 @@
 #include "measure.h"
 #include "display.h"
 
-extern volatile uint32_t dispBuffer[DIGITS];
-
 void delay(void);
 
 int main(void)
@@ -18,7 +16,6 @@ int main(void)
     fanInit();
     menuInit();
     tl_init();
-
     while(1);
 }
 

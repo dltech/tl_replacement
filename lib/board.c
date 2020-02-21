@@ -1,6 +1,7 @@
 #include <stdint.h>
-#include "menu.h"
 #include "display.h"
+#include "menu.h"
+#include "settings.h"
 #include "board.h"
 #include "charger.h"
 #include "tl.h"
@@ -16,8 +17,8 @@
 #include "../libopencm3/include/libopencm3/cm3/scb.h"
 #include "../libopencm3/include/libopencm3/cm3/nvic.h"
 
-extern volatile tlParams tlPar;
 extern volatile uint32_t dispBuffer[DIGITS];
+extern volatile tlParams tlPar;
 
 void clkInit()
 {
@@ -110,6 +111,7 @@ void menuInit()
 //    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_100MHZ, GPIO1);
     // часы (помогут узнать сколько заряжается аккумулятор)
     rtcInit();
+    setInit();
     buttonsInit();
     // таймер рендера меню, fps 15 Гц
     RCC_APB1ENR |= RCC_APB1ENR_TIM14EN;

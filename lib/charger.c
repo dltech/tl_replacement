@@ -39,7 +39,7 @@ volatile struct chargeSettings {
     const uint32_t bulkTime;
     const uint32_t absorptionTime;
     const uint32_t equalizationTime;
-} chSet = {CHECK, 0, 0, 0, 25, 200, 48*60, 8*60, 30};
+} chSet = {CHECK, 0, 0, 0, 50, 200, 48*60, 8*60, 30};
 
 void charge(chargeTable *table);
 
@@ -101,7 +101,6 @@ void charge(chargeTable *table)
     uint32_t par = 0;
     static uint32_t parOld = 0;
 
-    chargeLable(0);
     switch( chSet.state )
     {
         case START:

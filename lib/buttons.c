@@ -9,9 +9,8 @@
 #include "buttons.h"
 #include "menu.h"
 
-
+extern volatile menuSettings menuSet;
 volatile uint32_t buttons = 0xffffffff;
-volatile uint8_t checkCnt = 0;
 
 void buttonsInit()
 {
@@ -48,7 +47,6 @@ void startButtonsCheck()
     EXTI_PR = 0xffffffff;
     // check buttons
     buttons = BUTTON_READ;
-    checkCnt = 0;
     // and start three another checks throw the delays
     TIM17_SR = 0;
     TIM17_CR1 |= (uint32_t) TIM_CR1_CEN;
@@ -56,22 +54,26 @@ void startButtonsCheck()
 
 void checkButtonResetTimer()
 {
-    const uint8_t nCheck = 3;
+    static uint8_t counter = 0;
+    if( counter > 254 ) counter = 0;
+    const uint8_t minimal = 3;
 
     TIM17_SR = 0;
-    uint32_t read = BUTTON_READ;
-    buttons |= read;
-    if(checkCnt++ < nCheck) {
+    uint32_t prevButtons = buttons;
+    buttons |= (uint32_t)BUTTON_READ;
+    if( ((~buttons) & (CHOOSE_PIN | SET_PIN)) > 0 ) {
+        ++counter;
         TIM17_CR1 |= (uint32_t) TIM_CR1_CEN;
         return;
     }
 
-    if( (buttons & SET_PIN) == 0 ) {
-        setButton();
-    } else if( (buttons & CHOOSE_PIN) == 0 ) {
-        currentVoltageButton();
+    if( (counter > minimal) && ((prevButtons & SET_PIN) == 0) ) {
+        menuSet.setButFlag = 1;
+    } else if( (counter > minimal) && ((prevButtons & CHOOSE_PIN) == 0) ) {
+        menuSet.cvButFlag = 1;
     }
 
+    counter = 0;
     EXTI_PR = 0xffffffff;
     exti_enable_request(EXTI9 | EXTI10);
 }
