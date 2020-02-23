@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP D_Zener_SOT23
-D Zener diode
-K diode
-F ~
-$ENDCMP
-#
-#End Doc Library

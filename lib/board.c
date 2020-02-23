@@ -1,7 +1,6 @@
 #include <stdint.h>
 #include "display.h"
 #include "menu.h"
-#include "settings.h"
 #include "board.h"
 #include "charger.h"
 #include "tl.h"
@@ -111,7 +110,6 @@ void menuInit()
 //    gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_100MHZ, GPIO1);
     // часы (помогут узнать сколько заряжается аккумулятор)
     rtcInit();
-    setInit();
     buttonsInit();
     // таймер рендера меню, fps 15 Гц
     RCC_APB1ENR |= RCC_APB1ENR_TIM14EN;
@@ -176,7 +174,8 @@ void tim17_isr()
 void tim14_isr()
 {
     TIM14_SR = 0;
-
+    TIM14_CR1 &= ~TIM_CR1_CEN;
     menu();
     fanUpdate();
+    TIM14_CR1 |= TIM_CR1_CEN;
 }

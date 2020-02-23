@@ -130,7 +130,7 @@ void tl_init()
     RCC_AHBENR |= RCC_AHBENR_DMA1EN;
     // собсна сам ШИМ
     PWM_BORDER = tlPar.minDuty;
-    clockInit();
+    clockInit(); 
     // инициализация измерений температуры, тока и напряжения, а еще переменника
     measureInit();
 }
@@ -197,11 +197,6 @@ void dma1_channel4_7_dma2_channel3_5_isr()
 }
 
 void spi1_isr(void)
-{
-    fault();
-}
-
-void flash_isr(void)
 {
     fault();
 }

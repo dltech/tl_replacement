@@ -194,4 +194,5 @@
   (lib (name 4xxx_IEEE1)(type Legacy)(uri /home/mikhail/src/kicad-symbols/4xxx_IEEE.lib)(options "")(descr ""))
   (lib (name 4xxx1)(type Legacy)(uri /home/mikhail/src/kicad-symbols/4xxx.lib)(options "")(descr ""))
   (lib (name led_digits)(type Legacy)(uri ${KIPRJMOD}/led_digits.lib)(options "")(descr ""))
+  (lib (name zorjadnik)(type Legacy)(uri ${KIPRJMOD}/zorjadnik.lib)(options "")(descr ""))
 )

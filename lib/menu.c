@@ -1,13 +1,11 @@
 #include <limits.h>
 #include <math.h>
-#include "../libopencm3/include/libopencm3/stm32/timer.h"
-#include "../libopencm3/include/libopencm3/cm3/nvic.h"
+#include <inttypes.h>
 #include "menu.h"
 #include "measure.h"
 #include "tl.h"
 #include "display.h"
 #include "charger.h"
-#include "settings.h"
 
 extern volatile tlParams tlPar;
 
@@ -55,59 +53,8 @@ void checkHandle()
     }
     if( pos != menuSet.handle ) {
         menuSet.handleFlag = 1;
+        menuSet.handle = pos;
     }
-    menuSet.handle = pos;
-/*    switch ( menuSet.state ) {
-        case MANUAL_VOLTAGE_NEWBIE:
-            if(pos < HANDLE_DELTA) {
-                tlPar.setVoltage = 0;
-                menuSet.state = OFF;
-            }
-            break;
-        case MANUAL_VOLTAGE:
-        case MANUAL_VOLTAGE_CHANGED:
-            menuSet.cnt = 0;
-            if(pos < HANDLE_DELTA) {
-                tlPar.setVoltage = 0;
-                menuSet.state = OFF;
-            } else {
-                menuSet.state = MANUAL_VOLTAGE_CHANGED;
-            }
-            break;
-        case MANUAL_CURRENT_NEWBIE:
-            if(pos < HANDLE_DELTA) {
-                tlPar.setVoltage = 0;
-                tlPar.setCurrent = 0;
-                menuSet.state = OFF;
-            }
-            break;
-        case MANUAL_CURRENT:
-        case MANUAL_CURRENT_CHANGED:
-            menuSet.cnt = 0;
-            if(pos < HANDLE_DELTA) {
-                tlPar.setVoltage = 0;
-                tlPar.setCurrent = 0;
-                menuSet.state = OFF;
-            } else {
-                menuSet.state = MANUAL_CURRENT_CHANGED;
-            }
-            break;
-        case CHARGER_6_NEWBIE:
-        case CHARGER_12_NEWBIE:
-        case CHARGER_6:
-        case CHARGER_12:
-            if(pos < HANDLE_DELTA) {
-                tlPar.setVoltage = 0;
-                tlPar.setCurrent = 0;
-                menuSet.state = OFF;
-            }
-            break;
-        case OFF:
-            if(pos > HANDLE_DELTA) {
-                loadSettings();
-            }
-            break;
-    } */
 }
 
 uint32_t handleToVoltage()
@@ -137,7 +84,6 @@ uint32_t handleToCurrent()
 
 void menu()
 {
-    nvic_disable_irq(NVIC_TIM14_IRQ);
     checkHandle();
     // запускается после проверок до аутомата (чтобы правильно проставить флаги)
     menuCounter();
@@ -156,10 +102,8 @@ void menu()
                 changeState(MANUAL_VOLTAGE_CHANGED);
             } else if( menuSet.setButFlag ) {
                 changeState(CHARGER_12);
-                saveSettings();
             } else if( menuSet.cvButFlag ) {
                 changeState(MANUAL_CURRENT);
-                saveSettings();
             }
             break;
         case MANUAL_VOLTAGE_CHANGED:
@@ -170,8 +114,6 @@ void menu()
             if( menuSet.handleFlag ) {
                 changeState(MANUAL_VOLTAGE_CHANGED);
             } else if( menuSet.ovrFlag ) {
-                myprintf("%02d.%01d", tlPar.voltage/100, (tlPar.voltage%100)/10);
-                saveSettings();
                 changeState(MANUAL_VOLTAGE);
                 menuSet.cnt = menuSet.changeTime + 1;
             }
@@ -189,10 +131,8 @@ void menu()
                 changeState(MANUAL_CURRENT_CHANGED);
             } else if( menuSet.setButFlag ) {
                 changeState(CHARGER_12);
-                saveSettings();
             } else if( menuSet.cvButFlag ) {
                 changeState(MANUAL_VOLTAGE);
-                saveSettings();
             }
             break;
         case MANUAL_CURRENT_CHANGED:
@@ -203,8 +143,6 @@ void menu()
             if( menuSet.handleFlag ) {
                 changeState(MANUAL_CURRENT_CHANGED);
             } else if( menuSet.ovrFlag ) {
-                myprintf("%02d.%01d", tlPar.setCurrent/100, (tlPar.setCurrent%100)/10);
-                saveSettings();
                 changeState(MANUAL_CURRENT);
                 menuSet.cnt = menuSet.changeTime + 1;
             }
@@ -222,7 +160,6 @@ void menu()
                 changeState(OFF);
             } else if( menuSet.setButFlag ) {
                 changeState(CHARGER_6);
-                saveSettings();
             } else if( menuSet.cvButFlag ) {
                 chargeLable(1);
             } else {
@@ -241,7 +178,6 @@ void menu()
                 changeState(OFF);
             } else if( menuSet.setButFlag ) {
                 changeState(MANUAL_VOLTAGE);
-                saveSettings();
             } else if( menuSet.cvButFlag ) {
                 chargeLable(1);
             } else {
@@ -255,9 +191,8 @@ void menu()
                 myprintf("off");
             }
             if( menuSet.offFlag == 0 ) {
-                changeState(loadSettings());
+                changeState(MANUAL_VOLTAGE);
             }
             break;
     }
-    nvic_enable_irq(NVIC_TIM14_IRQ);
 }

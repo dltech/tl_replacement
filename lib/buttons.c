@@ -45,6 +45,8 @@ void startButtonsCheck()
     // when the button is pressed, off the interrupt of button
     exti_disable_request(EXTI9 | EXTI10);
     EXTI_PR = 0xffffffff;
+    menuSet.setButFlag = 0;
+    menuSet.cvButFlag = 0;
     // check buttons
     buttons = BUTTON_READ;
     // and start three another checks throw the delays

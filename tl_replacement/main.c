@@ -13,7 +13,7 @@ int main(void)
     clkInit();
     delay();
     displayInit();
-    fanInit();
+//    fanInit();
     menuInit();
     tl_init();
     while(1);
