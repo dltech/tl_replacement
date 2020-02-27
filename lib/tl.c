@@ -12,7 +12,6 @@
 #include "measure.h"
 #include "tl.h"
 
-// TODO: сохранение настроек в flash
 // 512 = 100 кГц на выходе
 #define DIVIDER 768
 volatile tlParams tlPar = {DIVIDER, // number of timer counts per one period
@@ -119,7 +118,7 @@ void clockInit()
 }
 
 
-void tl_init()
+void tlInit()
 {
     // лапки выходов
     RCC_AHBENR |= TLOUT_RCC_EN;
@@ -130,9 +129,21 @@ void tl_init()
     RCC_AHBENR |= RCC_AHBENR_DMA1EN;
     // собсна сам ШИМ
     PWM_BORDER = tlPar.minDuty;
-    clockInit(); 
+    clockInit();
     // инициализация измерений температуры, тока и напряжения, а еще переменника
     measureInit();
+}
+
+// homebrew mutex
+void tlLock()
+{
+    nvic_disable_irq(NVIC_ADC_COMP_IRQ);
+    PWM_BORDER = tlPar.minDuty;
+}
+
+void tlUnlock()
+{
+    nvic_enable_irq(NVIC_ADC_COMP_IRQ);
 }
 
 void fault()
@@ -153,7 +164,7 @@ void feedBack()
         ( tlPar.voltage > VOLTAGE_LIMIT ) || \
         ( getTemperature() > TEMP_LIMIT ) )
     {
-//        fault();
+        fault();
     }
     tlPar.meanCurrent = (tlPar.meanCurrent + tlPar.current) / 2;
     tlPar.meanVoltage = (tlPar.meanVoltage + tlPar.voltage) / 2;
@@ -178,6 +189,7 @@ void adc_comp_isr()
 {
     ADC1_ISR |= ADC_ISR_EOSEQ;
     feedBack();
+    measures.meanPar = (measures.handle + measures.meanPar) / 2;
 }
 
 // при любой ошибке перезагружайся
@@ -197,6 +209,11 @@ void dma1_channel4_7_dma2_channel3_5_isr()
 }
 
 void spi1_isr(void)
+{
+    fault();
+}
+
+void flash_isr()
 {
     fault();
 }

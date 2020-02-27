@@ -25,7 +25,9 @@ typedef struct {
     int32_t duty;
 } tlParams;
 
-void tl_init(void);
+void tlInit(void);
+void tlLock(void);
+void tlUnlock(void);
 void fault(void);
 
 #endif

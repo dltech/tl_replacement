@@ -4,7 +4,7 @@
 #include "board.h"
 #include "tl.h"
 #include "measure.h"
-#include "display.h"
+#include "settings.h"
 
 void delay(void);
 
@@ -13,9 +13,10 @@ int main(void)
     clkInit();
     delay();
     displayInit();
-//    fanInit();
+    fanInit();
     menuInit();
-    tl_init();
+    tlInit();
+    setInit();
     while(1);
 }
 

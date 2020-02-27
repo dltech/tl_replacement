@@ -6,10 +6,11 @@
 #include "tl.h"
 #include "display.h"
 #include "charger.h"
+#include "settings.h"
 
 extern volatile tlParams tlPar;
-
-volatile menuSettings menuSet = {MANUAL_VOLTAGE, 101, 0, 0, 0, 0, 0, 0, 0, 10, 10*2 };
+volatile menuSettings menuSet = {OFF, 101, 0, 0, 0, 0, 0, 0, 0, 10, 10*2 };
+extern volatile adcDma measures;
 
 
 void checkHandle(void);
@@ -43,9 +44,10 @@ void changeState(uint8_t st)
     menuSet.state = st;
 }
 
+
 void checkHandle()
 {
-    int8_t pos = 100 - getHandlePos();
+    int8_t pos = 100 - getHandlePosP(measures.meanPar);
     if( pos < HANDLE_DELTA ) {
         menuSet.offFlag = 1;
     } else {
@@ -54,6 +56,8 @@ void checkHandle()
     if( pos != menuSet.handle ) {
         menuSet.handleFlag = 1;
         menuSet.handle = pos;
+    } else {
+        menuSet.handleFlag = 0;
     }
 }
 
@@ -92,6 +96,7 @@ void menu()
         case MANUAL_VOLTAGE:
             if( menuSet.newFlag ) {
                 myprintf("vol");
+                saveSettings();
             }
             if( menuSet.ovrFlag ) {
                 myprintf("%02d.%01d", tlPar.meanVoltage/100, (tlPar.meanVoltage%100)/10);
@@ -121,6 +126,7 @@ void menu()
         case MANUAL_CURRENT:
             if( menuSet.newFlag ) {
                 myprintf("cur");
+                saveSettings();
             }
             if( menuSet.ovrFlag ) {
                 myprintf("%02d.%01d", tlPar.meanCurrent/100, (tlPar.meanCurrent%100)/10);
@@ -151,6 +157,7 @@ void menu()
             if( menuSet.newFlag ) {
                 myprintf("b12");
                 resetCharger();
+                saveSettings();
             }
             if( menuSet.ovrFlag ) {
                 chargeLable(0);
@@ -170,6 +177,7 @@ void menu()
             if( menuSet.newFlag ) {
                 myprintf("b06");
                 resetCharger();
+                saveSettings();
             }
             if( menuSet.ovrFlag ) {
                 chargeMoto();
@@ -191,8 +199,11 @@ void menu()
                 myprintf("off");
             }
             if( menuSet.offFlag == 0 ) {
-                changeState(MANUAL_VOLTAGE);
+                changeState(loadSettings());
             }
+            break;
+        default:
+            fault();
             break;
     }
 }

@@ -4,13 +4,10 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-setInit	/home/nefraer/src/tl_replacement/lib/settings.c	/^void setInit()$/;"	function	line:15
-saveCnt	/home/nefraer/src/tl_replacement/lib/settings.c	/^volatile uint32_t saveCnt = 0;$/;"	variable	line:24
-saveSettings	/home/nefraer/src/tl_replacement/lib/settings.c	/^void saveSettings()$/;"	function	line:25
-loadCnt	/home/nefraer/src/tl_replacement/lib/settings.c	/^volatile uint32_t loadCnt = 0;$/;"	variable	line:64
-loadSettings	/home/nefraer/src/tl_replacement/lib/settings.c	/^void loadSettings()$/;"	function	line:65
-waitForLastOperation	/home/nefraer/src/tl_replacement/lib/settings.c	/^void waitForLastOperation()$/;"	function	line:102
-programWord	/home/nefraer/src/tl_replacement/lib/settings.c	/^void programWord(uint32_t address, uint32_t data)$/;"	function	line:110	signature:(uint32_t address, uint32_t data)
-programHalfWord	/home/nefraer/src/tl_replacement/lib/settings.c	/^void programHalfWord(uint32_t address, uint16_t data)$/;"	function	line:117	signature:(uint32_t address, uint16_t data)
-t1	/home/nefraer/src/tl_replacement/lib/settings.c	/^volatile uint32_t t1 = 0;$/;"	variable	line:130
-erasePage	/home/nefraer/src/tl_replacement/lib/settings.c	/^void erasePage(uint32_t page_address)$/;"	function	line:131	signature:(uint32_t page_address)
+menuSet	/home/nefraer/src/tl_replacement/lib/menu.c	/^volatile menuSettings menuSet = {OFF, 101, 0, 0, 0, 0, 0, 0, 0, 10, 10*2 };$/;"	variable	line:13
+menuCounter	/home/nefraer/src/tl_replacement/lib/menu.c	/^void menuCounter()$/;"	function	line:23
+changeState	/home/nefraer/src/tl_replacement/lib/menu.c	/^void changeState(uint8_t st)$/;"	function	line:37	signature:(uint8_t st)
+checkHandle	/home/nefraer/src/tl_replacement/lib/menu.c	/^void checkHandle()$/;"	function	line:47
+handleToVoltage	/home/nefraer/src/tl_replacement/lib/menu.c	/^uint32_t handleToVoltage()$/;"	function	line:65
+handleToCurrent	/home/nefraer/src/tl_replacement/lib/menu.c	/^uint32_t handleToCurrent()$/;"	function	line:78
+menu	/home/nefraer/src/tl_replacement/lib/menu.c	/^void menu()$/;"	function	line:90

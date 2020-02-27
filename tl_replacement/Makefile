@@ -11,6 +11,8 @@ CFILES += charger.c
 CFILES += menu.c
 CFILES += time.c
 CFILES += buttons.c
+CFILES += settings.c
+
 
 # TODO - you will need to edit these two lines!
 DEVICE=stm32f030F4P6

@@ -194,6 +194,9 @@ void charge(chargeTable *table)
             tlPar.setVoltage = 0;
             tlPar.setCurrent = 0;
             break;
+        default:
+            fault();
+            break;
     }
     chSet.totalTime = chSet.totalTime - parOld + par;
     parOld = par;

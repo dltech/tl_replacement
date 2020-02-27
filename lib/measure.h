@@ -25,12 +25,14 @@ typedef struct {
     uint32_t voltage;
     uint32_t temperature;
     uint32_t vrefMeasured;
+    uint32_t meanPar;
 } adcDma;
 
 void measureInit(void);
 
 int getTemperature(void);
 int8_t getHandlePos(void);
+int8_t getHandlePosP(uint32_t par);
 uint32_t getVoltage(void);
 uint32_t getAmps(void);
 

@@ -13,7 +13,7 @@
    умножены на 100. Температура строго в градусах, переменник в процентах (0-100)
 */
 
-volatile adcDma measures = {0, 0, 0, 0, 0};
+volatile adcDma measures = {0, 0, 0, 0, 0, 0};
 
 uint32_t adcCal(void);
 uint32_t measureVref(void);
@@ -140,6 +140,16 @@ int8_t getHandlePos()
     return (int8_t)pos;
 }
 
+int8_t getHandlePosP(uint32_t par)
+{
+    const int handleMin = 0;
+    const int handleMax = 3400;
+    int pos = ((((int)par) - handleMin) * 100) / (handleMax - handleMin);
+    if( pos > 100 ) pos = 100;
+    if( pos < 0 )   pos = 0;
+    return (int8_t)pos;
+}
+
 uint32_t getVoltage()
 {
 //    const uint32_t voltageScale = 10514; это был рассчетный коэффициент
@@ -149,6 +159,6 @@ uint32_t getVoltage()
 
 uint32_t getAmps()
 {
-    const uint32_t ampsScale = 98;
+    const uint32_t ampsScale = 20; // 0,0196 ом при 5 по 0,1 параллельно
     return adcToVoltage((uint16_t)measures.current) * ampsScale / 10;
 }
