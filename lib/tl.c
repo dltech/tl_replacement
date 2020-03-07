@@ -11,6 +11,7 @@
 #include "../libopencm3/include/libopencm3/cm3/nvic.h"
 #include "measure.h"
 #include "tl.h"
+#include "display.h"
 
 // 512 = 100 кГц на выходе
 #define DIVIDER 768
@@ -30,7 +31,8 @@ volatile tlParams tlPar = {DIVIDER, // number of timer counts per one period
                            500,     // curent which the regulator is trying to set
                            100,     // voltage which is measured instantly
                            100,     // current which is measured instantly
-                           (1*DIVIDER)/100 // current duty cycle
+                           (1*DIVIDER)/100, // current duty cycle
+                           0
                         };
 
 // userful only for regulFormula function
@@ -137,13 +139,41 @@ void tlInit()
 // homebrew mutex
 void tlLock()
 {
-    nvic_disable_irq(NVIC_ADC_COMP_IRQ);
+    tlPar.lockFlag = 1;
+    if( ADC1_ISR & ADC_ISR_EOSEQ ) ADC1_ISR |= ADC_ISR_EOSEQ;
+    ADC1_IER = (uint32_t)0;
+    ADC1_CR |= ADC_CR_ADSTP;
     PWM_BORDER = tlPar.minDuty;
+    GPIOF_BSRR = 0xffff0000;
+    DMA1_CCR1 &= ~((uint32_t)DMA_CCR_EN);
+    DMA1_CCR2 &= ~((uint32_t)DMA_CCR_EN);
+    DMA1_CCR3 &= ~((uint32_t)DMA_CCR_EN);
+    DMA1_CCR4 &= ~((uint32_t)DMA_CCR_EN);
 }
+
+
 
 void tlUnlock()
 {
-    nvic_enable_irq(NVIC_ADC_COMP_IRQ);
+    if( tlPar.lockFlag == 0 ) return;
+    DMA1_CNDTR1 = (uint32_t) ADC_NUMBER;
+    DMA1_CNDTR2 = (uint32_t) 3;
+    DMA1_CNDTR3 = (uint32_t) 2;
+    DMA1_CNDTR4 = (uint32_t) 1;
+    DMA1_CCR1 |= DMA_CCR_EN;
+    DMA1_CCR2 |= DMA_CCR_EN;
+    DMA1_CCR3 |= DMA_CCR_EN;
+    DMA1_CCR4 |= DMA_CCR_EN;
+
+    ADC1_ISR = 0xffffffff;
+    ADC1_IER = ADC_IER_EOSIE;
+    if( ADC1_CR & ADC_CR_ADSTART ) {
+        ADC1_CR |= ADC_CR_ADSTP;
+    }
+    uint32_t timeout = 1e5;
+    while( (ADC1_CR & ADC_CR_ADSTART) && (--timeout > 0) );
+    ADC1_CR |= ADC_CR_ADSTART;
+    tlPar.lockFlag = 0;
 }
 
 void fault()
@@ -152,6 +182,7 @@ void fault()
     TIM3_CR1 = (uint32_t)0;
     // порты
     GPIOF_BSRR = 0xffff0000;
+    myprintf("fuc");
     // перезагрузка контроллера целиком
     scb_reset_system();
 }
@@ -189,7 +220,6 @@ void adc_comp_isr()
 {
     ADC1_ISR |= ADC_ISR_EOSEQ;
     feedBack();
-    measures.meanPar = (measures.handle + measures.meanPar) / 2;
 }
 
 // при любой ошибке перезагружайся

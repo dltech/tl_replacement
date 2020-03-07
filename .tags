@@ -1070,7 +1070,7 @@ ADC_CHANNEL6	libopencm3/include/libopencm3/stm32/common/adc_common_v1.h	170;"	d
 ADC_CHANNEL7	libopencm3/include/libopencm3/stm32/common/adc_common_v1.h	171;"	d
 ADC_CHANNEL8	libopencm3/include/libopencm3/stm32/common/adc_common_v1.h	172;"	d
 ADC_CHANNEL9	libopencm3/include/libopencm3/stm32/common/adc_common_v1.h	173;"	d
-ADC_CHANNELS	lib/measure.h	14;"	d
+ADC_CHANNELS	lib/measure.h	10;"	d
 ADC_CHANNEL_MASK	libopencm3/include/libopencm3/stm32/common/adc_common_v1.h	184;"	d
 ADC_CHANNEL_TEMP	libopencm3/include/libopencm3/stm32/f0/adc.h	137;"	d
 ADC_CHANNEL_TEMP	libopencm3/include/libopencm3/stm32/f1/adc.h	400;"	d
@@ -1635,7 +1635,7 @@ ADC_MAX_REGULAR_SEQUENCE	libopencm3/include/libopencm3/stm32/l1/adc.h	38;"	d
 ADC_MODE_SCAN	libopencm3/include/libopencm3/stm32/f0/adc.h	/^	ADC_MODE_SCAN,$/;"	e	enum:adc_opmode
 ADC_MODE_SCAN_INFINITE	libopencm3/include/libopencm3/stm32/f0/adc.h	/^	ADC_MODE_SCAN_INFINITE,$/;"	e	enum:adc_opmode
 ADC_MODE_SEQUENTIAL	libopencm3/include/libopencm3/stm32/f0/adc.h	/^	ADC_MODE_SEQUENTIAL,$/;"	e	enum:adc_opmode
-ADC_NUMBER	lib/measure.h	13;"	d
+ADC_NUMBER	lib/measure.h	9;"	d
 ADC_OFR1	libopencm3/include/libopencm3/stm32/common/adc_common_v2_multi.h	62;"	d
 ADC_OFR1_OFFSET1_EN	libopencm3/include/libopencm3/stm32/f3/adc.h	308;"	d
 ADC_OFR2	libopencm3/include/libopencm3/stm32/common/adc_common_v2_multi.h	63;"	d
@@ -5239,9 +5239,9 @@ CTRL	libopencm3/include/libopencmsis/core_cm3.h	/^	uint32_t CTRL;$/;"	m	struct:_
 CTRL	libopencm3/include/libopencmsis/core_cm3.h	/^	uint32_t CTRL;$/;"	m	struct:__anon26
 CTRL_DISABLE	libopencm3/include/libopencm3/lpc43xx/sgpio.h	/^	volatile uint32_t CTRL_DISABLE;$/;"	m	struct:__anon12
 CTRL_ENABLE	libopencm3/include/libopencm3/lpc43xx/sgpio.h	/^	volatile uint32_t CTRL_ENABLE;$/;"	m	struct:__anon12
-CURRENT_CH	lib/measure.h	9;"	d
-CURRENT_LIMIT	lib/measure.h	6;"	d
-CURRENT_PIN	lib/measure.h	18;"	d
+CURRENT_CH	lib/measure.h	5;"	d
+CURRENT_LIMIT	lib/tl.h	5;"	d
+CURRENT_PIN	lib/measure.h	14;"	d
 CXX	libopencm3/mk/gcc-config.mk	/^CXX		:= $(PREFIX)-g++$/;"	m
 C_CAN0_BASE	libopencm3/include/libopencm3/lpc43xx/memorymap.h	112;"	d
 C_CAN0_IRQHandler	libopencm3/include/libopencmsis/lpc43xx/m0/irqhandlers.h	18;"	d
@@ -6069,7 +6069,7 @@ DIRECTED2_IRQHandler	libopencm3/include/libopencmsis/vf6xx/irqhandlers.h	15;"	d
 DIRECTED3_IRQHandler	libopencm3/include/libopencmsis/vf6xx/irqhandlers.h	16;"	d
 DISPLAY_EN_PORT	lib/board.h	19;"	d
 DISPLAY_PORT	lib/board.h	21;"	d
-DIVIDER	lib/tl.c	16;"	d	file:
+DIVIDER	lib/tl.c	17;"	d	file:
 DI_ACMP0_CTRL	libopencm3/include/libopencm3/efm32/ezr32wg/memorymap.h	38;"	d
 DI_ACMP0_CTRL	libopencm3/include/libopencm3/efm32/hg/memorymap.h	37;"	d
 DI_ACMP0_CTRL	libopencm3/include/libopencm3/efm32/lg/memorymap.h	38;"	d
@@ -13267,9 +13267,9 @@ GZ_REQ_SET_PATTERN	libopencm3/tests/gadget-zero/usb-gadget0.c	47;"	d	file:
 GZ_REQ_SET_UNALIGNED	libopencm3/tests/gadget-zero/test_gadget0.py	/^GZ_REQ_SET_UNALIGNED=4$/;"	v
 GZ_REQ_SET_UNALIGNED	libopencm3/tests/gadget-zero/usb-gadget0.c	50;"	d	file:
 GZ_REQ_WRITE_LOOPBACK_BUFFER	libopencm3/tests/gadget-zero/test_gadget0.py	/^GZ_REQ_WRITE_LOOPBACK_BUFFER=10$/;"	v
-HANDLE_CH	lib/measure.h	11;"	d
+HANDLE_CH	lib/measure.h	7;"	d
 HANDLE_DELTA	lib/menu.h	33;"	d
-HANDLE_PIN	lib/measure.h	19;"	d
+HANDLE_PIN	lib/measure.h	15;"	d
 HASH	libopencm3/include/libopencm3/stm32/common/hash_common_f24.h	42;"	d
 HASH_ALGO_MD5	libopencm3/include/libopencm3/stm32/common/hash_common_f24.h	107;"	d
 HASH_ALGO_SHA1	libopencm3/include/libopencm3/stm32/common/hash_common_f24.h	106;"	d
@@ -16604,8 +16604,8 @@ MCPWM_BASE	libopencm3/include/libopencm3/lpc43xx/memorymap.h	87;"	d
 MCPWM_IRQHandler	libopencm3/include/libopencmsis/lpc43xx/m0/irqhandlers.h	35;"	d
 MCPWM_IRQHandler	libopencm3/include/libopencmsis/lpc43xx/m4/irqhandlers.h	45;"	d
 MDIOS_BASE	libopencm3/include/libopencm3/stm32/f7/memorymap.h	100;"	d
-MEASURE_PINS	lib/measure.h	20;"	d
-MEASURE_PORT	lib/measure.h	16;"	d
+MEASURE_PINS	lib/measure.h	16;"	d
+MEASURE_PORT	lib/measure.h	12;"	d
 MEMORY	libopencm3/ld/linker.ld.S	/^MEMORY$/;"	l
 MIN	libopencm3/lib/usb/usb_private.h	44;"	d
 MMIO16	libopencm3/include/libopencm3/cm3/common.h	52;"	d
@@ -20799,7 +20799,7 @@ PWM_BASE	libopencm3/include/libopencm3/sam/3n/memorymap.h	36;"	d
 PWM_BASE	libopencm3/include/libopencm3/sam/3s/memorymap.h	38;"	d
 PWM_BASE	libopencm3/include/libopencm3/sam/3u/memorymap.h	35;"	d
 PWM_BASE	libopencm3/include/libopencm3/sam/3x/memorymap.h	42;"	d
-PWM_BORDER	lib/tl.h	4;"	d
+PWM_BORDER	lib/tl.h	8;"	d
 PWM_CCNT	libopencm3/include/libopencm3/sam/pwm.h	78;"	d
 PWM_CCNT	libopencm3/include/libopencm3/sam/pwm.h	83;"	d
 PWM_CDTY	libopencm3/include/libopencm3/sam/pwm.h	73;"	d
@@ -31036,8 +31036,8 @@ TC_RC	libopencm3/include/libopencm3/sam/tc.h	35;"	d
 TC_SMMR	libopencm3/include/libopencm3/sam/tc.h	30;"	d
 TC_SR	libopencm3/include/libopencm3/sam/tc.h	36;"	d
 TC_WPMR	libopencm3/include/libopencm3/sam/tc.h	48;"	d
-TEMP_CH	lib/measure.h	12;"	d
-TEMP_LIMIT	lib/measure.h	5;"	d
+TEMP_CH	lib/measure.h	8;"	d
+TEMP_LIMIT	lib/tl.h	4;"	d
 TGT_CFLAGS	libopencm3/lib/efm32/ezr32wg/Makefile	/^TGT_CFLAGS	= -Os \\$/;"	m
 TGT_CFLAGS	libopencm3/lib/efm32/g/Makefile	/^TGT_CFLAGS	= -Os \\$/;"	m
 TGT_CFLAGS	libopencm3/lib/efm32/gg/Makefile	/^TGT_CFLAGS	= -Os \\$/;"	m
@@ -32708,10 +32708,10 @@ TIM_SR_CC4OF	libopencm3/include/libopencm3/stm32/common/timer_common_all.h	659;"
 TIM_SR_COMIF	libopencm3/include/libopencm3/stm32/common/timer_common_all.h	677;"	d
 TIM_SR_TIF	libopencm3/include/libopencm3/stm32/common/timer_common_all.h	674;"	d
 TIM_SR_UIF	libopencm3/include/libopencm3/stm32/common/timer_common_all.h	692;"	d
-TL1OUT_PIN	lib/tl.h	8;"	d
-TL2OUT_PIN	lib/tl.h	9;"	d
-TLOUT_PORT	lib/tl.h	7;"	d
-TLOUT_RCC_EN	lib/tl.h	6;"	d
+TL1OUT_PIN	lib/tl.h	12;"	d
+TL2OUT_PIN	lib/tl.h	13;"	d
+TLOUT_PORT	lib/tl.h	11;"	d
+TLOUT_RCC_EN	lib/tl.h	10;"	d
 TOG_SET_REG_BIT_MSK	libopencm3/include/libopencm3/stm32/tools.h	63;"	d
 TOG_SET_REG_BIT_MSK_AND_SET	libopencm3/include/libopencm3/stm32/tools.h	56;"	d
 TPIU_ACPR	libopencm3/include/libopencm3/cm3/tpiu.h	43;"	d
@@ -35994,9 +35994,9 @@ VCMP_IRQHandler	libopencm3/include/libopencmsis/efm32/tg/irqhandlers.h	28;"	d
 VCMP_IRQHandler	libopencm3/include/libopencmsis/efm32/wg/irqhandlers.h	42;"	d
 VENDOR_ID	libopencm3/tests/gadget-zero/test_gadget0.py	/^VENDOR_ID=0xcafe$/;"	v
 VIU_IRQHandler	libopencm3/include/libopencmsis/vf6xx/irqhandlers.h	41;"	d
-VOLTAGE_CH	lib/measure.h	10;"	d
-VOLTAGE_LIMIT	lib/measure.h	7;"	d
-VOLTAGE_PIN	lib/measure.h	17;"	d
+VOLTAGE_CH	lib/measure.h	6;"	d
+VOLTAGE_LIMIT	lib/tl.h	6;"	d
+VOLTAGE_PIN	lib/measure.h	13;"	d
 VREFBUF_BASE	libopencm3/include/libopencm3/stm32/g0/memorymap.h	57;"	d
 VREFBUF_BASE	libopencm3/include/libopencm3/stm32/l4/memorymap.h	74;"	d
 VREG_IRQHandler	libopencm3/include/libopencmsis/vf6xx/irqhandlers.h	100;"	d
@@ -37824,9 +37824,9 @@ lm4f_usb_driver	libopencm3/lib/usb/usb_lm4f.c	/^const struct _usbd_driver lm4f_u
 lm4f_usb_soft_connect	libopencm3/lib/usb/usb_lm4f.c	/^static inline void lm4f_usb_soft_connect(void)$/;"	f	file:
 lm4f_usb_soft_disconnect	libopencm3/lib/usb/usb_lm4f.c	/^static inline void lm4f_usb_soft_disconnect(void)$/;"	f	file:
 lm4f_usbd_init	libopencm3/lib/usb/usb_lm4f.c	/^static usbd_device *lm4f_usbd_init(void)$/;"	f	file:
-loadCnt	lib/settings.c	/^volatile uint32_t loadCnt = 0;$/;"	v
 loadSettings	lib/settings.c	/^uint8_t loadSettings()$/;"	f
 lock	libopencm3/lib/usb/usb_msc.c	/^	void (*lock)(void);$/;"	m	struct:_usbd_mass_storage	file:
+lockFlag	lib/tl.h	/^    uint8_t lockFlag;$/;"	m	struct:__anon32
 lowCurrent	lib/charger.c	/^    uint32_t lowCurrent;$/;"	m	struct:__anon35	file:
 lr	libopencm3/include/libopencm3/cm3/scb.h	/^	uint32_t lr;$/;"	m	struct:scb_exception_stack_frame
 ltdc_ctrl_disable	libopencm3/include/libopencm3/stm32/common/ltdc_common_f47.h	/^static inline void ltdc_ctrl_disable(uint32_t ctrl_flags)$/;"	f
@@ -38650,7 +38650,6 @@ rx_fifo_size	libopencm3/lib/usb/usb_private.h	/^	uint16_t rx_fifo_size;$/;"	m	st
 rxbcnt	libopencm3/lib/usb/usb_private.h	/^	uint16_t rxbcnt;$/;"	m	struct:_usbd_device
 sanitise_line	libopencm3/scripts/checkpatch.pl	/^sub sanitise_line {$/;"	s
 sanitise_line_reset	libopencm3/scripts/checkpatch.pl	/^sub sanitise_line_reset {$/;"	s
-saveCnt	lib/settings.c	/^volatile uint32_t saveCnt = 0;$/;"	v
 saveSettings	lib/settings.c	/^void saveSettings()$/;"	f
 sbc_asc	libopencm3/lib/usb/usb_msc.c	/^enum sbc_asc {$/;"	g	file:
 sbc_ascq	libopencm3/lib/usb/usb_msc.c	/^enum sbc_ascq {$/;"	g	file:

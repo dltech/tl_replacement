@@ -6,6 +6,8 @@
 void setInit(void);
 void saveSettings(void);
 uint8_t loadSettings(void);
+uint8_t isEqual(void);
+
 
 
 #endif

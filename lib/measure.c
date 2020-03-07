@@ -142,9 +142,9 @@ int8_t getHandlePos()
 
 int8_t getHandlePosP(uint32_t par)
 {
-    const int handleMin = 0;
-    const int handleMax = 3400;
-    int pos = ((((int)par) - handleMin) * 100) / (handleMax - handleMin);
+    const int32_t handleMin = 0;
+    const int32_t handleMax = 3400;
+    int32_t pos = ((((int32_t)par) - handleMin) * 100) / (handleMax - handleMin);
     if( pos > 100 ) pos = 100;
     if( pos < 0 )   pos = 0;
     return (int8_t)pos;

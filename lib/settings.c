@@ -9,7 +9,6 @@
 extern volatile tlParams tlPar;
 extern volatile menuSettings menuSet;
 
-uint8_t isEqual(void);
 void waitForLastOperation(void);
 void programWord(uint32_t address, uint32_t data);
 void programHalfWord(uint32_t address, uint16_t data);
@@ -24,12 +23,9 @@ void setInit()
     menuSet.state = loadSettings();
 }
 
-volatile uint32_t saveCnt = 0;
+
 void saveSettings()
 {
-    ++saveCnt;
-    if( isEqual() ) return;
-    tlLock();
     erasePage(SET_ADDR);
     uint32_t setAddr = SET_ADDR;
     programWord(setAddr, tlPar.setVoltage);
@@ -37,22 +33,25 @@ void saveSettings()
     programWord(setAddr, tlPar.setCurrent);
     setAddr += 4;
     programHalfWord(setAddr, menuSet.state);
-    tlUnlock();
 }
 
 uint8_t isEqual()
 {
-    uint32_t param32 = (MMIO32(SET_ADDR) ^ tlPar.setVoltage) + \
-                       (MMIO32(SET_ADDR + 4) ^ tlPar.setCurrent) + \
-                       (MMIO16(SET_ADDR + 8) ^ menuSet.state);
-    if( param32 ) return 0;
-    else          return 1;
+    uint32_t param32 = MMIO32(SET_ADDR);
+    param32 ^= tlPar.setVoltage;
+    uint32_t sum = param32;
+    param32 = MMIO32(SET_ADDR + 4);
+    sum += tlPar.setCurrent;
+    uint16_t param16 = MMIO16(SET_ADDR + 8);
+    param16 ^= menuSet.state;
+    sum += param16 & 0x00ff;
+    if( sum ) return 0;
+    else      return 1;
 }
 
-volatile uint32_t loadCnt = 0;
+
 uint8_t loadSettings()
 {
-    ++loadCnt;
     uint32_t param32;
     param32 = MMIO32(SET_ADDR);
     if( param32 > tlPar.maxVoltage ) {
@@ -87,7 +86,7 @@ uint8_t loadSettings()
 // отличие функций от стандартных libopencm3 в таймауте
 void waitForLastOperation()
 {
-    uint32_t timeout = 1e4;
+    uint32_t timeout = 1e5;
     asm("NOP");
     asm("NOP");
     while ( ((flash_get_status_flags() & FLASH_SR_BSY) == FLASH_SR_BSY) &&
@@ -107,10 +106,9 @@ void programHalfWord(uint32_t address, uint16_t data)
     flash_unlock();
     waitForLastOperation();
     FLASH_CR |= FLASH_CR_PG;
-
 	MMIO16(address) = data;
-
     waitForLastOperation();
+    FLASH_SR |= FLASH_SR_EOP;
 	FLASH_CR &= ~FLASH_CR_PG;
     flash_lock();
 }

@@ -6,19 +6,23 @@
 #include "measure.h"
 #include "settings.h"
 
+
 void delay(void);
+
 
 int main(void)
 {
     clkInit();
     delay();
+    tlInit();
     displayInit();
     fanInit();
-    menuInit();
-    tlInit();
     setInit();
+    menuInit();
     while(1);
 }
+
+
 
 void delay(void)
 {

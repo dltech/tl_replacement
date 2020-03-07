@@ -1,6 +1,10 @@
 #ifndef H_TL
 #define H_TL
 
+#define TEMP_LIMIT      100
+#define CURRENT_LIMIT   1000
+#define VOLTAGE_LIMIT   2500
+
 #define PWM_BORDER   TIM3_CCR1
 
 #define TLOUT_RCC_EN  RCC_AHBENR_GPIOFEN
@@ -23,6 +27,7 @@ typedef struct {
     uint32_t voltage;
     uint32_t current;
     int32_t duty;
+    uint8_t lockFlag;
 } tlParams;
 
 void tlInit(void);

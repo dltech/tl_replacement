@@ -175,7 +175,7 @@ void tim14_isr()
 {
     TIM14_SR = 0;
     TIM14_CR1 &= ~TIM_CR1_CEN;
-    menu();
     fanUpdate();
+    menu();
     TIM14_CR1 |= TIM_CR1_CEN;
 }

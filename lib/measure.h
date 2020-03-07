@@ -2,10 +2,6 @@
 #define H_MEASURE
 #include "../libopencm3/include/libopencm3/stm32/adc.h"
 
-#define TEMP_LIMIT      100
-#define CURRENT_LIMIT   1000
-#define VOLTAGE_LIMIT   2500
-
 #define CURRENT_CH         2
 #define VOLTAGE_CH         3
 #define HANDLE_CH          0

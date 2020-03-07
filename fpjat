@@ -1,7 +1,8 @@
 make -C tl_replacement clean
 make -C tl_replacement
 st-flash erase
-st-util -p 5555 -n&
-gdb-multiarch --init-command="init_gdb" /home/nefraer/src/tl_replacement/tl_replacement/tl494_replacement.elf
+xfce4-terminal -e "st-util -p 5555 -n" --tab -e "gdb-multiarch --init-command="init_gdb" tl_replacement/tl494_replacement.elf"
+
+
 
 
