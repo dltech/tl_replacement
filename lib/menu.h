@@ -32,6 +32,7 @@ typedef struct {
 
 #define HANDLE_DELTA    2
 
+void checkHandle(void);
 void menu(void);
 
 #endif

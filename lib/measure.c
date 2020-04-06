@@ -102,10 +102,16 @@ void measureInit()
     ADC1_ISR = 0xffffffff;
     DMA1_CCR1 |= DMA_CCR_EN;
     ADC1_CR |= ADC_CR_ADSTART;
-    nvic_enable_irq(NVIC_ADC_COMP_IRQ);
     // приоритет измерений выше всех
     nvic_set_priority(NVIC_ADC_COMP_IRQ, 0xc0);
     nvic_enable_irq(NVIC_DMA1_CHANNEL1_IRQ);
+    int cnt = 10;
+    while( --cnt > 0 ) {
+        timeout = 1e5;
+        while( ((ADC1_ISR & ADC_ISR_EOSEQ) == 0) && (--timeout > 0) );
+        ADC1_ISR = 0xffff;
+    }
+    nvic_enable_irq(NVIC_ADC_COMP_IRQ);
 }
 
 uint32_t adcToVoltage(uint32_t input)
@@ -159,6 +165,11 @@ uint32_t getVoltage()
 
 uint32_t getAmps()
 {
-    const uint32_t ampsScale = 20; // 0,0196 ом при 5 по 0,1 параллельно
-    return adcToVoltage((uint16_t)measures.current) * ampsScale / 10;
+    const uint32_t vDda = 3300;
+    const uint32_t fullScale = 4096;
+    const uint32_t vRefCal = 0x0000000000000fff & (uint64_t)(ST_VREFINT_CAL);
+    uint32_t vOut = (((vDda * vRefCal) / measures.vrefMeasured) * measures.current) / fullScale;
+
+    const uint32_t ampsScale = 18; // 0,0196 ом при 5 по 0,1 параллельно
+    return (vOut / ampsScale) * 100;
 }

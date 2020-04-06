@@ -37221,6 +37221,7 @@ dwc_set_address	libopencm3/lib/usb/usb_dwc_common.c	/^void dwc_set_address(usbd_
 dwt_enable_cycle_counter	libopencm3/lib/cm3/dwt.c	/^bool dwt_enable_cycle_counter(void)$/;"	f
 dwt_read_cycle_counter	libopencm3/lib/cm3/dwt.c	/^uint32_t dwt_read_cycle_counter(void)$/;"	f
 e	lib/tl.c	/^    int32_t e;$/;"	m	struct:pidrr	file:
+e	lib/tl.c	/^volatile int32_t e[100];$/;"	v
 e1	lib/tl.c	/^    int32_t e1;$/;"	m	struct:pidrr	file:
 eefc_set_latency	libopencm3/include/libopencm3/sam/eefc.h	/^static inline void eefc_set_latency(uint8_t wait)$/;"	f
 eeprom_program_word	libopencm3/lib/stm32/common/flash_common_l01.c	/^void eeprom_program_word(uint32_t address, uint32_t data)$/;"	f
@@ -37292,6 +37293,7 @@ extra	libopencm3/include/libopencm3/usb/usbstd.h	/^	const void *extra;$/;"	m	str
 extra	libopencm3/include/libopencm3/usb/usbstd.h	/^	const void *extra;$/;"	m	struct:usb_interface_descriptor
 extralen	libopencm3/include/libopencm3/usb/usbstd.h	/^	int extralen;$/;"	m	struct:usb_endpoint_descriptor
 extralen	libopencm3/include/libopencm3/usb/usbstd.h	/^	int extralen;$/;"	m	struct:usb_interface_descriptor
+f	lib/tl.c	/^volatile int32_t f[3];$/;"	v
 fanInit	lib/board.c	/^void fanInit()$/;"	f
 fanUpdate	lib/board.c	/^void fanUpdate()$/;"	f
 fault	lib/tl.c	/^void fault()$/;"	f
@@ -37876,6 +37878,7 @@ meanVoltage	lib/tl.h	/^    uint32_t meanVoltage;$/;"	m	struct:__anon32
 measureInit	lib/measure.c	/^void measureInit()$/;"	f
 measureVref	lib/measure.c	/^uint32_t measureVref()$/;"	f
 measures	lib/measure.c	/^volatile adcDma measures = {0, 0, 0, 0, 0, 0};$/;"	v
+median	lib/menu.c	/^uint32_t median(uint32_t in)$/;"	f
 mem_manage_handler	libopencm3/lib/cm3/vector.c	120;"	d	file:
 memory_manage_fault	libopencm3/include/libopencm3/cm3/vector.h	/^	vector_table_entry_t memory_manage_fault; \/* not in CM0 *\/$/;"	m	struct:__anon1
 menu	lib/menu.c	/^void menu()$/;"	f
@@ -38681,6 +38684,7 @@ sense	libopencm3/lib/usb/usb_msc.c	/^	struct sbc_sense_info sense;$/;"	m	struct:
 serial	libopencm3/tests/gadget-zero/usb-gadget0.c	/^static char serial[] = "0123456789.0123456789.0123456789";$/;"	v	file:
 setButFlag	lib/menu.h	/^    uint8_t setButFlag;$/;"	m	struct:__anon34
 setCurrent	lib/tl.h	/^    uint32_t setCurrent;$/;"	m	struct:__anon32
+setDuty	lib/tl.c	/^void setDuty(int32_t duty)$/;"	f
 setInit	lib/settings.c	/^void setInit()$/;"	f
 setUp	libopencm3/tests/gadget-zero/test_gadget0.py	/^    def setUp(self):$/;"	m	class:TestConfigLoopBack
 setUp	libopencm3/tests/gadget-zero/test_gadget0.py	/^    def setUp(self):$/;"	m	class:TestConfigSourceSink
@@ -38700,6 +38704,7 @@ set_unaligned	libopencm3/tests/gadget-zero/test_gadget0.py	/^    def set_unalign
 setup	libopencm3/include/libopencm3/lpc43xx/usb.h	/^	volatile uint8_t setup[8];$/;"	m	struct:__anon19
 sgpio_t	libopencm3/include/libopencm3/lpc43xx/sgpio.h	/^} sgpio_t;$/;"	t	typeref:struct:__anon12
 show_type	libopencm3/scripts/checkpatch.pl	/^sub show_type {$/;"	s
+size	lib/menu.c	24;"	d	file:
 source	libopencm3/include/libopencm3/usb/midi.h	/^	struct usb_midi_element_descriptor_body source[1];$/;"	m	struct:usb_midi_element_descriptor	typeref:struct:usb_midi_element_descriptor::usb_midi_element_descriptor_body
 source	libopencm3/include/libopencm3/usb/midi.h	/^	struct usb_midi_out_jack_descriptor_body source[1];$/;"	m	struct:usb_midi_out_jack_descriptor	typeref:struct:usb_midi_out_jack_descriptor::usb_midi_out_jack_descriptor_body
 space	libopencm3/Makefile	/^space:=$/;"	m

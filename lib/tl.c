@@ -17,7 +17,7 @@
 #define DIVIDER 768
 volatile tlParams tlPar = {DIVIDER, // number of timer counts per one period
                                     // (fTim = 48mHz)
-                           1700,    // maximum voltage (volts*100)
+                           2000,    // maximum voltage (volts*100)
                            300,     // minimum voltage
                            700,     // maximum curent (amperes*100)
                            100,     // minimum current
@@ -27,8 +27,8 @@ volatile tlParams tlPar = {DIVIDER, // number of timer counts per one period
                                              // behavior)
                            0,       // mean voltage (userful for the display)
                            0,       // mean current
-                           1,       // voltage which the regulator is trying to set
-                           500,     // curent which the regulator is trying to set
+                           1700,       // voltage which the regulator is trying to set
+                           1000,     // curent which the regulator is trying to set
                            100,     // voltage which is measured instantly
                            100,     // current which is measured instantly
                            (1*DIVIDER)/100, // current duty cycle
@@ -46,8 +46,8 @@ volatile struct pidrr {
     int32_t e;
     int32_t e1;
 } pidr = {10,
-           8,
-          20,
+          5,
+          2,
           1, 0, 0, 0, 0};
 extern volatile adcDma measures;
 
@@ -65,9 +65,9 @@ int32_t regulFormula(int32_t err)
     pidr.e = err;
     pidr.e1 = pidr.e;
     pidr.u1 = pidr.u;
-    int sl1 = pidr.k*pidr.e;
-    int sl2 = pidr.i*(pidr.u1 + pidr.e*pidr.t);
-    int sl3 = pidr.d*(pidr.e - pidr.e1);
+    int32_t sl1 = pidr.k*pidr.e;
+    int32_t sl2 = pidr.i*(pidr.u1 + pidr.e*pidr.t);
+    int32_t sl3 = pidr.d*(pidr.e - pidr.e1);
     pidr.u  = (sl1 + sl2 + sl3) / 1000;
     return pidr.u;
 }
@@ -176,6 +176,17 @@ void tlUnlock()
     tlPar.lockFlag = 0;
 }
 
+void setDuty(int32_t duty)
+{
+    tlPar.duty = duty;
+    if( tlPar.duty > tlPar.maxDuty ) {
+        tlPar.duty = tlPar.maxDuty;
+    } else if( tlPar.duty < tlPar.minDuty ) {
+        tlPar.duty = tlPar.minDuty;
+    }
+    PWM_BORDER = tlPar.duty;
+}
+
 void fault()
 {
     // таймер ШИМ
@@ -187,39 +198,41 @@ void fault()
     scb_reset_system();
 }
 
+volatile int32_t e[100];
+volatile int32_t f[3];
 void feedBack()
 {
+    static int i = 0;
     tlPar.current = getAmps();
     tlPar.voltage = getVoltage();
     if( ( tlPar.current > CURRENT_LIMIT ) || \
         ( tlPar.voltage > VOLTAGE_LIMIT ) || \
         ( getTemperature() > TEMP_LIMIT ) )
     {
+        f[0] = tlPar.current;
+        f[1] = tlPar.voltage;
+        f[2] = getTemperature();
         fault();
     }
     tlPar.meanCurrent = (tlPar.meanCurrent + tlPar.current) / 2;
     tlPar.meanVoltage = (tlPar.meanVoltage + tlPar.voltage) / 2;
+//    e[i++] = tlPar.voltage;
 
-    int32_t voltErr = tlPar.setVoltage - tlPar.voltage;
-    int32_t currErr = tlPar.setCurrent - tlPar.current;
+    int32_t voltErr = (int32_t)tlPar.setVoltage - (int32_t)tlPar.voltage;
+    int32_t currErr = (int32_t)tlPar.setCurrent - (int32_t)tlPar.current;
     int32_t minErr = currErr;
     if( voltErr < currErr ) {
         minErr = voltErr;
     }
-    tlPar.duty += regulFormula(minErr);
-    if( tlPar.duty > tlPar.maxDuty ) {
-        tlPar.duty = tlPar.maxDuty;
-    } else if( tlPar.duty < tlPar.minDuty ) {
-        tlPar.duty = tlPar.minDuty;
-    }
-
-    PWM_BORDER = tlPar.duty;
+    e[i] = regulFormula(minErr);
+    if( ++i > 100 ) i = 0;
+    setDuty(tlPar.duty += regulFormula(minErr));
 }
 
 void adc_comp_isr()
 {
     ADC1_ISR |= ADC_ISR_EOSEQ;
-    feedBack();
+//    feedBack();
 }
 
 // при любой ошибке перезагружайся

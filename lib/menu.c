@@ -12,13 +12,34 @@ extern volatile tlParams tlPar;
 volatile menuSettings menuSet = {OFF, 101, 0, 0, 0, 0, 0, 0, 0, 10, 10*2 };
 extern volatile adcDma measures;
 
-
-void checkHandle(void);
+uint32_t median(uint32_t in);
 uint32_t handleToCurrent(void);
 uint32_t handleToVoltage(void);
 void menuCounter(void);
 void changeState(uint8_t st);
 
+
+uint32_t median(uint32_t in)
+{
+    #define size 5
+    static uint32_t wind[size] = {0,0,0,0,0};
+    for(int8_t i=size-1 ; i>=0 ; --i)
+    {
+        if( (in > wind[i]) ) {
+            for(uint8_t j=0 ; j<i ; ++j) {
+                wind[j] = wind[j+1];
+            }
+            wind[i] = in;
+            break;
+        } else if(i == 0) {
+            for(uint8_t j=(size-1) ; j>0 ; --j) {
+                wind[j] = wind[j-1];
+            }
+            wind[0] = in;
+        }
+    }
+    return wind[size/2];
+}
 
 void menuCounter()
 {
@@ -50,8 +71,7 @@ void changeState(uint8_t st)
 
 void checkHandle()
 {
-    measures.meanPar = (measures.handle + measures.meanPar) / 2;
-    int8_t pos = 100 - getHandlePosP(measures.meanPar);
+    int8_t pos = median(100 - getHandlePosP(measures.handle));
     menuSet.handleFlag = 0;
     menuSet.offFlag = 0;
     if( pos < HANDLE_DELTA ) {
@@ -241,6 +261,8 @@ void menu()
             }
             if( menuSet.newFlag ) {
                 tlPar.setVoltage = 0;
+                tlPar.setCurrent = 0;
+                setDuty(tlPar.minDuty);
             }
             if( tlPar.meanVoltage > tlPar.minVoltage/10 ) {
                 myprintf("%02d.%01d", tlPar.meanVoltage/100, (tlPar.meanVoltage%100)/10);

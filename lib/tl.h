@@ -2,8 +2,8 @@
 #define H_TL
 
 #define TEMP_LIMIT      100
-#define CURRENT_LIMIT   1000
-#define VOLTAGE_LIMIT   2500
+#define CURRENT_LIMIT   700
+#define VOLTAGE_LIMIT   3500
 
 #define PWM_BORDER   TIM3_CCR1
 
@@ -33,6 +33,7 @@ typedef struct {
 void tlInit(void);
 void tlLock(void);
 void tlUnlock(void);
+void setDuty(int32_t duty);
 void fault(void);
 
 #endif

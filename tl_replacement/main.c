@@ -5,6 +5,12 @@
 #include "tl.h"
 #include "measure.h"
 #include "settings.h"
+#include "menu.h"
+
+
+#include "display.h"
+extern volatile tlParams tlPar;
+extern volatile menuSettings menuSet;
 
 
 void delay(void);
