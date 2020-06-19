@@ -16,10 +16,10 @@ AP1117-33	x1
 потенциометр	х1
 PLS		x5
 винтовой разъем х2
-BAT54		x1
+BAW156		x1
 BAV70		x1
 BZX84-C5V1	x2
 PESD1CAN	x1
 47 мкГн 1210	х1
-BCR512		x1
+BCR158		x1
 BCR108		x2

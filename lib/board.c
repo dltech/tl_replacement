@@ -6,6 +6,7 @@
 #include "tl.h"
 #include "time.h"
 #include "buttons.h"
+#include "settings.h"
 #include "../libopencm3/include/libopencm3/stm32/rcc.h"
 #include "../libopencm3/include/libopencm3/stm32/rtc.h"
 #include "../libopencm3/include/libopencm3/stm32/spi.h"
@@ -120,6 +121,7 @@ void menuInit()
     TIM14_CR1  |= (uint32_t) TIM_CR1_CEN;
     TIM14_EGR  |= (uint32_t) TIM_EGR_UG;
     TIM14_SR = 0;
+    loadSettings();
     nvic_enable_irq(NVIC_TIM14_IRQ);
     nvic_set_priority(NVIC_TIM14_IRQ, 0x00);
     catchTime();

@@ -1,8 +1,8 @@
 #ifndef H_TL
 #define H_TL
 
-#define TEMP_LIMIT      100
-#define CURRENT_LIMIT   700
+#define TEMP_LIMIT      70
+#define CURRENT_LIMIT   3000
 #define VOLTAGE_LIMIT   3500
 
 #define PWM_BORDER   TIM3_CCR1

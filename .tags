@@ -6069,7 +6069,7 @@ DIRECTED2_IRQHandler	libopencm3/include/libopencmsis/vf6xx/irqhandlers.h	15;"	d
 DIRECTED3_IRQHandler	libopencm3/include/libopencmsis/vf6xx/irqhandlers.h	16;"	d
 DISPLAY_EN_PORT	lib/board.h	19;"	d
 DISPLAY_PORT	lib/board.h	21;"	d
-DIVIDER	lib/tl.c	17;"	d	file:
+DIVIDER	lib/tl.c	18;"	d	file:
 DI_ACMP0_CTRL	libopencm3/include/libopencm3/efm32/ezr32wg/memorymap.h	38;"	d
 DI_ACMP0_CTRL	libopencm3/include/libopencm3/efm32/hg/memorymap.h	37;"	d
 DI_ACMP0_CTRL	libopencm3/include/libopencm3/efm32/lg/memorymap.h	38;"	d
@@ -36322,6 +36322,8 @@ _write	libopencm3/tests/shared/trace_stdio.c	/^int _write(int file, char *ptr, i
 absorptionTime	lib/charger.c	/^    const uint32_t absorptionTime;$/;"	m	struct:chargeSettings	file:
 adcCal	lib/measure.c	/^uint32_t adcCal()$/;"	f
 adcDma	lib/measure.h	/^} adcDma;$/;"	t	typeref:struct:__anon33
+adcDmaDeinit	lib/measure.c	/^void adcDmaDeinit()$/;"	f
+adcDmaInit	lib/measure.c	/^void adcDmaInit()$/;"	f
 adcToVoltage	lib/measure.c	/^uint32_t adcToVoltage(uint32_t input)$/;"	f
 adc_awd	libopencm3/lib/stm32/common/adc_common_v1_multi.c	/^bool adc_awd(uint32_t adc)$/;"	f
 adc_awd	libopencm3/lib/stm32/f3/adc.c	/^bool adc_awd(uint32_t adc)$/;"	f
@@ -36861,8 +36863,8 @@ check_absolute_file	libopencm3/scripts/checkpatch.pl	/^sub check_absolute_file {
 clkInit	lib/board.c	/^void clkInit()$/;"	f
 clockDeInit	lib/tl.c	/^void clockDeInit()$/;"	f
 clockInit	lib/tl.c	/^void clockInit()$/;"	f
-clockOffSeq	lib/tl.c	/^const uint32_t clockOffSeq[2] = {0xfffe0000, 0xfffd0000};$/;"	v
-clockOnSeq	lib/tl.c	/^const uint32_t clockOnSeq     = 0x00000003;$/;"	v
+clockOffSeq	lib/tl.c	/^const uint32_t clockOffSeq   = 0x00000003;$/;"	v
+clockOnSeq	lib/tl.c	/^const uint32_t clockOnSeq[2] = {0x00000002, 0x00000001};$/;"	v
 cm3_assert	libopencm3/include/libopencm3/cm3/assert.h	56;"	d
 cm3_assert	libopencm3/include/libopencm3/cm3/assert.h	60;"	d
 cm3_assert	libopencm3/include/libopencm3/cm3/assert.h	86;"	d
@@ -36909,6 +36911,7 @@ cmu_wait_for_osc_ready	libopencm3/lib/efm32/common/cmu_common.c	/^void cmu_wait_
 cmu_wait_for_osc_ready	libopencm3/lib/efm32/hg/cmu.c	/^void cmu_wait_for_osc_ready(enum cmu_osc osc)$/;"	f
 cmu_wait_for_usbclk_selected	libopencm3/lib/efm32/hg/cmu.c	/^void cmu_wait_for_usbclk_selected(enum cmu_osc osc)$/;"	f
 cnt	lib/menu.h	/^    uint32_t cnt;$/;"	m	struct:__anon34
+cnt	lib/tl.c	/^uint32_t cnt = 0;$/;"	v
 comment	libopencm3/scripts/gendoxylayout.py	/^    def comment(self, data):$/;"	m	class:CommentedTreeBuilder
 comp_disable	libopencm3/lib/stm32/f0/comparator.c	/^void comp_disable(uint8_t id)$/;"	f
 comp_enable	libopencm3/lib/stm32/f0/comparator.c	/^void comp_enable(uint8_t id)$/;"	f
@@ -36978,7 +36981,6 @@ current_block	libopencm3/lib/usb/usb_msc.c	/^	uint32_t current_block;$/;"	m	stru
 current_config	libopencm3/lib/usb/usb_private.h	/^	uint8_t current_config;$/;"	m	struct:_usbd_device
 current_dtd_pointer	libopencm3/include/libopencm3/lpc43xx/usb.h	/^	volatile usb_transfer_descriptor_t *current_dtd_pointer;$/;"	m	struct:__anon19
 cvButFlag	lib/menu.h	/^    uint8_t cvButFlag;$/;"	m	struct:__anon34
-d	lib/tl.c	/^    const int32_t d;$/;"	m	struct:pidrr	file:
 dCBWDataTransferLength	libopencm3/lib/usb/usb_msc.c	/^	uint32_t dCBWDataTransferLength;$/;"	m	struct:usb_msc_cbw	file:
 dCBWSignature	libopencm3/lib/usb/usb_msc.c	/^	uint32_t dCBWSignature;$/;"	m	struct:usb_msc_cbw	file:
 dCBWTag	libopencm3/lib/usb/usb_msc.c	/^	uint32_t dCBWTag;$/;"	m	struct:usb_msc_cbw	file:
@@ -37022,7 +37024,7 @@ data_file_path	libopencm3/scripts/genlink.py	/^data_file_path = sys.argv[1]$/;"	
 debug_monitor	libopencm3/include/libopencm3/cm3/vector.h	/^	vector_table_entry_t debug_monitor;       \/* not in CM0 *\/$/;"	m	struct:__anon1
 debug_monitor_handler	libopencm3/lib/cm3/vector.c	123;"	d	file:
 defs	libopencm3/scripts/genlink.py	/^        defs = ' '.join('-D_%s=%s' % d for d in device['defs'])$/;"	v
-delay	tl_replacement/main.c	/^void delay(void)$/;"	f
+delay	lib/tl.c	/^void delay(uint8_t n)$/;"	f
 delay_setup	libopencm3/tests/gadget-zero/delay.c	/^void delay_setup(void)$/;"	f
 delay_setup	libopencm3/tests/gadget-zero/delay_efm32.c	/^void delay_setup(void)$/;"	f
 delay_setup	libopencm3/tests/gadget-zero/main-tilm4f120xl.c	/^void delay_setup(void) {$/;"	f
@@ -37220,9 +37222,6 @@ dwc_poll	libopencm3/lib/usb/usb_dwc_common.c	/^void dwc_poll(usbd_device *usbd_d
 dwc_set_address	libopencm3/lib/usb/usb_dwc_common.c	/^void dwc_set_address(usbd_device *usbd_dev, uint8_t addr)$/;"	f
 dwt_enable_cycle_counter	libopencm3/lib/cm3/dwt.c	/^bool dwt_enable_cycle_counter(void)$/;"	f
 dwt_read_cycle_counter	libopencm3/lib/cm3/dwt.c	/^uint32_t dwt_read_cycle_counter(void)$/;"	f
-e	lib/tl.c	/^    int32_t e;$/;"	m	struct:pidrr	file:
-e	lib/tl.c	/^volatile int32_t e[100];$/;"	v
-e1	lib/tl.c	/^    int32_t e1;$/;"	m	struct:pidrr	file:
 eefc_set_latency	libopencm3/include/libopencm3/sam/eefc.h	/^static inline void eefc_set_latency(uint8_t wait)$/;"	f
 eeprom_program_word	libopencm3/lib/stm32/common/flash_common_l01.c	/^void eeprom_program_word(uint32_t address, uint32_t data)$/;"	f
 eeprom_program_words	libopencm3/lib/stm32/common/flash_common_l01.c	/^void eeprom_program_words(uint32_t address, uint32_t *data, int length_in_words)$/;"	f
@@ -37293,7 +37292,6 @@ extra	libopencm3/include/libopencm3/usb/usbstd.h	/^	const void *extra;$/;"	m	str
 extra	libopencm3/include/libopencm3/usb/usbstd.h	/^	const void *extra;$/;"	m	struct:usb_interface_descriptor
 extralen	libopencm3/include/libopencm3/usb/usbstd.h	/^	int extralen;$/;"	m	struct:usb_endpoint_descriptor
 extralen	libopencm3/include/libopencm3/usb/usbstd.h	/^	int extralen;$/;"	m	struct:usb_interface_descriptor
-f	lib/tl.c	/^volatile int32_t f[3];$/;"	v
 fanInit	lib/board.c	/^void fanInit()$/;"	f
 fanUpdate	lib/board.c	/^void fanUpdate()$/;"	f
 fault	lib/tl.c	/^void fault()$/;"	f
@@ -37441,7 +37439,7 @@ genlink_subfamily	libopencm3/mk/genlink-config.mk	/^genlink_subfamily	:=$(shell 
 getAmps	lib/measure.c	/^uint32_t getAmps()$/;"	f
 getHandlePos	lib/measure.c	/^int8_t getHandlePos()$/;"	f
 getHandlePosP	lib/measure.c	/^int8_t getHandlePosP(uint32_t par)$/;"	f
-getTemperature	lib/measure.c	/^int getTemperature()$/;"	f
+getTemperature	lib/measure.c	/^uint32_t getTemperature()$/;"	f
 getVoltage	lib/measure.c	/^uint32_t getVoltage()$/;"	f
 get_cbw_buf	libopencm3/lib/usb/usb_msc.c	/^static uint8_t *get_cbw_buf(struct usb_msc_trans *trans)$/;"	f	file:
 get_quoted_string	libopencm3/scripts/checkpatch.pl	/^sub get_quoted_string {$/;"	s
@@ -37556,7 +37554,7 @@ gpio_unlock_commit	libopencm3/lib/lm4f/gpio.c	/^void gpio_unlock_commit(uint32_t
 gpio_unlock_commit	libopencm3/lib/msp432/e4/gpio.c	/^void gpio_unlock_commit(uint32_t gpioport, uint8_t gpios)$/;"	f
 gpio_write	libopencm3/include/libopencm3/lm4f/gpio.h	/^static inline void gpio_write(uint32_t gpioport, uint8_t gpios, uint8_t data)$/;"	f
 handle	lib/measure.h	/^    uint32_t handle;$/;"	m	struct:__anon33
-handle	lib/menu.h	/^    int8_t handle;$/;"	m	struct:__anon34
+handle	lib/menu.h	/^    uint8_t handle;$/;"	m	struct:__anon34
 handleFlag	lib/menu.h	/^    uint8_t handleFlag;$/;"	m	struct:__anon34
 handleToCurrent	lib/menu.c	/^uint32_t handleToCurrent()$/;"	f
 handleToVoltage	lib/menu.c	/^uint32_t handleToVoltage()$/;"	f
@@ -37586,7 +37584,6 @@ hpre	libopencm3/include/libopencm3/stm32/g0/rcc.h	/^	uint8_t hpre;$/;"	m	struct:
 hpre	libopencm3/include/libopencm3/stm32/l0/rcc.h	/^	uint8_t hpre;$/;"	m	struct:rcc_clock_scale
 hpre	libopencm3/include/libopencm3/stm32/l1/rcc.h	/^	uint8_t hpre;$/;"	m	struct:rcc_clock_scale
 hsisys_div	libopencm3/include/libopencm3/stm32/g0/rcc.h	/^	uint8_t hsisys_div;$/;"	m	struct:rcc_clock_scale
-i	lib/tl.c	/^    const int32_t i;$/;"	m	struct:pidrr	file:
 i2c0_init	libopencm3/lib/lpc43xx/i2c.c	/^void i2c0_init(const uint16_t duty_cycle_count)$/;"	f
 i2c0_rx_byte	libopencm3/lib/lpc43xx/i2c.c	/^uint8_t i2c0_rx_byte(void)$/;"	f
 i2c0_stop	libopencm3/lib/lpc43xx/i2c.c	/^void i2c0_stop(void)$/;"	f
@@ -37785,8 +37782,8 @@ iwdg_reset	libopencm3/lib/stm32/common/iwdg_common_all.c	/^void iwdg_reset(void)
 iwdg_set_period_ms	libopencm3/lib/stm32/common/iwdg_common_all.c	/^void iwdg_set_period_ms(uint32_t period)$/;"	f
 iwdg_start	libopencm3/lib/stm32/common/iwdg_common_all.c	/^void iwdg_start(void)$/;"	f
 jack	libopencm3/include/libopencm3/usb/midi.h	/^	struct usb_midi_endpoint_descriptor_body jack[1];$/;"	m	struct:usb_midi_endpoint_descriptor	typeref:struct:usb_midi_endpoint_descriptor::usb_midi_endpoint_descriptor_body
-k	lib/tl.c	/^    const int32_t k;$/;"	m	struct:pidrr	file:
 key	libopencm3/lib/usb/usb_msc.c	/^	uint8_t key;$/;"	m	struct:sbc_sense_info	file:
+kp	lib/tl.c	/^int32_t kp = 0;$/;"	v
 lba_start	libopencm3/lib/usb/usb_msc.c	/^	uint32_t lba_start;$/;"	m	struct:usb_msc_trans	file:
 lc_channel	libopencm3/include/libopencm3/sam/4l/adcife.h	231;"	d
 lc_value	libopencm3/include/libopencm3/sam/4l/adcife.h	232;"	d
@@ -37887,6 +37884,7 @@ menuInit	lib/board.c	/^void menuInit()$/;"	f
 menuSet	lib/menu.c	/^volatile menuSettings menuSet = {OFF, 101, 0, 0, 0, 0, 0, 0, 0, 10, 10*2 };$/;"	v
 menuSettings	lib/menu.h	/^} menuSettings;$/;"	t	typeref:struct:__anon34
 menuState	lib/menu.h	/^enum menuState {$/;"	g
+menuc	lib/menu.c	/^uint32_t menuc = 0;$/;"	v
 minCurrent	lib/tl.h	/^    const uint32_t minCurrent;$/;"	m	struct:__anon32
 minDuty	lib/tl.h	/^    const int32_t minDuty;$/;"	m	struct:__anon32
 minVoltage	lib/tl.h	/^    const uint32_t minVoltage;$/;"	m	struct:__anon32
@@ -38023,8 +38021,6 @@ phy_link_isup	libopencm3/lib/ethernet/phy.c	/^bool phy_link_isup(uint8_t phy)$/;
 phy_link_status	libopencm3/lib/ethernet/phy_ksz80x1.c	/^enum phy_status phy_link_status(uint8_t phy)$/;"	f
 phy_reset	libopencm3/lib/ethernet/phy.c	/^void phy_reset(uint8_t phy)$/;"	f
 phy_status	libopencm3/include/libopencm3/ethernet/phy.h	/^enum phy_status {$/;"	g
-pidr	lib/tl.c	/^} pidr = {10,$/;"	v	typeref:struct:pidrr
-pidrr	lib/tl.c	/^volatile struct pidrr {$/;"	s	file:
 pll1_main_clk	libopencm3/lib/vf6xx/ccm.c	/^static const uint32_t pll1_main_clk = 528000000;$/;"	v	file:
 pll2_main_clk	libopencm3/lib/vf6xx/ccm.c	/^static const uint32_t pll2_main_clk = 528000000;$/;"	v	file:
 pll3_main_clk	libopencm3/lib/vf6xx/ccm.c	/^static const uint32_t pll3_main_clk = 480000000;$/;"	v	file:
@@ -38603,7 +38599,6 @@ rcc_wait_for_sysclk_status	libopencm3/lib/stm32/l1/rcc.c	/^void rcc_wait_for_sys
 rcc_wait_for_sysclk_status	libopencm3/lib/stm32/l4/rcc.c	/^void rcc_wait_for_sysclk_status(enum rcc_osc osc)$/;"	f
 read_block	libopencm3/lib/usb/usb_msc.c	/^	int (*read_block)(uint32_t lba, uint8_t *copy_to);$/;"	m	struct:_usbd_mass_storage	file:
 registers	libopencm3/scripts/data/lpc43xx/gen.py	/^registers = yaml.load(open(sys.argv[1], 'r'))$/;"	v
-regulFormula	lib/tl.c	/^int32_t regulFormula(int32_t err)$/;"	f
 remainder	libopencm3/scripts/lpcvtcksum	/^remainder = list(struct.unpack('B' * len(rawremainder), rawremainder))$/;"	v
 report	libopencm3/scripts/checkpatch.pl	/^sub report {$/;"	s
 report_dump	libopencm3/scripts/checkpatch.pl	/^sub report_dump {$/;"	s
@@ -38704,11 +38699,11 @@ set_unaligned	libopencm3/tests/gadget-zero/test_gadget0.py	/^    def set_unalign
 setup	libopencm3/include/libopencm3/lpc43xx/usb.h	/^	volatile uint8_t setup[8];$/;"	m	struct:__anon19
 sgpio_t	libopencm3/include/libopencm3/lpc43xx/sgpio.h	/^} sgpio_t;$/;"	t	typeref:struct:__anon12
 show_type	libopencm3/scripts/checkpatch.pl	/^sub show_type {$/;"	s
-size	lib/menu.c	24;"	d	file:
+size	lib/menu.c	23;"	d	file:
 source	libopencm3/include/libopencm3/usb/midi.h	/^	struct usb_midi_element_descriptor_body source[1];$/;"	m	struct:usb_midi_element_descriptor	typeref:struct:usb_midi_element_descriptor::usb_midi_element_descriptor_body
 source	libopencm3/include/libopencm3/usb/midi.h	/^	struct usb_midi_out_jack_descriptor_body source[1];$/;"	m	struct:usb_midi_out_jack_descriptor	typeref:struct:usb_midi_out_jack_descriptor::usb_midi_out_jack_descriptor_body
 space	libopencm3/Makefile	/^space:=$/;"	m
-spi1_isr	lib/tl.c	/^void spi1_isr(void)$/;"	f
+spi1_isr	lib/tl.c	/^void spi1_isr()$/;"	f
 spi_clean_disable	libopencm3/lib/stm32/common/spi_common_all.c	/^uint16_t spi_clean_disable(uint32_t spi)$/;"	f
 spi_disable	libopencm3/lib/stm32/common/spi_common_all.c	/^void spi_disable(uint32_t spi)$/;"	f
 spi_disable_crc	libopencm3/lib/stm32/common/spi_common_all.c	/^void spi_disable_crc(uint32_t spi)$/;"	f
@@ -38840,7 +38835,6 @@ systick_interrupt_enable	libopencm3/lib/cm3/systick.c	/^void systick_interrupt_e
 systick_set_clocksource	libopencm3/lib/cm3/systick.c	/^void systick_set_clocksource(uint8_t clocksource)$/;"	f
 systick_set_frequency	libopencm3/lib/cm3/systick.c	/^bool systick_set_frequency(uint32_t freq, uint32_t ahb)$/;"	f
 systick_set_reload	libopencm3/lib/cm3/systick.c	/^void systick_set_reload(uint32_t value)$/;"	f
-t	lib/tl.c	/^    const int32_t t;$/;"	m	struct:pidrr	file:
 tLowerSamFreq	libopencm3/include/libopencm3/usb/audio.h	/^	uint32_t tLowerSamFreq : 24;$/;"	m	struct:usb_audio_format_continuous_sampling_frequency
 tSamFreq	libopencm3/include/libopencm3/usb/audio.h	/^	uint32_t tSamFreq : 24;$/;"	m	struct:usb_audio_format_discrete_sampling_frequency
 tUpperSamFreq	libopencm3/include/libopencm3/usb/audio.h	/^	uint32_t tUpperSamFreq : 24;$/;"	m	struct:usb_audio_format_continuous_sampling_frequency
@@ -39027,8 +39021,6 @@ twr	libopencm3/include/libopencm3/stm32/common/fmc_common_f47.h	/^	int twr;		\/*
 txsr	libopencm3/include/libopencm3/stm32/common/fmc_common_f47.h	/^	int txsr;		\/* Exit Self Refresh Time *\/$/;"	m	struct:sdram_timing
 type	libopencm3/lib/usb/usb_private.h	/^		uint8_t type;$/;"	m	struct:_usbd_device::user_control_callback
 type_mask	libopencm3/lib/usb/usb_private.h	/^		uint8_t type_mask;$/;"	m	struct:_usbd_device::user_control_callback
-u	lib/tl.c	/^    int32_t u;$/;"	m	struct:pidrr	file:
-u1	lib/tl.c	/^    int32_t u1;$/;"	m	struct:pidrr	file:
 uart_clear_interrupt_flag	libopencm3/lib/lm4f/uart.c	/^void uart_clear_interrupt_flag(uint32_t uart, enum uart_interrupt_flag ints)$/;"	f
 uart_clock_from_piosc	libopencm3/lib/lm4f/uart.c	/^void uart_clock_from_piosc(uint32_t uart)$/;"	f
 uart_clock_from_sysclk	libopencm3/lib/lm4f/uart.c	/^void uart_clock_from_sysclk(uint32_t uart)$/;"	f

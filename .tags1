@@ -4,10 +4,36 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-menuSet	/home/nefraer/src/tl_replacement/lib/menu.c	/^volatile menuSettings menuSet = {OFF, 101, 0, 0, 0, 0, 0, 0, 0, 10, 10*2 };$/;"	variable	line:13
-menuCounter	/home/nefraer/src/tl_replacement/lib/menu.c	/^void menuCounter()$/;"	function	line:23
-changeState	/home/nefraer/src/tl_replacement/lib/menu.c	/^void changeState(uint8_t st)$/;"	function	line:37	signature:(uint8_t st)
-checkHandle	/home/nefraer/src/tl_replacement/lib/menu.c	/^void checkHandle()$/;"	function	line:47
-handleToVoltage	/home/nefraer/src/tl_replacement/lib/menu.c	/^uint32_t handleToVoltage()$/;"	function	line:65
-handleToCurrent	/home/nefraer/src/tl_replacement/lib/menu.c	/^uint32_t handleToCurrent()$/;"	function	line:78
-menu	/home/nefraer/src/tl_replacement/lib/menu.c	/^void menu()$/;"	function	line:90
+debugduty	/home/nefraer/src/tl_replacement/lib/tl.c	/^uint32_t debugduty;$/;"	variable	line:16
+DIVIDER	/home/nefraer/src/tl_replacement/lib/tl.c	/^#define DIVIDER /;"	macro	line:19	file:
+tlPar	/home/nefraer/src/tl_replacement/lib/tl.c	/^volatile tlParams tlPar = {DIVIDER, \/\/ number of timer counts per one period$/;"	variable	line:20
+pidrr	/home/nefraer/src/tl_replacement/lib/tl.c	/^volatile struct pidrr {$/;"	struct	line:41	file:
+k	/home/nefraer/src/tl_replacement/lib/tl.c	/^    const int32_t k;$/;"	member	line:42	struct:pidrr	file:
+i	/home/nefraer/src/tl_replacement/lib/tl.c	/^    const int32_t i;$/;"	member	line:43	struct:pidrr	file:
+d	/home/nefraer/src/tl_replacement/lib/tl.c	/^    const int32_t d;$/;"	member	line:44	struct:pidrr	file:
+t	/home/nefraer/src/tl_replacement/lib/tl.c	/^    const int32_t t;$/;"	member	line:45	struct:pidrr	file:
+u	/home/nefraer/src/tl_replacement/lib/tl.c	/^    int32_t u;$/;"	member	line:46	struct:pidrr	file:
+u1	/home/nefraer/src/tl_replacement/lib/tl.c	/^    int32_t u1;$/;"	member	line:47	struct:pidrr	file:
+e	/home/nefraer/src/tl_replacement/lib/tl.c	/^    int32_t e;$/;"	member	line:48	struct:pidrr	file:
+e1	/home/nefraer/src/tl_replacement/lib/tl.c	/^    int32_t e1;$/;"	member	line:49	struct:pidrr	file:
+pidr	/home/nefraer/src/tl_replacement/lib/tl.c	/^} pidr = {2,$/;"	variable	line:50	typeref:struct:pidrr
+clockOffSeq	/home/nefraer/src/tl_replacement/lib/tl.c	/^const uint32_t clockOffSeq   = 0x00000003;$/;"	variable	line:56
+clockOnSeq	/home/nefraer/src/tl_replacement/lib/tl.c	/^const uint32_t clockOnSeq[2] = {0x00000002, 0x00000001};$/;"	variable	line:57
+regulFormula	/home/nefraer/src/tl_replacement/lib/tl.c	/^int32_t regulFormula(int32_t err)$/;"	function	line:68	signature:(int32_t err)
+clockDeInit	/home/nefraer/src/tl_replacement/lib/tl.c	/^void clockDeInit()$/;"	function	line:81
+clockInit	/home/nefraer/src/tl_replacement/lib/tl.c	/^void clockInit()$/;"	function	line:94
+tlInit	/home/nefraer/src/tl_replacement/lib/tl.c	/^void tlInit()$/;"	function	line:132
+tlLock	/home/nefraer/src/tl_replacement/lib/tl.c	/^void tlLock()$/;"	function	line:149
+tlUnlock	/home/nefraer/src/tl_replacement/lib/tl.c	/^void tlUnlock()$/;"	function	line:165
+setDuty	/home/nefraer/src/tl_replacement/lib/tl.c	/^void setDuty(int32_t duty)$/;"	function	line:188	signature:(int32_t duty)
+softStart	/home/nefraer/src/tl_replacement/lib/tl.c	/^uint8_t softStart()$/;"	function	line:201
+fault	/home/nefraer/src/tl_replacement/lib/tl.c	/^void fault()$/;"	function	line:211
+readPar	/home/nefraer/src/tl_replacement/lib/tl.c	/^void readPar()$/;"	function	line:229
+chkAlert	/home/nefraer/src/tl_replacement/lib/tl.c	/^void chkAlert()$/;"	function	line:237
+feedBack	/home/nefraer/src/tl_replacement/lib/tl.c	/^void feedBack()$/;"	function	line:247
+adc_comp_isr	/home/nefraer/src/tl_replacement/lib/tl.c	/^void adc_comp_isr()$/;"	function	line:265
+dma1_channel1_isr	/home/nefraer/src/tl_replacement/lib/tl.c	/^void dma1_channel1_isr()$/;"	function	line:278
+dma1_channel2_3_dma2_channel1_2_isr	/home/nefraer/src/tl_replacement/lib/tl.c	/^void dma1_channel2_3_dma2_channel1_2_isr()$/;"	function	line:283
+dma1_channel4_7_dma2_channel3_5_isr	/home/nefraer/src/tl_replacement/lib/tl.c	/^void dma1_channel4_7_dma2_channel3_5_isr()$/;"	function	line:288
+spi1_isr	/home/nefraer/src/tl_replacement/lib/tl.c	/^void spi1_isr(void)$/;"	function	line:293	signature:(void)
+flash_isr	/home/nefraer/src/tl_replacement/lib/tl.c	/^void flash_isr()$/;"	function	line:298

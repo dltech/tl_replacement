@@ -25,8 +25,10 @@ typedef struct {
 } adcDma;
 
 void measureInit(void);
+void adcDmaInit(void);
+void adcDmaDeinit(void);
 
-int getTemperature(void);
+uint32_t getTemperature(void);
 int8_t getHandlePos(void);
 int8_t getHandlePosP(uint32_t par);
 uint32_t getVoltage(void);

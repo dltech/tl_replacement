@@ -1,6 +1,6 @@
 #include <stdint.h>
 #include <limits.h>
-#include <math.h>
+//#include <math.h>
 #include "../libopencm3/include/libopencm3/stm32/adc.h"
 #include "../libopencm3/include/libopencm3/stm32/rcc.h"
 #include "../libopencm3/include/libopencm3/stm32/dma.h"
@@ -60,6 +60,27 @@ uint32_t measureVref()
     return vRef;
 }
 
+void adcDmaInit()
+{
+    // сопоставим адреса данных с ацп с структурой в памяти
+    RCC_AHBENR |= RCC_AHBENR_DMA1EN;
+    DMA1_CPAR1 = (uint32_t) &ADC1_DR;
+    DMA1_CMAR1 = (uint32_t) &measures;
+    DMA1_CNDTR1 = (uint32_t) ADC_NUMBER;
+    // конфиг DMA
+    uint32_t ccr =  DMA_CCR_MINC | DMA_CCR_MSIZE_32BIT | DMA_CCR_PSIZE_32BIT;
+    ccr |= DMA_CCR_PL_MEDIUM | DMA_CCR_CIRC | DMA_CCR_TEIE | DMA_CCR_EN;
+    DMA1_CCR1 = ccr;
+}
+
+void adcDmaDeinit()
+{
+    DMA1_CCR1 = (uint32_t)0;
+    DMA1_CPAR1 = (uint32_t)0;
+    DMA1_CMAR1 = (uint32_t)0;
+    DMA1_CNDTR1 = (uint32_t)0;
+}
+
 void measureInit()
 {
     // конфиг АЦП
@@ -84,23 +105,13 @@ void measureInit()
     ADC1_SMPR = (uint32_t) ADC_SMPR_SMP_239DOT5;
     // прерывание по окончанию измерения последовательности
     ADC1_IER = ADC_IER_EOSIE;
-    // сопоставим адреса данных с ацп с структурой в памяти
-    RCC_AHBENR |= RCC_AHBENR_DMA1EN;
-    DMA1_CPAR1 = (uint32_t) &ADC1_DR;
-    DMA1_CMAR1 = (uint32_t) &measures;
-    DMA1_CNDTR1 = (uint32_t) ADC_NUMBER;
-    // конфиг DMA
-    uint32_t ccr =  DMA_CCR_MINC | DMA_CCR_MSIZE_32BIT | DMA_CCR_PSIZE_32BIT;
-    ccr |= DMA_CCR_PL_MEDIUM | DMA_CCR_CIRC;
-    // прерывание по ошибке
-    ccr |= DMA_CCR_TEIE;
-    DMA1_CCR1 = ccr;
+
     // порты
     RCC_AHBENR |= RCC_AHBENR_GPIOAEN;
     gpio_mode_setup(MEASURE_PORT, GPIO_MODE_ANALOG, GPIO_PUPD_NONE, MEASURE_PINS);
     // вкл DMA и АЦП
     ADC1_ISR = 0xffffffff;
-    DMA1_CCR1 |= DMA_CCR_EN;
+    adcDmaInit();
     ADC1_CR |= ADC_CR_ADSTART;
     // приоритет измерений выше всех
     nvic_set_priority(NVIC_ADC_COMP_IRQ, 0xc0);
@@ -125,15 +136,16 @@ uint32_t adcToVoltage(uint32_t input)
     return (uint32_t)vOut;
 }
 
-int getTemperature()
+uint32_t getTemperature()
 {
-    const uint32_t vRefCal = 0x0000000000000fff & (uint64_t)(ST_VREFINT_CAL);
+    const uint32_t vRefCal = (uint32_t)(0x0000000000000fff & (uint64_t)(ST_VREFINT_CAL));
     const int32_t avgSlope = 5336;
     const int32_t tempCal30 = 0x00000fff & (uint32_t)(ST_TSENSE_CAL1_30C);
 
-    int32_t tempRawCal = (measures.temperature * vRefCal) / measures.vrefMeasured;
+    int32_t tempRawCal = ((uint32_t)(measures.temperature&0xfff) * vRefCal) / ((uint32_t)(measures.vrefMeasured&0xfff));
     int32_t temp = ((((int32_t)tempCal30 - tempRawCal)*1000) / avgSlope) + 30;
-    return fabs(temp);
+    if (temp < 0) return 0;
+    return (uint32_t)temp;
 }
 
 int8_t getHandlePos()

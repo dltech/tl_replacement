@@ -18,7 +18,7 @@ enum menuState {
 
 typedef struct {
     uint8_t state;
-    int8_t handle;
+    uint8_t handle;
     uint32_t cnt;
     uint8_t handleFlag;
     uint8_t setButFlag;
@@ -32,6 +32,7 @@ typedef struct {
 
 #define HANDLE_DELTA    2
 
+uint32_t median(uint32_t in);
 void checkHandle(void);
 void menu(void);
 

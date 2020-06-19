@@ -12,7 +12,6 @@ extern volatile tlParams tlPar;
 volatile menuSettings menuSet = {OFF, 101, 0, 0, 0, 0, 0, 0, 0, 10, 10*2 };
 extern volatile adcDma measures;
 
-uint32_t median(uint32_t in);
 uint32_t handleToCurrent(void);
 uint32_t handleToVoltage(void);
 void menuCounter(void);
@@ -21,8 +20,8 @@ void changeState(uint8_t st);
 
 uint32_t median(uint32_t in)
 {
-    #define size 5
-    static uint32_t wind[size] = {0,0,0,0,0};
+    #define size 15
+    static uint32_t wind[size] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
     for(int8_t i=size-1 ; i>=0 ; --i)
     {
         if( (in > wind[i]) ) {
@@ -71,7 +70,7 @@ void changeState(uint8_t st)
 
 void checkHandle()
 {
-    int8_t pos = median(100 - getHandlePosP(measures.handle));
+    uint8_t pos = (uint8_t)(median(100 - getHandlePosP(measures.handle)));
     menuSet.handleFlag = 0;
     menuSet.offFlag = 0;
     if( pos < HANDLE_DELTA ) {
@@ -98,6 +97,7 @@ uint32_t handleToVoltage()
     return volt;
 }
 
+
 uint32_t handleToCurrent()
 {
     uint32_t curr = menuSet.handle*tlPar.maxCurrent / 100;
@@ -109,9 +109,10 @@ uint32_t handleToCurrent()
     return curr;
 }
 
-
+uint32_t menuc = 0;
 void menu()
 {
+    ++menuc;
     checkHandle();
     // запускается после проверок до аутомата (чтобы правильно проставить флаги)
     menuCounter();
@@ -143,6 +144,7 @@ void menu()
                 if( isEqual() ) break;
                 tlLock();
                 saveSettings();
+                break;
             }
             break;
         case MANUAL_VOLTAGE_CHANGED:
@@ -158,6 +160,7 @@ void menu()
             if( menuSet.ovrFlag ) {
                 changeState(MANUAL_VOLTAGE);
                 menuSet.cnt = menuSet.changeTime + 1;
+                break;
             }
             break;
         case MANUAL_CURRENT:
@@ -186,6 +189,7 @@ void menu()
                 if( isEqual() ) break;
                 tlLock();
                 saveSettings();
+                break;
             }
             break;
         case MANUAL_CURRENT_CHANGED:
@@ -227,6 +231,7 @@ void menu()
                 if( isEqual() ) break;
                 tlLock();
                 saveSettings();
+                break;
             }
             break;
         case CHARGER_6:
@@ -253,23 +258,24 @@ void menu()
                 if( isEqual() ) break;
                 tlLock();
                 saveSettings();
+                break;
             }
             break;
         case OFF:
             if( menuSet.offFlag == 0 ) {
                 changeState(loadSettings());
+                break;
             }
             if( menuSet.newFlag ) {
                 tlPar.setVoltage = 0;
                 tlPar.setCurrent = 0;
-                setDuty(tlPar.minDuty);
+                setDuty(0);
             }
             if( tlPar.meanVoltage > tlPar.minVoltage/10 ) {
                 myprintf("%02d.%01d", tlPar.meanVoltage/100, (tlPar.meanVoltage%100)/10);
             } else {
                 myprintf("off");
             }
-
             break;
         default:
             fault();
