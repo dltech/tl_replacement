@@ -171,7 +171,7 @@ int8_t getHandlePosP(uint32_t par)
 uint32_t getVoltage()
 {
 //    const uint32_t voltageScale = 10514; это был рассчетный коэффициент
-    const uint32_t voltageScale = 102;
+    const uint32_t voltageScale = 103;
     return adcToVoltage((uint16_t)measures.voltage) * voltageScale / 10;
 }
 

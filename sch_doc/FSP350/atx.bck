@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP K1010
+D DC Optocoupler, Vce 35V, CTR 50%, DIP-4
+K NPN DC Optocoupler
+F http://www.us.liteon.com/downloads/LTV-817-827-847.PDF
+$ENDCMP
+#
+#End Doc Library

@@ -1,0 +1,309 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L device:D_Schottky_x2_KCom_AKA D2
+U 1 1 5F79979D
+P 4400 4200
+F 0 "D2" V 4354 4279 50  0000 L CNN
+F 1 "SFI603" V 4445 4279 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 4400 4200 50  0001 C CNN
+F 3 "" H 4400 4200 50  0001 C CNN
+	1    4400 4200
+	0    1    1    0   
+$EndComp
+$Comp
+L device:D_Schottky_x2_KCom_AKA D4
+U 1 1 5F79A487
+P 5150 4200
+F 0 "D4" V 5196 4279 50  0000 L CNN
+F 1 "SFI603" V 5105 4279 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 5150 4200 50  0001 C CNN
+F 3 "" H 5150 4200 50  0001 C CNN
+	1    5150 4200
+	0    -1   -1   0   
+$EndComp
+$Comp
+L device:D_Schottky_x2_KCom_AKA D1
+U 1 1 5F79A909
+P 4400 3550
+F 0 "D1" V 4300 3400 50  0000 L CNN
+F 1 "SFI603" V 4450 3200 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 4400 3550 50  0001 C CNN
+F 3 "" H 4400 3550 50  0001 C CNN
+	1    4400 3550
+	0    -1   1    0   
+$EndComp
+$Comp
+L device:D_Schottky_x2_KCom_AKA D3
+U 1 1 5F79AC65
+P 5150 3550
+F 0 "D3" V 5050 3400 50  0000 L CNN
+F 1 "SFI603" V 5200 3200 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 5150 3550 50  0001 C CNN
+F 3 "" H 5150 3550 50  0001 C CNN
+	1    5150 3550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4950 3550 4750 3550
+Wire Wire Line
+	4200 3250 4400 3250
+Wire Wire Line
+	4200 3250 4200 3850
+Wire Wire Line
+	4200 3850 4400 3850
+$Comp
+L Connector:Conn_01x01 J2
+U 1 1 5F7A1995
+P 5600 4200
+F 0 "J2" H 5680 4242 50  0000 L CNN
+F 1 "AC_IN" H 5680 4151 50  0000 L CNN
+F 2 "Connector_Wire:SolderWirePad_1x01_SMD_5x10mm" H 5600 4200 50  0001 C CNN
+F 3 "~" H 5600 4200 50  0001 C CNN
+	1    5600 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5400 4200 5350 4200
+$Comp
+L Connector:Conn_01x01 J1
+U 1 1 5F7A2068
+P 3950 4200
+F 0 "J1" H 3868 3975 50  0000 C CNN
+F 1 "AC_IN" H 3868 4066 50  0000 C CNN
+F 2 "Connector_Wire:SolderWirePad_1x01_SMD_5x10mm" H 3950 4200 50  0001 C CNN
+F 3 "~" H 3950 4200 50  0001 C CNN
+	1    3950 4200
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5150 3250 5350 3250
+Wire Wire Line
+	5350 3250 5350 3850
+Wire Wire Line
+	5150 3850 5350 3850
+$Comp
+L power:GND #PWR0101
+U 1 1 5F7A4260
+P 4750 4550
+F 0 "#PWR0101" H 4750 4300 50  0001 C CNN
+F 1 "GND" H 4755 4377 50  0000 C CNN
+F 2 "" H 4750 4550 50  0001 C CNN
+F 3 "" H 4750 4550 50  0001 C CNN
+	1    4750 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR0102
+U 1 1 5F7A7A82
+P 4750 3050
+F 0 "#PWR0102" H 4750 2900 50  0001 C CNN
+F 1 "VCC" H 4767 3223 50  0000 C CNN
+F 2 "" H 4750 3050 50  0001 C CNN
+F 3 "" H 4750 3050 50  0001 C CNN
+	1    4750 3050
+	1    0    0    -1  
+$EndComp
+Connection ~ 4750 3550
+Wire Wire Line
+	4750 3550 4600 3550
+Wire Wire Line
+	4400 4500 4750 4500
+Wire Wire Line
+	4400 3900 4750 3900
+Wire Wire Line
+	4750 4500 4750 3900
+Connection ~ 4750 4500
+Wire Wire Line
+	4750 4500 5150 4500
+Connection ~ 4750 3900
+Wire Wire Line
+	4750 3900 5150 3900
+$Comp
+L device:R R1
+U 1 1 5F7B7AD0
+P 4950 3200
+F 0 "R1" V 5050 3200 50  0000 C CNN
+F 1 "1k" V 4950 3200 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 4880 3200 50  0001 C CNN
+F 3 "" H 4950 3200 50  0001 C CNN
+	1    4950 3200
+	0    1    1    0   
+$EndComp
+$Comp
+L device:C C1
+U 1 1 5F7B7727
+P 4550 3200
+F 0 "C1" V 4600 3250 50  0000 L CNN
+F 1 "0.1" V 4600 3000 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 4588 3050 50  0001 C CNN
+F 3 "" H 4550 3200 50  0001 C CNN
+	1    4550 3200
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5350 3850 5350 4200
+Connection ~ 5350 3850
+Connection ~ 5350 4200
+Wire Wire Line
+	4200 3850 4200 4200
+Connection ~ 4200 3850
+Connection ~ 4200 4200
+Wire Wire Line
+	4750 4550 4750 4500
+Wire Wire Line
+	4700 3200 4800 3200
+Wire Wire Line
+	5100 3200 5350 3200
+Wire Wire Line
+	5350 3200 5350 3250
+Connection ~ 5350 3250
+Wire Wire Line
+	4400 3200 4200 3200
+Wire Wire Line
+	4200 3200 4200 3250
+Connection ~ 4200 3250
+$Comp
+L device:L L1
+U 1 1 5F7E4CE5
+P 6050 3300
+F 0 "L1" V 6240 3300 50  0000 C CNN
+F 1 "L" V 6149 3300 50  0000 C CNN
+F 2 "Inductor_THT:L_Toroid_Vertical_L35.6mm_W17.8mm_P12.70mm_Pulse_E" H 6050 3300 50  0001 C CNN
+F 3 "" H 6050 3300 50  0001 C CNN
+	1    6050 3300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L device:CP C2
+U 1 1 5F7E540D
+P 6350 3500
+F 0 "C2" H 6468 3546 50  0000 L CNN
+F 1 "CP" H 6468 3455 50  0000 L CNN
+F 2 "Capacitor_THT:CP_Radial_D17.0mm_P7.50mm" H 6388 3350 50  0001 C CNN
+F 3 "" H 6350 3500 50  0001 C CNN
+	1    6350 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L device:R R2
+U 1 1 5F7E5B00
+P 7000 3500
+F 0 "R2" H 7070 3546 50  0000 L CNN
+F 1 "R" H 7070 3455 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0516_L15.5mm_D5.0mm_P7.62mm_Vertical" V 6930 3500 50  0001 C CNN
+F 3 "" H 7000 3500 50  0001 C CNN
+	1    7000 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6200 3300 6350 3300
+Wire Wire Line
+	6350 3300 6350 3350
+Wire Wire Line
+	6700 3300 7000 3300
+Wire Wire Line
+	7000 3300 7000 3350
+Wire Wire Line
+	7000 3700 7000 3650
+$Comp
+L power:VCC #PWR0103
+U 1 1 5F7E967F
+P 5850 3250
+F 0 "#PWR0103" H 5850 3100 50  0001 C CNN
+F 1 "VCC" H 5867 3423 50  0000 C CNN
+F 2 "" H 5850 3250 50  0001 C CNN
+F 3 "" H 5850 3250 50  0001 C CNN
+	1    5850 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5850 3250 5850 3300
+Wire Wire Line
+	5850 3300 5900 3300
+$Comp
+L power:GND #PWR0104
+U 1 1 5F7EADA4
+P 6350 3750
+F 0 "#PWR0104" H 6350 3500 50  0001 C CNN
+F 1 "GND" H 6355 3577 50  0000 C CNN
+F 2 "" H 6350 3750 50  0001 C CNN
+F 3 "" H 6350 3750 50  0001 C CNN
+	1    6350 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01 J3
+U 1 1 5F7ECCB3
+P 7300 3300
+F 0 "J3" H 7380 3342 50  0000 L CNN
+F 1 "out_v" H 7380 3251 50  0000 L CNN
+F 2 "Connector_Wire:SolderWirePad_1x01_SMD_5x10mm" H 7300 3300 50  0001 C CNN
+F 3 "~" H 7300 3300 50  0001 C CNN
+	1    7300 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01 J4
+U 1 1 5F7ED0CB
+P 7300 3700
+F 0 "J4" H 7380 3742 50  0000 L CNN
+F 1 "out_g" H 7380 3651 50  0000 L CNN
+F 2 "Connector_Wire:SolderWirePad_1x01_SMD_5x10mm" H 7300 3700 50  0001 C CNN
+F 3 "~" H 7300 3700 50  0001 C CNN
+	1    7300 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7100 3700 7000 3700
+Connection ~ 7000 3700
+Wire Wire Line
+	7100 3300 7000 3300
+Connection ~ 7000 3300
+Wire Wire Line
+	4150 4200 4200 4200
+Wire Wire Line
+	4750 3050 4750 3550
+Wire Wire Line
+	6350 3650 6350 3700
+$Comp
+L device:CP C3
+U 1 1 5F80A667
+P 6700 3500
+F 0 "C3" H 6818 3546 50  0000 L CNN
+F 1 "CP" H 6818 3455 50  0000 L CNN
+F 2 "Capacitor_THT:CP_Radial_D17.0mm_P7.50mm" H 6738 3350 50  0001 C CNN
+F 3 "" H 6700 3500 50  0001 C CNN
+	1    6700 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6350 3700 6700 3700
+Connection ~ 6350 3700
+Wire Wire Line
+	6350 3700 6350 3750
+Wire Wire Line
+	6350 3300 6700 3300
+Wire Wire Line
+	6700 3300 6700 3350
+Connection ~ 6350 3300
+Connection ~ 6700 3300
+Wire Wire Line
+	6700 3650 6700 3700
+Connection ~ 6700 3700
+Wire Wire Line
+	6700 3700 7000 3700
+$EndSCHEMATC

@@ -22,9 +22,9 @@ volatile tlParams tlPar = {DIVIDER, // number of timer counts per one period
                            300,     // minimum voltage
                            2400,     // maximum curent (amperes*100)
                            100,     // minimum current
-                           (85*DIVIDER)/100, // max duty cycle (if too big
+                           (75*DIVIDER)/100, // max duty cycle (if too big
                                              // rail breakdown is possible)
-                           1,  // min dut cycle (if 0 indeterminate
+                           10,  // min dut cycle (if 0 indeterminate
                                              // behavior)
                            0,       // mean voltage (userful for the display)
                            0,       // mean current
@@ -105,12 +105,12 @@ void clockInit()
 {
     // установка
     uint32_t timEn = (uint32_t)(TIM_CR1_CKD_CK_INT | TIM_CR1_CEN);
+    TIM3_PSC = 0;
     TIM3_ARR  = (uint32_t)tlPar.divider;
     TIM3_DIER  = (uint32_t)(TIM_DIER_CC1DE | TIM_DIER_UDE);
-//    TIM3_DIER  = (uint32_t)(TIM_DIER_CC1IE | TIM_DIER_UIE);
 //    nvic_enable_irq(NVIC_TIM3_IRQ); // прерывание для ошибок
 //    TIM3_EGR |= TIM_EGR_UG;
-//    TIM3_CR1 = timEn;0
+//    TIM3_CR1 = timEn;
 
     uint32_t dmaUpEn = (uint32_t)(DMA_CCR_MINC | DMA_CCR_MSIZE_32BIT | \
                                   DMA_CCR_PSIZE_32BIT | DMA_CCR_PL_VERY_HIGH | \
@@ -144,6 +144,7 @@ void tlInit()
     kp = (tlPar.maxDuty) / (tlPar.maxVoltage/100);
     // лапки выходов
     RCC_AHBENR |= TLOUT_RCC_EN;
+    gpio_set(TLOUT_PORT, TL1OUT_PIN | TL2OUT_PIN);
     gpio_mode_setup(TLOUT_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, TL1OUT_PIN | TL2OUT_PIN);
     gpio_set_output_options(TLOUT_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_100MHZ, TL1OUT_PIN | TL2OUT_PIN);
     // клок периферии
@@ -251,7 +252,7 @@ void feedBack()
     if( minErr > 0 ) {
         i++;
     }
-    if( i > 17 ) {
+    if( i > 400 ) {
         setDuty(tlPar.duty + 1);
         i = 0;
     }
@@ -260,12 +261,10 @@ void feedBack()
     tlPar.meanVoltage = (tlPar.meanVoltage + tlPar.voltage) / 2;
 }
 
-uint32_t cnt = 0;
 void adc_comp_isr()
 {
     ADC1_ISR |= 0xffff;
     feedBack();
-    cnt++;
 }
 
 // при любой ошибке перезагружайся
