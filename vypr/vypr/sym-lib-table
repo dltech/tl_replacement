@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name vypr-rescue)(type Legacy)(uri ${KIPRJMOD}/vypr-rescue.lib)(options "")(descr ""))
+)

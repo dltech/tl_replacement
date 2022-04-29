@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name atx)(type Legacy)(uri ${KIPRJMOD}/atx.lib)(options "")(descr ""))
+  (lib (name standalone-rescue)(type Legacy)(uri ${KIPRJMOD}/standalone-rescue.lib)(options "")(descr ""))
 )
